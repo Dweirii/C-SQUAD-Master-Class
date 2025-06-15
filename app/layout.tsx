@@ -1,16 +1,29 @@
-import "./globals.css";
-import { Lato } from "next/font/google";
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { Cairo } from "next/font/google"
+import "./globals.css"
 
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-lato",
-});
+const inter = Inter({ subsets: ["latin"] })
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
+  display: "swap",
+})
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "The Innovation Code - C-SQUAD",
+  description: "Build Smarter. Sell Faster. Grow with Purpose",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" dir="ltr" className={`${lato.variable} font-sans`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={`${inter.className} ${cairo.variable}`}>{children}</body>
     </html>
-  );
+  )
 }

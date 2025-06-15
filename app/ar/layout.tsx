@@ -1,16 +1,27 @@
-import "../globals.css";
-import { Cairo } from "next/font/google";
+import type React from "react"
+import type { Metadata } from "next"
+import { Cairo } from "next/font/google"
+import "../globals.css"
 
 const cairo = Cairo({
-  subsets: ["arabic"],
-  weight: ["400", "700", "800"],
+  subsets: ["arabic", "latin"],
   variable: "--font-cairo",
-});
+  display: "swap",
+})
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "كود الابتكار - سي-سكواد",
+  description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
+}
+
+export default function ArabicLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} font-sans`}>
-      <body>{children}</body>
+    <html lang="ar" dir="rtl">
+      <body className={cairo.className}>{children}</body>
     </html>
-  );
+  )
 }
