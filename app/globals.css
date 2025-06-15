@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 /* Arabic font styling */
 [dir="rtl"] {
   font-family: var(--font-cairo), sans-serif;
