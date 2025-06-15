@@ -5,6 +5,7 @@ import MasterclassDescriptionArabic from "@/components/ar/master-class-descripti
 import CoachIntroArabic from "@/components/ar/coach-intro";
 import WhatYouWillLearnArabic from "@/components/ar/what-you-will-learn";
 import TestimonialsArabic from "@/components/ar/testimonials";
+import FooterArabic from "@/components/ar/footer";
 
 export default function Page() {
   return (
@@ -25,6 +26,7 @@ export default function Page() {
         text="كُل مُشترك سيحصل على 'دليل الانطلاقة بِذكاء' وهو إصدار خاص لحضور The Innovation Code، يَدمج بين تمارين اكتشاف الشّغف وتَحويله إلى بزنس حقيقي باستخدام التّفكير التّصميمي ."
       />
       <TestimonialsArabic/>
+      <FooterArabic/>
     </main>
   );
 }
