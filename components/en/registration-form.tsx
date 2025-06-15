@@ -1,5 +1,6 @@
 "use client"
 
+import { url } from "inspector"
 import type React from "react"
 
 import { useState } from "react"
@@ -10,6 +11,7 @@ export default function RegistrationForm() {
     lastName: "",
     email: "",
     phone: "",
+    code:"",
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +22,20 @@ export default function RegistrationForm() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Handle form submission here
+    
+    const res = await fetch("/api/checkout",{
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+        },
+        body: JSON.stringify(formData),
+    })
+
+    if(res.redirected){
+        window.location.href = res.url
+    }
   }
 
   return (
@@ -98,11 +110,24 @@ export default function RegistrationForm() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
+                  dir="rtl"
                   required
                   className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                   placeholder="Phone Number"
                 />
               </div>
+              {/* Discount Code */}
+            <div>
+                <input
+                    type="text"
+                    id="code"
+                    name="code"
+                    value={formData.code || ""}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                    placeholder="Promo Code (Optional)"
+                />
+            </div>
 
               {/* Submit Button */}
               <button
