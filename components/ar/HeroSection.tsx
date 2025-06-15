@@ -13,7 +13,7 @@ export default function ArabicHeroSection() {
           <div className="grid grid-cols-2 lg:grid-cols-3 items-center">
             {/* 1) Language Switcher (RTL - now on left) */}
             <div className="flex justify-start">
-              <Link href="/" aria-label="Switch to English">
+              <Link href="/en" aria-label="Switch to English">
                 <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition">EN</button>
               </Link>
             </div>

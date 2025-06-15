@@ -48,7 +48,7 @@ export default function RegistrationFormArabic() {
   }
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+    <section className=" py-16 sm:py-20 lg:py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Right Side - Pricing Info (RTL - moved to right) */}
@@ -76,7 +76,7 @@ export default function RegistrationFormArabic() {
           </div>
 
           {/* Left Side - Form (RTL - moved to left) */}
-          <div className="bg-white rounded-none p-8 sm:p-10  lg:order-1">
+          <div className="bg-gray-50 rounded-none p-8 sm:p-10  lg:order-1">
             {/* Header */}
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] mb-6 leading-tight">

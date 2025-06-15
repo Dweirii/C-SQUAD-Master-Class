@@ -13,8 +13,8 @@ export default function CoachIntroArabic() {
   ]
 
   return (
-    <section className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-16 sm:py-20 lg:py-24">
+    <section className="bg-white pb-20">
+      <div className="max-w-6xl mx-auto px-6 sm:py-20 lg:py-4">
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
           {/* Right: Coach Image and Info (RTL - moved to right) */}
           <div className="flex flex-col items-center justify-center md:items-center lg:items-end lg:order-2">

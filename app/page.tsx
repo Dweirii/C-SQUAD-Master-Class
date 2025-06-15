@@ -1,42 +1,33 @@
-import CoachIntro from "@/components/en/CoachIntro";
-import HeroSection from "@/components/en/HeroSection";
-import MasterclassAudience from "@/components/en/MasterclassAudience";
-import MasterclassDescription from "@/components/en/MasterclassDescription";
-import RegistrationForm from "@/components/en/registration-form";
-import Testimonials from "@/components/en/testimonials";
-import WhatYouWillLearn from "@/components/en/WhatYouWillLearn";
-import Footer from "@/components/footer";
+
+import HeroSection from "@/components/ar/HeroSection";
 import ZoomBanner from "@/components/ZoomBanner";
+import MasterclassAudienceArabic from "@/components/ar/masterClass-audienace";
+import MasterclassDescriptionArabic from "@/components/ar/master-class-description";
+import CoachIntroArabic from "@/components/ar/coach-intro";
+import WhatYouWillLearnArabic from "@/components/ar/what-you-will-learn";
+import TestimonialsArabic from "@/components/ar/testimonials";
+import FooterArabic from "@/components/ar/footer";
+import RegistrationFormArabic from "@/components/ar/registration-form";
 
 export default function Page() {
   return (
     <main>
       <HeroSection />
-      {/* Add more English sections below as needed */}
-      <ZoomBanner text="Two interactive live sessions on Zoom | Friday & Saturday, June 27–28, 2025 (Evenings)" />
-      <MasterclassAudience />
+      <ZoomBanner text="في يومين فقط، ستبني أساسًا قوّيًا لمشروعِك الحالي أو القادم، بخطوات واضِحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك"/>
+      <MasterclassAudienceArabic/>
       <ZoomBanner
-        text="The Innovation Code is not just another masterclass — it’s a space to reconnect with your creative self.
-        This experience is designed to inspire you to create a new reality — one filled with meaning and innovation, instead
-        of repeating paths that have lost their purpose."
+        text="هذا المَاستر كلاس مساحة خُلِقت لكل شخص لديه فكرة، أو شغف يُناديه، أو رغبة في بناء بِزنس حقيقي... لكنّه يشعُر بالضّياع أو لا يعرِف من أينَ يبدأ.. "
       />
-      <MasterclassDescription />
-      <CoachIntro/>
+      <MasterclassDescriptionArabic/>
+      <CoachIntroArabic/>
+      <ZoomBanner text="لأوّل مرّة في العالم العربي… تَجربة تدمُج بين أدوات الذّكاء الاصطناعي، ومَنهجيات الابتكار العالميّة، وطاقتِك الشعوريّة، لِتصميم مشروع ينبض بشغفك ويتحوّل إلى واقع"/>
+      <WhatYouWillLearnArabic/>
       <ZoomBanner
-        text="For the first time in the region…
-        an experience that blends AI tools, global innovation methods, and your emotional energy — to design a
-        business that carries your passion and brings it to life." 
+        text="كُل مُشترك سيحصل على 'دليل الانطلاقة بِذكاء' وهو إصدار خاص لحضور The Innovation Code، يَدمج بين تمارين اكتشاف الشّغف وتَحويله إلى بزنس حقيقي باستخدام التّفكير التّصميمي ."
       />
-      <WhatYouWillLearn/>
-      <ZoomBanner
-        text="Every participant will receive “The  Innovative-Start Guide” — a special edition created exclusively for The
-        Innovation Code.
-        It combines passion discovery exercises with a step-by-step approach to turning your ideas into a real business
-        using Design Thinking." 
-      />
-      <Testimonials/>
-      <RegistrationForm/>
-      <Footer/>
+      <TestimonialsArabic/>
+      <RegistrationFormArabic/>
+      <FooterArabic/>
     </main>
   );
 }

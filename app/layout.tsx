@@ -1,29 +1,28 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import { Cairo } from "next/font/google"
-import "./globals.css"
+import type { Metadata } from "next";
+import { Cairo } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] })
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
-  variable: "--font-cairo",
+  variable: "--font-cairo", // This enables the use of var(--font-cairo) in your CSS
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
-  title: "The Innovation Code - C-SQUAD",
-  description: "Build Smarter. Sell Faster. Grow with Purpose",
-}
+  title: "كود الابتكار - سي-سكواد",
+  description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${cairo.variable}`}>{children}</body>
+    <html lang="ar" dir="rtl" className={cairo.variable}>
+      <body className={cairo.className} suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
-  )
+  );
 }

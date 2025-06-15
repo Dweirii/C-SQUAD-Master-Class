@@ -29,7 +29,7 @@ export default function HeroSection() {
 
           {/* 3) Lang Switcher */}
           <div className="flex justify-end">
-            <Link href="/ar" aria-label="Switch to Arabic">
+            <Link href="/" aria-label="Switch to Arabic">
               <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition">
                 ع
               </button>

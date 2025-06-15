@@ -1,8 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import { Cairo } from "next/font/google"
 import "../globals.css"
 
+const inter = Inter({ subsets: ["latin"] })
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
@@ -10,18 +12,18 @@ const cairo = Cairo({
 })
 
 export const metadata: Metadata = {
-  title: "كود الابتكار - سي-سكواد",
-  description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
+  title: "The Innovation Code - C-SQUAD",
+  description: "Build Smarter. Sell Faster. Grow with Purpose",
 }
 
-export default function ArabicLayout({
+export default function EnglishLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl">
-      <body className={cairo.className}>{children}</body>
+    <html lang="en">
+      <body className={`${inter.className} ${cairo.variable}`}>{children}</body>
     </html>
   )
 }
