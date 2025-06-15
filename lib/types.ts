@@ -1,18 +1,13 @@
-import type { DiscountCode, FreeOrder } from "@prisma/client"
+import type { DiscountCode, FreeOrder, PaidOrder } from "@prisma/client"
+export type { DiscountCode, FreeOrder, PaidOrder }
 
-export type { DiscountCode, FreeOrder }
 
 export interface OverviewData {
   totalSignups: number
   freeRegistrations: number
   paidUsers: number
   totalRevenue: number
-  dailyRegistrationsData: Array<{
-    date: string
-    freeCount: number
-    paidCount: number
-    totalCount: number
-  }>
+  dailyRegistrationsData: DailyRegistration[]
 }
 
 export interface ActionResult<T = unknown> {

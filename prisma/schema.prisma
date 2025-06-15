@@ -23,3 +23,15 @@ model FreeOrder {
   code      String
   createdAt DateTime @default(now())
 }
+
+model PaidOrder {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  amount          Int
+  stripeSessionId String   @unique
+  paymentStatus   String
+  createdAt       DateTime @default(now())
+}
+
