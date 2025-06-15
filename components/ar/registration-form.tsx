@@ -54,7 +54,7 @@ export default function RegistrationFormArabic() {
           {/* Right Side - Pricing Info (RTL - moved to right) */}
           <div className="space-y-8 lg:order-2">
             {/* Pricing Card */}
-            <div className="bg-[#FC8A0A] text-white rounded-2xl p-8 text-center">
+            <div className="bg-[#FC8A0A] text-white rounded-none p-8 text-center">
               <div className="mb-4">
                 <div className="text-lg font-medium mb-2">السِعر الحقيقي $199</div>
                 <div className="text-3xl font-bold">لكنك اليوم ستحصل عليه بـ $9 فقط!</div>
@@ -62,7 +62,7 @@ export default function RegistrationFormArabic() {
             </div>
 
             {/* Additional Info */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+            <div className=" rounded-none p-8 text-center">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
                 بسعر فنجان قهوة 9$، ستغيّر طريقة تفكيرك في بناء مشروعك…
               </h3>
@@ -76,7 +76,7 @@ export default function RegistrationFormArabic() {
           </div>
 
           {/* Left Side - Form (RTL - moved to left) */}
-          <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-lg lg:order-1">
+          <div className="bg-white rounded-none p-8 sm:p-10  lg:order-1">
             {/* Header */}
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] mb-6 leading-tight">
@@ -102,7 +102,7 @@ export default function RegistrationFormArabic() {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-none focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                     placeholder="الاسم الأول"
                   />
                 </div>
@@ -114,7 +114,7 @@ export default function RegistrationFormArabic() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-none focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                     placeholder="الاسم الأخير"
                   />
                 </div>
@@ -129,7 +129,7 @@ export default function RegistrationFormArabic() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-none focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                   placeholder="عنوان البريد الإلكتروني"
                 />
               </div>
@@ -144,7 +144,7 @@ export default function RegistrationFormArabic() {
                   onChange={handleInputChange}
                   dir="rtl"
                   required
-                  className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                  className="w-full px-4 py-4 border border-gray-300 rounded-none focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                   placeholder="رقم الهاتف"
                 />
               </div>
@@ -156,7 +156,7 @@ export default function RegistrationFormArabic() {
                     name="code"
                     value={formData.code || ""}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-none focus:ring-2 focus:ring-[#FC8A0A] focus:border-[#FC8A0A] transition-colors text-base"
                     placeholder="كود الخصم (اختياري)"
                 />
             </div>
@@ -164,7 +164,7 @@ export default function RegistrationFormArabic() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-4 px-6 rounded-none text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 احجز مكانك الآن بـ 9 دولارات
               </button>

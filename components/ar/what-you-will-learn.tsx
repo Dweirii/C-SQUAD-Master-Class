@@ -1,79 +1,154 @@
-export default function WhatYouWillLearnArabic() {
+import { Check } from "lucide-react"
+import Image from "next/image"
+
+export default function MasterclassBenefitsSection() {
   return (
-    <section className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-4xl mx-auto">
-          {/* Title */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] leading-tight">
-              على ماذا ستحصل خلال يومين فقط؟
-            </h2>
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FC8A0A] leading-tight mb-6">
+            على ماذا ستحصل خلال يومين فقط؟
+          </h2>
+          <div className="text-gray-700 text-lg sm:text-xl max-w-4xl mx-auto font-medium">
+            <p>هذا الماستر كلاس يتكوّن من جلستين تفاعليّتين، كل جلسة مدّتها ٣ ساعات، تُشكّل مدخلًا عمليًا</p>
+            <p>لعالم الابتكار والإبداع، وبوّابةً لفهم حقيقيّ لأساسيات البزنس وبناؤه بطريقة ذكيّة.</p>
+          </div>
+        </div>
+
+        {/* Main 3-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12 items-start">
+          {/* Right Column - 3 Benefits (Order in code for RTL display) */}
+          <div className="space-y-10 text-right lg:order-3 pt-10">
+            {/* Benefit 1 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="bg-[#F7F7FA] rounded-full p-3">
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-4 h-4 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أسس بناء مشروع ناجح</h3>
+              <p className="text-gray-600 text-base text-center leading-relaxed">
+                ستكتشف الأسس العملية التي تعتمدها
+                <br />
+                الشركات الرائدة عالمياً لبناء مشاريع فعّالة
+                <br />
+                ومستقرة، مهما كانت نقطة بدايتك.
+              </p>
+            </div>
+
+            {/* Benefit 2 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="bg-[#F7F7FA] rounded-full p-3">
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-5 h-5 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مدخل عميق إلى التفكير التصميمي</h3>
+              <p className="text-gray-600 text-base  text-center">
+                فهم منهجية التفكير التصميمي
+                <br />
+                وأهميتها في تحليل احتياجات العملاء وبناء
+                <br />
+                حلول واقعية تلامسهم وتُشبعهم.
+              </p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="bg-[#F7F7FA] rounded-full p-3"> 
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-5 h-5 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحويل الفكرة إلى عرض بيع فعلي</h3>
+              <p className="text-gray-600 text-base  text-center">
+                تعلّم كيف تُحوّل فكرتك أو مهارتك إلى
+                <br />
+                عرض بيع جذّاب يُقنع، حتى لو كنت تبدأ من
+                <br />
+                نقطة الصفر.
+              </p>
+            </div>
           </div>
 
-          {/* Subtitle */}
-          <div className="text-center mb-12 sm:mb-16 space-y-6 sm:space-y-8">
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed">
-              هذا الماستر كلاس يتكوّن من جلستين تفاعليّتين، كُل جلسة مدّتها ٣ ساعات، تُشكّل مدخلًا عمليًا لِعالم الابتكار
-              والإبداع، وبوّابة لِفهم حقيقي لأساسيات البِزنس وبناؤه بِطريقة ذكيّة.
-            </p>
-
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl font-medium">خلال يومين، ستتعلّم:</p>
+          {/* Center Column - Image */}
+          <div className="flex justify-center items-start lg:order-2">
+            <div className="p-3 rounded-md">
+              <Image
+                src="/Masterclass.png"
+                alt="Team collaboration"
+                width={500}
+                height={800}
+                className="w-full h-auto rounded-sm max-w-md lg:max-w-xs xl:max-w-sm"
+              />
+            </div>
           </div>
 
-          {/* Professional Bullet Points */}
-          <div className="mb-12 sm:mb-16">
-            <ul className="space-y-6 sm:space-y-8 text-gray-600">
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  المفاهيم الأساسيّة لبناء مشروع فعّال، وفهم المنهجيات التي تعتمدها الشركات الريادية عالميًا.
-                </p>
-              </li>
+          {/* Left Column - 3 Benefits (Order in code for RTL display) */}
+          <div className="space-y-10 text-right lg:order-1 pt-10">
+            {/* Benefit 1 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="bg-[#F7F7FA] rounded-full p-3">
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-5 h-5 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أمثلة واقعية ونقاشات حيّة</h3>
+              <p className="text-gray-600 text-base  text-center">
+                تفاعل مباشر مع دراسات واقعية تساعدك
+                <br />
+                على فهم تطبيق الأدوات على مشروعك
+                <br />
+                الحالي أو القادم.
+              </p>
+            </div>
 
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  مدخَل مبسّط وعميق إلى <span className="font-semibold text-[#14697A]">منهجيّة التفكير التّصميمي</span>،
-                  ولماذا تُعدّ الأداة الأهم لِفهم عُملائك وبناء حلول تُشبههم.
-                </p>
-              </li>
+            {/* Benefit 2 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="rounded-full bg-[#F7F7FA] p-3">
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-5 h-5 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">استخدام أدوات الذكاء الاصطناعي</h3>
+              <p className="text-gray-600 text-base  text-center">
+                استفد من أدوات الـ AI لتسريع قراراتك، وتنظيم
+                <br />
+                خطواتك القادمة بطريقة أكثر وضوحاً
+                <br />
+                وفعالية.
+              </p>
+            </div>
 
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  كيف تُحوّل فِكرة أو مهارة إلى عرض بيع فعلي وجاذب، حتى لو كنتَ تبدأ مِن الصفر.
-                </p>
-              </li>
-
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  أمثلة حقيقية ونقاشات تفاعليّة تُظهِر لك كيف تُطبّق هذه الأدوات على مشروعِك الحالي أو القادِم.
-                </p>
-              </li>
-
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  استخدام <span className="font-semibold text-[#FC8A0A]">أدوات الذّكاء الاصطناعي</span> لِدعمك في اتخاذ
-                  قرارات أسرع، وتخطيط خُطواتك بطريقة أكثر ذكاء.
-                </p>
-              </li>
-
-              <li className="flex items-start gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-gray-400 rounded-full mt-3 sm:mt-3.5"></div>
-                <p className="text-base sm:text-lg leading-relaxed">
-                  تَغيير في طريقة تَفكيرك تمنحك وضوحًا وثقة لِتبدأ أو تُعيد بناء مشروعِك برؤية حديثة.
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          {/* Closing Line */}
-          <div className="text-center">
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl font-medium leading-relaxed">
-              كُل هذا دون الحاجَة لأي خلفيّة تقنيّة أو خِبرة مُسبقة… فقط شَغف حقيقي واستعداد للبدء!
-            </p>
+            {/* Benefit 3 */}
+            <div>
+              <div className="flex justify-center mb-3">
+                <div className="bg-[#F7F7FA] rounded-full p-3">
+                  <div className="bg-[#FC8A0A] rounded-full p-1">
+                    <Check className="w-5 h-5 text-white stroke-[3px]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحوّل في طريقة التفكير الريادي</h3>
+              <p className="text-gray-600 text-base  text-center">
+                ستخرج بذهنية جديدة تمنحك وضوحاً داخلياً
+                <br />
+                وثقة عالية للبدء من جديد، أو إعادة بناء
+                <br />
+                مشروعك برؤية جديدة.
+              </p>
+            </div>
           </div>
         </div>
       </div>

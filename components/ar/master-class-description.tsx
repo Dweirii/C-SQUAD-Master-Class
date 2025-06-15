@@ -42,11 +42,6 @@ export default function MasterclassDescriptionArabic() {
               <span className="font-bold text-[#FC8A0A]">تبدأ رِحلتك بِنجاح من نوعٍ جديد.</span>
             </p>
           </div>
-
-          {/* Bottom highlight */}
-          <div className="text-center">
-            <p className="text-[#FC8A0A] font-bold text-base sm:text-lg md:text-xl">حوّل أفكارك إلى واقع في يومين فقط</p>
-          </div>
         </div>
       </div>
     </section>

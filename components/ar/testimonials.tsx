@@ -185,7 +185,7 @@ export default function TestimonialsArabic() {
 function TestimonialCardArabic({ testimonial, isActive }: { testimonial: any; isActive: boolean }) {
   return (
     <div
-      className={`bg-gray-50 rounded-2xl p-5 sm:p-6 h-full flex flex-col shadow-md hover:shadow-lg transition-all duration-300 border ${
+      className={`bg-gray-50 rounded-nonde p-5 sm:p-6 h-full flex flex-col shadow-md hover:shadow-lg transition-all duration-300 border ${
         isActive ? "border-[#FC8A0A]/20" : "border-gray-100"
       }`}
     >
