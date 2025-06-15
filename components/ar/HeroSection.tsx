@@ -5,75 +5,89 @@ import Link from "next/link"
 
 export default function ArabicHeroSection() {
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
-      {/* Arabic Header Bar */}
+    <div dir="rtl" className="bg-white">
+      {/* Header Bar */}
       <header className="bg-[#14697A] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Desktop & Mobile Row */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 items-center">
-            {/* 1) Language Switcher (RTL - now on left) */}
-            <div className="flex justify-start">
+          {/* Desktop Header */}
+          <div className="hidden lg:flex items-center h-16">
+            {/* Right section in RTL (EN button & Logo) */}
+            <div className="flex items-center gap-x-4 shrink-0">
               <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition">EN</button>
+                <button className="px-3 py-1.5 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
+                  EN
+                </button>
               </Link>
             </div>
-
-            {/* 2) Banner Text (lg+) - Center */}
-            <div className="hidden lg:block text-center text-base font-semibold">
-              الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 27 و 28 يونيو 2025
+            {/* Center/Left section in RTL (Banner Text) */}
+            <div className="flex-grow flex justify-center items-center px-6">
+              <p className="text-base font-semibold text-center">
+                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              </p>
             </div>
-
-            {/* 3) Logo (RTL - now on right) */}
-            <div className="flex justify-end">
-              <Image src="/c-squad-logo.png" alt="شعار سي-سكواد" width={120} height={35} className="object-contain" />
-            </div>
+              <Image
+                src="/c-squad-logo.png"
+                alt="شعار سي-سكواد"
+                width={110}
+                height={30}
+                className="object-contain"
+              />
           </div>
 
-          {/* Mobile Banner (smaller gap) */}
-          <div className="mt-1 lg:hidden border-t border-white/20 pt-1">
-            <div className="text-center text-sm font-medium">
-              الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 27 و 28 يونيو 2025
+          {/* Mobile Header */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-between pt-8 pb-4  h-14">
+              <Link href="/en" aria-label="Switch to English">
+                <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
+                  EN
+                </button>
+              </Link>
+              <Image
+                src="/c-squad-logo.png"
+                alt="شعار سي-سكواد"
+                width={100}
+                height={28}
+                className="object-contain"
+              />
+            </div>
+            <div className="border-t border-white/20 mt-1 py-4">
+              <p className="text-center text-xs sm:text-sm font-medium">
+                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              </p>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Arabic Hero Content */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-16 lg:py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Arabic Title */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-8 leading-tight">
+      {/* Hero Content */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+          {/* Text Content */}
+          <div className="text-right space-y-4">
+            <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-bold">
               The Innovation Code
             </h1>
-
-            {/* Arabic Subtitle */}
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-gray-600 mb-2 sm:mb-12 lg:mb-8 leading-relaxed">
-              صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك
+            <h2 className="text-xl sm:text-2xl font-semibold lg:pb-10 sm:pb-8 md:pb-2 text-center text-gray-800 leading-relaxed">
+              صمّم مشروعك بذكاء، انطلق في الشوق بإبداع، واخلق أثر برسالة تُشبهك
             </h2>
+            <p className="text-gray-600 text-base  lg:text-xl sm:pb-2 text-center sm:text-lg leading-loose">
+              ماستر كلاس يدمج بين منهجيات وادي السيليكون، وأدوات الإبداع الحديثة،
+              التي تساعدك على تطوير مشروعك، وتصميم بزنس يتوسع بثقة.
+            </p>
+          </div>
 
-            {/* Arabic Description */}
-            <div className="space-y-6 sm:space-y-8 lg:space-y-10 text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-12 sm:mb-16 lg:mb-20">
-              <p>
-                ماستر كلاس يدمُج بين منهجيّات وادي السّيليكون، وأدوات الإبداع الحديثة، واستخدام ذكيّ لأدوات الذّكاء الاصطناعي
-                التي تُساعدك على تطوير مشروعِك، واتخاذ قرارات أسرع، وتصميم بِزنس يتوسّع بثقة.
-              </p>
-              <p>
-                في يومين فقط، ستبني أساسًا قوّيًا لمشروعِك الحالي أو القادم، بخطوات واضِحة، وسِيستم عمليّ يفتح لكَ أبواب السوق
-                بثبات ويُعبّر عنك.
-              </p>
-            </div>
-
-            {/* Arabic CTA Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="#register"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-[#FC8A0A] hover:bg-[#e67c09] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
-              >
-                <span>انضم الآن مقابل 9 دولارات فقط</span>
-                <span className="mr-2 text-white/80 line-through text-xs sm:text-sm">[بدلاً من 199 دولار]</span>
-              </Link>
-            </div>
+          {/* Video */}
+          <div className="w-full rounded-xl overflow-hidden shadow-xl border border-gray-200">
+            <iframe
+              className="w-full aspect-video"
+              src="https://www.youtube.com/embed/RMCmjTvtTcY"
+              title="ماستر كلاس The Innovation Code"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </section>

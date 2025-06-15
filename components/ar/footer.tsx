@@ -28,7 +28,7 @@ export default function Footer() {
           {/* القسم الأوسط - نبذة عن الشركة */}
           <div className="text-center lg:text-right lg:border-r lg:border-gray-300 lg:pr-12">
             <h3 className="text-sm font-semibold text-[#666883] mb-4 tracking-wide">قوة الـ “C”!</h3>
-            <p className="text-[#666883] text-sm sm:text-base leading-relaxed">
+            <p className="text-[#666883] pt-5 text-sm sm:text-base leading-relaxed">
               ننطلق بشغفٍ لإعادة ابتكار نموذج العمل بما يخدم رؤى عملائنا، مع التركيز على حلول استراتيجية قابلة للتطوير وتحقيق قيمة مستدامة.
             </p>
           </div>
