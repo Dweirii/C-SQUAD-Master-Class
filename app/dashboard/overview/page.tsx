@@ -66,13 +66,19 @@ export default async function OverviewPage() {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            ${totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            ${((totalRevenue || 0) / 100).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </div>
           <p className="text-xs text-muted-foreground">
-            {paidUsers > 0 ? `$${(totalRevenue / paidUsers).toFixed(2)} avg per user` : "No revenue yet"}
+            {paidUsers > 0
+              ? `$${((totalRevenue / paidUsers) / 100).toFixed(2)} avg per user`
+              : "No revenue yet"}
           </p>
         </CardContent>
       </Card>
+
       <Card className="col-span-full shadow-sm">
         <CardHeader>
           <CardTitle>Daily Registrations (Last 7 Days)</CardTitle>

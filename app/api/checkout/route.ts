@@ -1,56 +1,68 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { stripe } from "@/lib/stripe"
 
 export async function POST(req: Request) {
+  try {
     const body = await req.json()
-    const {firstName, lastName, email, phone, code} = body
+    const { firstName, lastName, email, phone, code } = body
 
     const fullName = `${firstName} ${lastName}`.trim()
     let discount = 0
 
-    if(code) {
-        const found = await prisma.discountCode.findUnique({
-            where: { code: code.trim().toUpperCase() },
-        })
-        if(found) discount = found.percentage
+    if (code) {
+      const found = await prisma.discountCode.findUnique({
+        where: { code: code.trim().toUpperCase() },
+      })
+      if (found) discount = found.percentage
     }
 
-    const basePrice = 100
-    const finalPrice = Math.round(basePrice * (1 - discount / 100 ))
+    const basePrice = 900
+    const finalPrice = Math.round(basePrice * (1 - discount / 100))
 
-    if(discount === 100) {
-        await prisma.freeOrder.create({
-            data: {
-                name: fullName,
-                email,
-                phone,
-                code: code || "",
-            },
-        })
 
-        return NextResponse.redirect(new URL("/thank-you?free=true", req.url))
+    if (discount === 100) {
+      await prisma.freeOrder.create({
+        data: {
+          name: fullName,
+          email,
+          phone,
+          code: code || "",
+        },
+      })
+
+      return NextResponse.json({
+        redirectUrl: "/thank-you?free=true",
+      })
     }
+
+    const origin = req.headers.get("origin") ?? "http://localhost:3000"
 
     const session = await stripe.checkout.sessions.create({
-        payment_method_types:["card"],
-        customer_email:email,
-        line_items: [
-            {
-                price_data:{
-                    currency:"usd",
-                    product_data:{
-                        name:"MasterClass",
-                    },
-                    unit_amount: finalPrice,
-                },
-                quantity:1,
+      payment_method_types: ["card"],
+      customer_email: email,
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: "Innovation Code Masterclass",
+              description: "Access to both live sessions + workbook",
             },
-        ],
-        mode: "payment",
-        success_url: `${req.headers.get("origin")}/thank-you?paid=true`,
-        cancel_url: `${req.headers.get("origin")}/checkout?cancelled=true`,
+            unit_amount: finalPrice,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      success_url: `${origin}/thank-you?paid=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/checkout?cancelled=true`,
     })
 
-    return NextResponse.redirect(session.url!, 303)
+return NextResponse.json({ url: session.url })
+
+  } catch (error: any) {
+    console.error("Error in /api/checkout:", error.message)
+    return NextResponse.json({ error: "خطأ أثناء إنشاء جلسة الدفع" }, { status: 500 })
+  }
 }

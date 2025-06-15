@@ -4,20 +4,24 @@ import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { CheckCircle, Calendar, Clock, Users, Mail } from "lucide-react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function ThankYouPage() {
   const params = useSearchParams()
   const isFree = params.get("free") === "true"
   const isPaid = params.get("paid") === "true"
   const isArabic = params.get("lang") === "ar"
-  const name = localStorage.getItem("name") || ""
-  const email = localStorage.getItem("email") || ""
-  const phone = localStorage.getItem("phone") || ""
   const stripeSessionId = params.get("session_id") || ""
   const amount = 900
 
+  const [user, setUser] = useState({ name: "", email: "", phone: "" })
+
   useEffect(() => {
+    const name = localStorage.getItem("name") || ""
+    const email = localStorage.getItem("email") || ""
+    const phone = localStorage.getItem("phone") || ""
+    setUser({ name, email, phone })
+
     if (isPaid && email && stripeSessionId) {
       fetch("/api/track-paid-order", {
         method: "POST",
@@ -25,7 +29,7 @@ export default function ThankYouPage() {
         body: JSON.stringify({ name, email, phone, stripeSessionId, amount }),
       })
     }
-  }, [isPaid, email, stripeSessionId])
+  }, [isPaid, stripeSessionId])
 
   if (isArabic) {
     return <ThankYouPageArabic isFree={isFree} isPaid={isPaid} />

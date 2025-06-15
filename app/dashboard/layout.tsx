@@ -1,38 +1,66 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import { cookies } from "next/headers"
-import "./globals.css"
+"use client"
 
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/dashboard/app-sidebar"
-import { ThemeProvider } from "@/components/theme-provider"
+import { SidebarProvider, Sidebar, SidebarTrigger, SidebarInset, SidebarHeader, SidebarContent, SidebarMenuItem, SidebarMenu, SidebarMenuButton } from "@/components/ui/sidebar"
+import { Separator } from "@/components/ui/separator"
+import { usePathname } from "next/navigation"
+import { capitalize } from "@/lib/utils"
 
-const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "Admin Dashboard",
-  description: "A production-ready admin dashboard built with Next.js and shadcn/ui.",
-}
-
-export default async function RootLayout({
+export default function DashboardLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
-  const cookieStore = cookies()
-  const defaultOpen = (await cookieStore).get("sidebar:state")?.value === "true"
+}) {
+  const pathname = usePathname()
+  const pageTitle = pathname.split("/").pop() || "Dashboard"
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
-            <SidebarInset>{children}</SidebarInset>
-          </SidebarProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <SidebarProvider defaultOpen={true}>
+      <div className="flex w-full min-h-screen">
+        {/* ✅ Actual Sidebar */}
+          <Sidebar variant="inset">
+            <SidebarHeader>
+              <h2 className="text-lg font-semibold text-sidebar-foreground">C-SQUAD</h2>
+            </SidebarHeader>
+            <SidebarContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={pathname === "/dashboard/overview"}>
+                    <a href="/dashboard/overview">
+                      <span>Overview</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={pathname === "/dashboard/registrations"}>
+                    <a href="/dashboard/registrations">
+                      <span>Registrations</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={pathname === "/dashboard/discounts"}>
+                    <a href="/dashboard/discounts">
+                      <span>Discount Codes</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarContent>
+          </Sidebar>
+
+
+        {/* ✅ Main layout */}
+        <SidebarInset>
+          <header className="flex h-16 items-center gap-2 border-b px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <h1 className="text-lg font-semibold md:text-xl">
+              {capitalize(pageTitle)}
+            </h1>
+          </header>
+          <main className="flex-1 p-4">{children}</main>
+        </SidebarInset>
+      </div>
+    </SidebarProvider>
   )
 }

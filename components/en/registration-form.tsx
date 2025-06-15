@@ -22,21 +22,32 @@ export default function RegistrationForm() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    const res = await fetch("/api/checkout",{
-        method: "POST",
-        headers: {
-            "Content-Type":"application/json",
-        },
-        body: JSON.stringify(formData),
-    })
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
 
-    if(res.redirected){
-        window.location.href = res.url
-    }
+  const res = await fetch("/api/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+
+  const data = await res.json()
+
+  if (data.redirectUrl) {
+    window.location.href = data.redirectUrl
+    return
   }
+
+  if (data.url) {
+    window.location.href = data.url
+    return
+  }
+
+  alert("Something went wrong. Please try again.")
+}
+
 
   return (
     <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">

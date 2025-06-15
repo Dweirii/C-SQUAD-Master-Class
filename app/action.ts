@@ -13,9 +13,10 @@ export async function getOverviewData(): Promise<ActionResult<OverviewData>> {
     ])
 
     const revenueResult = await prisma.paidOrder.aggregate({
-      where: { paymentStatus: "completed" },
       _sum: { amount: true },
     })
+
+    console.log("💰 Revenue total cents:", revenueResult._sum.amount)
 
     const thirtyDaysAgo = new Date()
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)

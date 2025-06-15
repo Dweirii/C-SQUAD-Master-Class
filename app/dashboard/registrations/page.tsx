@@ -23,7 +23,6 @@ export default function RegistrationsPage() {
 
   useEffect(() => {
     const fetchRegistrations = async () => {
-      // Fetch free registrations
       setIsLoadingFree(true)
       setFreeError(null)
       const freeResult = await getFreeRegistrations()
@@ -34,7 +33,6 @@ export default function RegistrationsPage() {
       }
       setIsLoadingFree(false)
 
-      // Fetch paid registrations
       setIsLoadingPaid(true)
       setPaidError(null)
       const paidResult = await getPaidRegistrations()
@@ -50,7 +48,6 @@ export default function RegistrationsPage() {
   }, [])
 
   const handleExport = () => {
-    // TODO: Implement actual CSV/Excel export functionality
     alert("Export functionality would be implemented here with proper CSV generation!")
   }
 
@@ -180,7 +177,7 @@ export default function RegistrationsPage() {
                         <TableCell>{order.email}</TableCell>
                         <TableCell className="font-mono">
                           $
-                          {order.amount.toLocaleString(undefined, {
+                          {(order.amount / 100).toLocaleString (undefined, {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2,
                           })}
