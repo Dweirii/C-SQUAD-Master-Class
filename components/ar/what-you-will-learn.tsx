@@ -7,7 +7,7 @@ export default function MasterclassBenefitsSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FC8A0A] leading-tight mb-6">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] leading-tight mb-6">
             على ماذا ستحصل خلال يومين فقط؟
           </h2>
           <div className="text-gray-700 text-lg sm:text-xl max-w-4xl mx-auto font-medium">

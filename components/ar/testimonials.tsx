@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 const testimonials = [
@@ -29,28 +28,172 @@ const testimonials = [
     testimonial:
       "كوتش آلاء أنت سفاحة ومبدعة، الورشة كتير غنية وقيّمة، كاملة متكاملة فيها وعي وتفاصيل بتضوي كل اللمبات اللي براسنا، طاقتك غير، كل شي قدمتيه من القلب للقلب وعطيتيني الخطوة الأولى بالصفر تبعي وعصفتي كتير معتقدات عندي عنجد عنجد شكرا شكرا شكرا شكرا.",
   },
+  {
+    id: 4,
+    name: "غير مُعلَن",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial:
+      "قبل الورشة: شخص ما بيعرف يحدد التحديات و المشاكل... بعد الورشة: بدأ يحدد مشاكل وتحديات معينة... *التفكير اختلف تماماً* الموضوع فعلاً مفيد بكل مناحي الحياة مش بس بالبزنس. شكراً كثير كوتش آلاء والشكر لفريق العمل.",
+  },
+  {
+    id: 5,
+    name: "Leena AbuTaleb",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial:
+      "أنا ممتنة لحضوري هذه الورشة في هذا الوقت تحديدًا... ممتنة للكوتش آلاء على كرمها وطاقتها وكل المعلومات القيّمة التي شاركتها معنا. شكرًا للجميع.",
+  },
+  {
+    id: 6,
+    name: "Lama alomari",
+    country: "Canada",
+    flag: "🇨🇦",
+    testimonial:
+      "رائعة جداً وكلها حماس وطاقة ايجابية... بحر المعلومات والتكنيك الصح اللي واثقة منه... انتي انسانة مبدعة ما شاء الله عليكي.",
+  },
+  {
+    id: 7,
+    name: "حلا الرموني",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "أضافت إلي الكثير، أهمها التفكير الإبداعي... هذه الورشة بالنسبة إلي كبوصلة و نقطة انطلاق للهدف.",
+  },
+  {
+    id: 8,
+    name: "Taqwa Fawzi Bani Amer",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "كانت ورشة عمل مفيدة ورائعة جدًا. تعلمت من خلالها بعض التقنيات الجديدة لتوليد أفكار لمشاريعي.",
+  },
+  {
+    id: 9,
+    name: "Hashem hussein al Rabiee",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "شي كثير حلو مبادرة حلوه وبتجنن... مجرد وجود ناس متل هيك بنعرف أنو الدنيا لسا بخير.",
+  },
+  {
+    id: 10,
+    name: "Amal Taani",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "قيمّة، تم طرح المعلومات بشكل مبسط مع الأمثلة... وأحببت القدرة على التفاعل وطرح الأسئلة.",
+  },
+  {
+    id: 11,
+    name: "روعة محمد القيسي",
+    country: "Saudi Arabia",
+    flag: "🇸🇦",
+    testimonial: "رائعة كوتش آلاء، أعطت من قلبها... حسيت بكل كلمة إلها، دعمها وحماسها رائع.",
+  },
+  {
+    id: 12,
+    name: "Lina AlQariab",
+    country: "Qatar",
+    flag: "🇶🇦",
+    testimonial: "رغم أني ما تخيلت أنسجم بهيك أبروتش... بس قدرتي تخليني مشدودة طول الوقت وفهمت كل التفاصيل بسهولة.",
+  },
+  {
+    id: 13,
+    name: "Hadla AL Nabulsi",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "رائعة وحماسية تغير تفكير الشخص.",
+  },
+  {
+    id: 14,
+    name: "Esra'a Jehad",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "ممتعة وحماسية وتفاعلية بطريقة رهيبة... موضوع فتح الكاميرا أثناء الشرح كان جميل.",
+  },
+  {
+    id: 15,
+    name: "Maryya Jawarneh",
+    country: "Jordan",
+    flag: "🇯🇴",
+    testimonial: "لقد كانت ورشة رائعة، مثيرة، ملهمة، مليئة بالأفكار... أبدعتي كوتش، ربنا يزيدك من فضله.",
+  },
+  {
+    id: 16,
+    name: "Faisal saleh alshehri",
+    country: "Saudi Arabia",
+    flag: "🇸🇦",
+    testimonial: "لمسة حواس عميقة، طورت طريقة تفكيري للمشكلات وطرق تحليلها ومعالجتها.",
+  },
 ]
 
-export default function TestimonialsArabic() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function TestimonialsArabicCarousel() {
+  const [currentPage, setCurrentPage] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+  // Calculate items per page based on screen size
+  const getItemsPerPage = () => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth >= 1024) return 3 // Desktop: 3 items
+      if (window.innerWidth >= 768) return 2 // Tablet: 2 items
+      return 1 // Mobile: 1 item
+    }
+    return 3 // Default for SSR
   }
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
+  useEffect(() => {
+    const handleResize = () => {
+      const newItemsPerPage = getItemsPerPage()
+      setItemsPerPage(newItemsPerPage)
+
+      // Reset to first page if current page is out of bounds
+      const newTotalPages = Math.ceil(testimonials.length / newItemsPerPage)
+      if (currentPage >= newTotalPages) {
+        setCurrentPage(0)
+      }
+    }
+
+    // Set initial value
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [currentPage])
+
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage)
+
+  const nextPage = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setCurrentPage((prevPage) => (prevPage + 1) % totalPages)
+    setTimeout(() => setIsTransitioning(false), 600)
   }
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
+  const prevPage = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages)
+    setTimeout(() => setIsTransitioning(false), 600)
   }
 
-  // Touch handlers for mobile swipe
+  const goToPage = (page: number) => {
+    if (isTransitioning || page === currentPage) return
+    setIsTransitioning(true)
+    setCurrentPage(page)
+    setTimeout(() => setIsTransitioning(false), 600)
+  }
+
+  // Get current testimonials for the current page
+  const getCurrentTestimonials = () => {
+    const startIndex = currentPage * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    return testimonials.slice(startIndex, endIndex)
+  }
+
+  // Enhanced touch handlers with momentum
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
+    setTouchEnd(0)
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -61,20 +204,22 @@ export default function TestimonialsArabic() {
     if (!touchStart || !touchEnd) return
 
     const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > 50
-    const isRightSwipe = distance < -50
+    const isLeftSwipe = distance > 30
+    const isRightSwipe = distance < -30
 
-    if (isLeftSwipe) {
-      nextSlide()
-    } else if (isRightSwipe) {
-      prevSlide()
+    if (isLeftSwipe && !isTransitioning) {
+      nextPage()
+    } else if (isRightSwipe && !isTransitioning) {
+      prevPage()
     }
   }
 
+  const currentTestimonials = getCurrentTestimonials()
+
   return (
-    <section className="bg-white">
+    <section className="bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
-        {/* Compact Header */}
+        {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] mb-4 leading-tight">
             آراء المشتركين في الماستر كلاس السابق
@@ -86,125 +231,154 @@ export default function TestimonialsArabic() {
 
         {/* Carousel Container */}
         <div className="relative">
-          {/* Desktop Navigation Arrows - RTL adjusted */}
+          {/* Navigation Arrows - RTL adjusted */}
           <button
-            onClick={prevSlide}
-            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-200"
-            aria-label="الشهادة السابقة"
+            onClick={prevPage}
+            disabled={totalPages <= 1 || isTransitioning}
+            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+            aria-label="الصفحة السابقة"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
           <button
-            onClick={nextSlide}
-            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-200"
-            aria-label="الشهادة التالية"
+            onClick={nextPage}
+            disabled={totalPages <= 1 || isTransitioning}
+            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+            aria-label="الصفحة التالية"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Testimonials Container */}
+          {/* Testimonials Container with Smooth Sliding */}
           <div
-            className="relative"
+            className="relative overflow-hidden"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Desktop View - 3 Cards */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-              {testimonials.map((testimonial, index) => {
-                const isActive = index === currentIndex
-
-                return (
+            <div className="relative h-auto">
+              {/* Current Page */}
+              <div
+                className={`grid gap-6 transition-all duration-700 ease-out ${
+                  itemsPerPage === 3 ? "lg:grid-cols-3" : itemsPerPage === 2 ? "md:grid-cols-2" : "grid-cols-1"
+                } ${isTransitioning ? "opacity-0 transform translate-y-4" : "opacity-100 transform translate-y-0"}`}
+              >
+                {currentTestimonials.map((testimonial, index) => (
                   <div
-                    key={testimonial.id}
-                    className={`transition-all duration-500 cursor-pointer ${
-                      isActive ? "scale-105 opacity-100" : "scale-95 opacity-75 hover:opacity-90 hover:scale-100"
-                    }`}
-                    onClick={() => goToSlide(index)}
+                    key={`${testimonial.id}-${currentPage}`}
+                    className="transition-all duration-500 ease-out transform hover:scale-105 hover:-translate-y-2"
+                    style={{
+                      animationDelay: `${index * 150}ms`,
+                      animation: isTransitioning ? "none" : `slideInUp 0.6s ease-out ${index * 150}ms both`,
+                    }}
                   >
-                    <TestimonialCardArabic testimonial={testimonial} isActive={isActive} />
+                    <TestimonialCardArabic testimonial={testimonial} />
                   </div>
-                )
-              })}
-            </div>
-
-            {/* Tablet View - 2 Cards */}
-            <div className="hidden md:grid lg:hidden md:grid-cols-2 gap-4">
-              {[currentIndex, (currentIndex + 1) % testimonials.length].map((index) => (
-                <div key={testimonials[index].id} className="transition-all duration-300">
-                  <TestimonialCardArabic testimonial={testimonials[index]} isActive={index === currentIndex} />
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile View - Single Card */}
-            <div className="md:hidden">
-              <TestimonialCardArabic testimonial={testimonials[currentIndex]} isActive={true} />
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Mobile Navigation Buttons */}
-          <div className="flex lg:hidden justify-center gap-3 mt-6">
+          <div className="flex lg:hidden justify-center gap-4 mt-8">
             <button
-              onClick={prevSlide}
-              className="w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-200"
-              aria-label="الشهادة السابقة"
+              onClick={prevPage}
+              disabled={totalPages <= 1 || isTransitioning}
+              className="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+              aria-label="الصفحة السابقة"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-5 h-5" />
             </button>
             <button
-              onClick={nextSlide}
-              className="w-10 h-10 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-200"
-              aria-label="الشهادة التالية"
+              onClick={nextPage}
+              disabled={totalPages <= 1 || isTransitioning}
+              className="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+              aria-label="الصفحة التالية"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Compact Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
+          {/* Enhanced Page Indicators */}
+          <div className="flex justify-center gap-3 mt-8">
+            {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-200 rounded-full ${
-                  index === currentIndex ? "w-6 h-2 bg-[#FC8A0A]" : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+                onClick={() => goToPage(index)}
+                disabled={isTransitioning}
+                className={`transition-all duration-400 ease-out rounded-full hover:scale-125 ${
+                  index === currentPage
+                    ? "w-10 h-3 bg-[#FC8A0A] shadow-lg"
+                    : "w-3 h-3 bg-gray-300 hover:bg-gray-400 hover:shadow-md"
                 }`}
-                aria-label={`انتقل إلى الشهادة ${index + 1}`}
+                aria-label={`انتقل إلى الصفحة ${index + 1}`}
               />
             ))}
           </div>
+
+          {/* Enhanced Page Counter */}
+          <div className="text-center mt-4">
+            <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+              {`${currentPage + 1} من ${totalPages}`}
+            </span>
+          </div>
         </div>
       </div>
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </section>
   )
 }
 
-// Arabic TestimonialCard component
-function TestimonialCardArabic({ testimonial, isActive }: { testimonial: any; isActive: boolean }) {
+// Enhanced Arabic TestimonialCard component
+function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
   return (
-    <div
-      className={`bg-gray-50 rounded-nonde p-5 sm:p-6 h-full flex flex-col shadow-md hover:shadow-lg transition-all duration-300 border ${
-        isActive ? "border-[#FC8A0A]/20" : "border-gray-100"
-      }`}
-    >
-      {/* Compact Quote Icon */}
-      <div className={`text-2xl mb-3 ${isActive ? "text-[#FC8A0A]" : "text-gray-400"}`}>
-        <Quote className="w-5 h-5" />
+    <div className="bg-gradient-to-br from-gray-50 to-white p-6 sm:p-7 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      {/* Quote Icon */}
+      <div className="text-[#FC8A0A] mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
+        <Quote className="w-6 h-6" />
       </div>
 
       {/* Testimonial Text */}
-      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4 flex-grow">
+      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 flex-grow relative z-10 transition-colors duration-300 group-hover:text-gray-800">
         "{testimonial.testimonial}"
       </blockquote>
 
-      {/* Compact Author Info */}
-      <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-        <span className="text-lg">{testimonial.flag}</span>
+      {/* Author Info */}
+      <div className="flex items-center gap-4 pt-4 border-t border-gray-200 relative z-10 transition-all duration-300 group-hover:border-[#FC8A0A]/20">
+        <span className="text-xl transition-transform duration-300 group-hover:scale-110">{testimonial.flag}</span>
         <div>
-          <div className="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.name}</div>
-          <div className="text-gray-500 text-xs sm:text-sm">{testimonial.country}</div>
+          <div className="font-semibold text-gray-900 text-sm sm:text-base transition-colors duration-300 group-hover:text-[#FC8A0A]">
+            {testimonial.name}
+          </div>
+          <div className="text-gray-500 text-xs sm:text-sm transition-colors duration-300">{testimonial.country}</div>
         </div>
       </div>
     </div>
