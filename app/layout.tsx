@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -22,6 +23,18 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <body className={cairo.className} suppressHydrationWarning={true}>
         {children}
+        <Toaster
+          position="top-center"
+          richColors
+          closeButton
+          toastOptions={{
+            style: {
+              fontFamily: "inherit",
+              direction: "rtl",
+              textAlign: "right",
+            },
+          }}
+        />
       </body>
     </html>
   );
