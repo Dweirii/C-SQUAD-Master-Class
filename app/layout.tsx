@@ -4,12 +4,12 @@ import "./globals.css";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
-  variable: "--font-cairo", // This enables the use of var(--font-cairo) in your CSS
+  variable: "--font-cairo",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "كود الابتكار - سي-سكواد",
+  title: "C-SQUAD",
   description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
 };
 

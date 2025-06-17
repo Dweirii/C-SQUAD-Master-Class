@@ -57,14 +57,18 @@ export default function RegistrationFormArabic() {
             <div className="bg-[#FC8A0A] text-white rounded-none p-8 text-center">
               <div className="mb-4">
                 <div className="text-lg font-medium mb-2">السِعر الحقيقي $199</div>
-                <div className="text-3xl font-bold">لكنك اليوم ستحصل عليه بـ $9 فقط!</div>
+                <div className="text-3xl font-bold">لكنك اليوم ستحصل عليه بـ $79 فقط!</div>
               </div>
             </div>
 
             {/* Additional Info */}
             <div className=" rounded-none p-8 text-center">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
-                بسعر فنجان قهوة 9$، ستغيّر طريقة تفكيرك في بناء مشروعك…
+                مباشر عبر منصة زوم في جلستين 
+
+يومي الجمعة 11 والسبت 12 يونيو 2025
+
+ 6:00 - 9:00 مساءً بتوقيت مكة 
               </h3>
 
               <div className="space-y-4 text-gray-700">
@@ -166,7 +170,7 @@ export default function RegistrationFormArabic() {
                 type="submit"
                 className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-4 px-6 rounded-none text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
               >
-                احجز مكانك الآن بـ 9 دولارات
+                احجز مكانك الآن بـ 79 دولارات
               </button>
             </form>
 

@@ -11,27 +11,27 @@ export default function ArabicHeroSection() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Desktop Header */}
           <div className="hidden lg:flex items-center h-16">
-            {/* Right section in RTL (EN button & Logo) */}
-            <div className="flex items-center gap-x-4 shrink-0">
-              <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1.5 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
-                  EN
-                </button>
-              </Link>
-            </div>
             {/* Center/Left section in RTL (Banner Text) */}
-            <div className="flex-grow flex justify-center items-center px-6">
-              <p className="text-base font-semibold text-center">
+            <div className="flex-grow flex justify-start items-start px-6">
+              <p className="text-base font-semibold text-right">
                 الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
               </p>
             </div>
+            {/* Right section in RTL (EN button & Logo) */}
               <Image
                 src="/c-squad-logo.png"
-                alt="شعار سي-سكواد"
+                alt="C-SQUAD LOGO"
                 width={110}
                 height={30}
                 className="object-contain"
               />
+            <div className="flex items-center gap-x-4 shrink-0">
+              <Link href="/en" aria-label="Switch to English">
+                <button className="px-3 py-1.5 mr-10 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
+                  EN
+                </button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Header */}
@@ -61,34 +61,36 @@ export default function ArabicHeroSection() {
 
       {/* Hero Content */}
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
 
           {/* Text Content */}
-          <div className="text-right space-y-4">
-            <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-bold">
+          <div className="text-right space-y-4 pl-10 lg:col-span-2">
+            <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-semibold">
               The Innovation Code
             </h1>
-            <h2 className="text-xl sm:text-2xl font-semibold lg:pb-10 sm:pb-8 md:pb-2 text-center text-gray-800 leading-relaxed">
-              صمّم مشروعك بذكاء، انطلق في الشوق بإبداع، واخلق أثر برسالة تُشبهك
+            <h2 className="text-xl sm:text-xl font-semibold lg:pb-10 sm:pb-8 md:pb-2 text-center text-gray-800 leading-relaxed">
+              صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك
             </h2>
             <p className="text-gray-600 text-base  lg:text-xl sm:pb-2 text-center sm:text-lg leading-loose">
-              ماستر كلاس يدمج بين منهجيات وادي السيليكون، وأدوات الإبداع الحديثة،
-              التي تساعدك على تطوير مشروعك، وتصميم بزنس يتوسع بثقة.
+              ماستر كلاس يدمُج بين منهجيّات وادي السّيليكون، وأدوات الإبداع الحديثة، التي تُساعدك على تطوير مشروعِك، وتصميم بِزنس يتوسّع بثقة    
             </p>
           </div>
 
           {/* Video */}
-          <div className="w-full rounded-xl overflow-hidden shadow-xl border border-gray-200">
-            <iframe
-              className="w-full aspect-video"
-              src="https://www.youtube.com/embed/RMCmjTvtTcY"
-              title="ماستر كلاس The Innovation Code"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+          <div className="w-full flex justify-center lg:col-span-3">
+            <div className="w-full lg:w-[100%] xl:w-[110%] rounded-none overflow-hidden border border-gray-200">
+              <iframe
+                className="w-full aspect-video"
+                src="https://www.youtube.com/embed/RMCmjTvtTcY"
+                title="ماستر كلاس The Innovation Code"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
+
         </div>
       </section>
     </div>

@@ -71,10 +71,9 @@ export default function Footer() {
                   height={24}
                   className="object-contain"
                 />
-                <span className="text-[#666883] font-sm">السعوديةa</span>
+                <span className="text-[#666883] font-sm">السعودية</span>
               </div>
             </div>
-
             {/* Social Media Links */}
             <div className="flex justify-center lg:justify-start gap-6">
               <Link href="#" aria-label="Follow us on Facebook">
