@@ -60,11 +60,10 @@ export default function ArabicHeroSection() {
       </header>
 
       {/* Hero Content */}
-      <section className="py-16">
+      <section className="py-16 lg:py-24 sm:py-10 sm:pb-4">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
-
           {/* Text Content */}
-          <div className="text-right space-y-4 pl-10 lg:col-span-2">
+          <div className="text-right space-y-4 mx-auto lg:pl-10 lg:col-span-2">
             <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-semibold">
               The Innovation Code
             </h1>
@@ -75,7 +74,6 @@ export default function ArabicHeroSection() {
               ماستر كلاس يدمُج بين منهجيّات وادي السّيليكون، وأدوات الإبداع الحديثة، التي تُساعدك على تطوير مشروعِك، وتصميم بِزنس يتوسّع بثقة    
             </p>
           </div>
-
           {/* Video */}
           <div className="w-full flex justify-center lg:col-span-3">
             <div className="w-full lg:w-[100%] xl:w-[110%] rounded-none overflow-hidden border border-gray-200">

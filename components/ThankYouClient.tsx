@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle, Calendar, Clock, Users, Mail } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import Footer from "@/components/ar/footer";
+
 
 export default function ThankYouClientArabic() {
   const params = useSearchParams();
@@ -18,26 +18,64 @@ export default function ThankYouClientArabic() {
     : "شكراً لاهتمامك! 🧡";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white" dir="rtl">
-      {/* Header */}
+    <div className="min-h-screen bg-white" dir="rtl">
+      {/* Header Bar */}
       <header className="bg-[#14697A] text-white">
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <Image
-            src="/c-squad-logo.png"
-            alt="شعار سي-سكواد"
-            width={120}
-            height={35}
-            className="object-contain"
-          />
-          <Link href="/" className="text-white hover:text-orange-200 transition-colors">
-            العودة للرئيسية ←
-          </Link>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          {/* Desktop Header */}
+          <div className="hidden lg:flex items-center h-16">
+            {/* Center/Left section in RTL (Banner Text) */}
+            <div className="flex-grow flex justify-start items-start px-6">
+              <p className="text-base font-semibold text-right">
+                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              </p>
+            </div>
+            {/* Right section in RTL (EN button & Logo) */}
+              <Image
+                src="/c-squad-logo.png"
+                alt="C-SQUAD LOGO"
+                width={110}
+                height={30}
+                className="object-contain"
+              />
+            <div className="flex items-center gap-x-4 shrink-0">
+              <Link href="/en" aria-label="Switch to English">
+                <button className="px-3 py-1.5 mr-10 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
+                  EN
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Header */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-between pt-8 pb-4  h-14">
+              <Link href="/en" aria-label="Switch to English">
+                <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
+                  EN
+                </button>
+              </Link>
+              <Image
+                src="/c-squad-logo.png"
+                alt="شعار سي-سكواد"
+                width={100}
+                height={28}
+                className="object-contain"
+              />
+            </div>
+            <div className="border-t border-white/20 mt-1 py-4">
+              <p className="text-center text-xs sm:text-sm font-medium">
+                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
+
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Success Message */}
-        <div className="bg-white shadow-2xl p-8 sm:p-12 text-center mb-8">
+        <div className="bg-white p-8 sm:p-12 text-center mb-8">
           <div className="mb-8">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-12 h-12 text-green-600" />
@@ -47,33 +85,12 @@ export default function ThankYouClientArabic() {
               أهلاً بك في ماستر كلاس "The Innovation Code"! نحن متحمسون لانضمامك إلينا في هذه الرحلة التحويلية.
             </p>
           </div>
-
-          {/* Next Steps */}
-          <div className="bg-gradient-to-r from-[#FC8A0A]/10 to-[#14697A]/10 p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">ما الذي سيحدث الآن؟</h2>
-            <div className="grid sm:grid-cols-2 gap-4 text-right">
-              <div className="flex items-start gap-3">
-                <div>
-                  <p className="font-semibold text-gray-900">بريد التأكيد</p>
-                  <p className="text-gray-600 text-sm">تحقق من بريدك الإلكتروني لتفاصيل الجلسة ورابط زووم</p>
-                </div>
-                <Mail className="w-5 h-5 text-[#FC8A0A] mt-1 flex-shrink-0" />
-              </div>
-              <div className="flex items-start gap-3">
-                <div>
-                  <p className="font-semibold text-gray-900">مجموعة واتساب</p>
-                  <p className="text-gray-600 text-sm">انضم إلى مجتمع المشاركين الحصري</p>
-                </div>
-                <Users className="w-5 h-5 text-[#14697A] mt-1 flex-shrink-0" />
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Session Details */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Session Info */}
-          <div className="bg-white shadow-lg p-8">
+          <div className="bg-gray-50 p-8">
             <h3 className="text-2xl font-bold text-[#14697A] mb-6 flex items-center gap-3">
               <Calendar className="w-6 h-6" />
               تفاصيل الجلسات
@@ -104,7 +121,7 @@ export default function ThankYouClientArabic() {
           </div>
 
           {/* What You'll Receive */}
-          <div className="bg-white shadow-lg p-8">
+          <div className="bg-gray-50 p-8">
             <h3 className="text-2xl font-bold text-[#14697A] mb-6">ما ستحصل عليه</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">

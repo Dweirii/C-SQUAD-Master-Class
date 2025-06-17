@@ -23,31 +23,17 @@ export default function RegistrationFormArabic() {
   const [isValidatingPromo, setIsValidatingPromo] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+$/.test(email)
-
-  const validatePhone = (phone: string) =>
-    /^[+]?[0-9\s\-()]{8,}$/.test(phone)
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+$/.test(email)
+  const validatePhone = (phone: string) => /^[+]?[0-9\s\-()]{8,}$/.test(phone)
 
   const validateForm = () => {
     const newErrors: ValidationErrors = {}
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "الاسم الأول مطلوب"
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "الاسم الأخير مطلوب"
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "عنوان البريد الإلكتروني مطلوب"
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = "يرجى إدخال بريد إلكتروني صحيح"
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = "رقم الهاتف مطلوب"
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "يرجى إدخال رقم هاتف صحيح"
-    }
+    if (!formData.firstName.trim()) newErrors.firstName = "الاسم الأول مطلوب"
+    if (!formData.lastName.trim()) newErrors.lastName = "الاسم الأخير مطلوب"
+    if (!formData.email.trim()) newErrors.email = "عنوان البريد الإلكتروني مطلوب"
+    else if (!validateEmail(formData.email)) newErrors.email = "يرجى إدخال بريد إلكتروني صحيح"
+    if (!formData.phone.trim()) newErrors.phone = "رقم الهاتف مطلوب"
+    else if (!validatePhone(formData.phone)) newErrors.phone = "يرجى إدخال رقم هاتف صحيح"
 
     setErrors(newErrors)
     if (Object.keys(newErrors).length) {
@@ -68,10 +54,9 @@ export default function RegistrationFormArabic() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validateForm()) return
-
     setIsSubmitting(true)
     toast.loading("جاري المعالجة...")
-    // Validate promo code if provided
+
     if (formData.code.trim()) {
       setIsValidatingPromo(true)
       const promoRes = await fetch("/api/validate-promo", {
@@ -83,10 +68,7 @@ export default function RegistrationFormArabic() {
       setIsValidatingPromo(false)
 
       if (!promoRes.ok || !promoData.valid) {
-        setErrors((prev) => ({
-          ...prev,
-          code: "كود الخصم غير صحيح أو منتهي الصلاحية",
-        }))
+        setErrors((prev) => ({ ...prev, code: "كود الخصم غير صحيح أو منتهي الصلاحية" }))
         toast.dismiss()
         toast.error("كود الخصم غير صحيح أو منتهي الصلاحية")
         setIsSubmitting(false)
@@ -95,7 +77,6 @@ export default function RegistrationFormArabic() {
       toast.success(promoData.message)
     }
 
-    // Proceed to checkout
     try {
       const checkoutRes = await fetch("/api/checkout", {
         method: "POST",
@@ -123,49 +104,39 @@ export default function RegistrationFormArabic() {
   }
 
   return (
-    <section className="min-h-screen py-16">
+    <section className="py-10 sm:py-14 lg:py-4 lg:mb-24 sm:mb-4">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#FC8A0A] lg:mb-12">
+        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-12">
             الاشتراك في هذا الماستر كلاس
           </h1>
-          <p className="text-gray-600 text-lg font-bold md:text-xl leading-relaxed">
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl font-bold leading-relaxed">
             إن لم تُخصّص بِضع ساعات لحُلمك الآن… فَمتى؟
           </p>
-          <p className="text-gray-600 text-lg md:text-xl font-bold lg:mb-12 leading-relaxed">
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl font-bold lg:mb-12 leading-relaxed">
             نحن نبحث عن المستعدين فعلاً للالتزام بخطوتهم القادمة نحو مشروع واضح وناجح.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {/* Info Section */}
           <div className="space-y-6">
-            {/* Pricing Card */}
             <div className="bg-[#FC8A0A] text-white rounded-none p-6 text-center">
-              <div className="text-lg font-medium mb-2 line-through">
+              <div className="text-base sm:text-sm font-medium mb-2 line-through">
                 السعر الأصلي 200$
               </div>
-              <div className="text-2xl font-bold">
+              <div className="text-lg sm:text-xl font-bold">
                 لكنّك اليوم ستحصل عليه بـ 74$ فقط!
               </div>
             </div>
-
-            {/* Session Details */}
             <div className="text-gray-600 rounded-none p-6 text-center">
-              <h3 className="text-xl font-bold mb-4">
-                مباشر عبر منصة زوم في جلستين
-              </h3>
-              <p className="text-lg mb-2">
-                يومي الجمعة 11 والسبت 12 يونيو 2025
-              </p>
-              <p className="text-lg">6:00 - 9:00 مساءً بتوقيت مكة</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-4">مباشر عبر منصة زوم في جلستين</h3>
+              <p className="text-base sm:text-lg mb-2">يومي الجمعة 11 والسبت 12 يونيو 2025</p>
+              <p className="text-base sm:text-lg">6:00 - 9:00 مساءً بتوقيت مكة</p>
             </div>
           </div>
-          {/* Form Section */}
+
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <input
@@ -174,15 +145,9 @@ export default function RegistrationFormArabic() {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     placeholder="الاسم الأول"
-                    className={`w-full px-4 py-4 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                      errors.firstName ? "border-red-500" : "border-gray-100"
-                    }`}
+                    className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${errors.firstName ? "border-red-500" : "border-gray-100"}`}
                   />
-                  {errors.firstName && (
-                    <p className="text-red-500 text-sm mt-1 text-right">
-                      {errors.firstName}
-                    </p>
-                  )}
+                  {errors.firstName && <p className="text-red-500 text-sm mt-1 text-left">{errors.firstName}</p>}
                 </div>
                 <div>
                   <input
@@ -191,19 +156,11 @@ export default function RegistrationFormArabic() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     placeholder="الاسم الأخير"
-                    className={`w-full px-4 py-4 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                      errors.lastName ? "border-red-500" : "border-gray-100"
-                    }`}
+                    className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${errors.lastName ? "border-red-500" : "border-gray-100"}`}
                   />
-                  {errors.lastName && (
-                    <p className="text-red-500 text-sm mt-1 text-right">
-                      {errors.lastName}
-                    </p>
-                  )}
+                  {errors.lastName && <p className="text-red-500 text-sm mt-1 text-left">{errors.lastName}</p>}
                 </div>
               </div>
-
-              {/* Email */}
               <div>
                 <input
                   type="email"
@@ -211,18 +168,10 @@ export default function RegistrationFormArabic() {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="عنوان البريد الإلكتروني"
-                  className={`w-full px-4 py-4 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                    errors.email ? "border-red-500" : "border-gray-100"
-                  }`}
+                  className={`w-full px-4 py-3 border-2 text-left rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${errors.email ? "border-red-500" : "border-gray-100"}`}
                 />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1 text-right">
-                    {errors.email}
-                  </p>
-                )}
+                {errors.email && <p className="text-red-500 text-sm mt-1 text-left">{errors.email}</p>}
               </div>
-
-              {/* Phone */}
               <div>
                 <input
                   type="tel"
@@ -231,18 +180,10 @@ export default function RegistrationFormArabic() {
                   onChange={handleInputChange}
                   placeholder="رقم الهاتف"
                   dir="rtl"
-                  className={`w-full px-4 py-4 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                    errors.phone ? "border-red-500" : "border-gray-100"
-                  }`}
+                  className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${errors.phone ? "border-red-500" : "border-gray-100"}`}
                 />
-                {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1 text-right">
-                    {errors.phone}
-                  </p>
-                )}
+                {errors.phone && <p className="text-red-500 text-sm mt-1 text-left">{errors.phone}</p>}
               </div>
-
-              {/* Promo Code */}
               <div>
                 <input
                   type="text"
@@ -250,35 +191,20 @@ export default function RegistrationFormArabic() {
                   value={formData.code}
                   onChange={handleInputChange}
                   placeholder="كود الخصم"
-                  className={`w-full px-4 py-4 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                    errors.code ? "border-red-500" : "border-gray-100"
-                  }`}
+                  className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${errors.code ? "border-red-500" : "border-gray-100"}`}
                 />
-                {isValidatingPromo && (
-                  <p className="text-blue-500 text-sm mt-1 text-right">
-                    جاري التحقق من كود الخصم...
-                  </p>
-                )}
-                {errors.code && (
-                  <p className="text-red-500 text-sm mt-1 text-right">
-                    {errors.code}
-                  </p>
-                )}
+                {isValidatingPromo && <p className="text-gray-600 text-sm mt-1 text-left">جاري التحقق من كود الخصم...</p>}
+                {errors.code && <p className="text-red-500 text-sm mt-1 text-left">{errors.code}</p>}
               </div>
-
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting || isValidatingPromo}
-                className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-none text-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-none text-lg sm:text-xl transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                {isSubmitting
-                  ? "جاري المعالجة..."
-                  : "احجز مكانك في رحلة الابتكار الآن"}
+                {isSubmitting ? "جاري المعالجة..." : "احجز مكانك في رحلة الابتكار الآن"}
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </section>

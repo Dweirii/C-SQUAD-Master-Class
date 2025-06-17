@@ -217,11 +217,11 @@ export default function TestimonialsArabicCarousel() {
   const currentTestimonials = getCurrentTestimonials()
 
   return (
-    <section className="bg-white overflow-hidden">
+    <section className="bg-white overflow-hidden lg:py-12 sm:py-16">
       <div className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] mb-4 leading-tight">
             آراء المشتركين في الماستر كلاس السابق
           </h2>
           <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
@@ -299,30 +299,6 @@ export default function TestimonialsArabicCarousel() {
               <ChevronLeft className="w-5 h-5" />
             </button>
           </div>
-
-          {/* Enhanced Page Indicators */}
-          <div className="flex justify-center gap-3 mt-8">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                onClick={() => goToPage(index)}
-                disabled={isTransitioning}
-                className={`transition-all duration-400 ease-out rounded-full hover:scale-125 ${
-                  index === currentPage
-                    ? "w-10 h-3 bg-[#FC8A0A] shadow-lg"
-                    : "w-3 h-3 bg-gray-300 hover:bg-gray-400 hover:shadow-md"
-                }`}
-                aria-label={`انتقل إلى الصفحة ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Enhanced Page Counter */}
-          <div className="text-center mt-4">
-            <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-              {`${currentPage + 1} من ${totalPages}`}
-            </span>
-          </div>
         </div>
       </div>
 
@@ -354,10 +330,9 @@ export default function TestimonialsArabicCarousel() {
   )
 }
 
-// Enhanced Arabic TestimonialCard component
 function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white p-6 sm:p-7 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden">
+    <div className="bg-white p-6 sm:p-7 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 

@@ -31,7 +31,7 @@ export default function RootLayout({
             style: {
               fontFamily: "inherit",
               direction: "rtl",
-              textAlign: "right",
+              textAlign: "left",
             },
           }}
         />

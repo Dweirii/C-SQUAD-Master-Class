@@ -3,10 +3,10 @@ import Image from "next/image"
 
 export default function MasterclassBenefitsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="bg-white py-16 sm:py-20 lg:py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 lg:mt-6">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] leading-tight mb-6">
             على ماذا ستحصل خلال يومين فقط؟
           </h2>
@@ -17,7 +17,7 @@ export default function MasterclassBenefitsSection() {
         </div>
 
         {/* Main 3-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 items-start">
           {/* Right Column - 3 Benefits (Order in code for RTL display) */}
           <div className="space-y-10 text-right lg:order-3 pt-10">
             {/* Benefit 1 */}
