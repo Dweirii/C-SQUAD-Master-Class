@@ -1,6 +1,6 @@
 export default function MasterclassAudienceArabic() {
   return (
-    <section className="bg-white lg:mt-6">
+    <section className="bg-white lg:mt-8">
       <div className="max-w-6xl mx-auto px-6 sm:py-10 lg:pt-16">
         <div className="max-w-4xl mx-auto">
           {/* Title */}
@@ -23,35 +23,35 @@ export default function MasterclassAudienceArabic() {
             <li className="flex items-start gap-2 sm:gap-4">
               <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full mt-2 sm:mt-2.5"></div>
               <p className="text-base sm:text-lg leading-relaxed">
-                مُهتم في بِناء مشروعِك الخاص أو في بداياتِه وتحتاج وضوحًا في الخُطوات.
+                <strong>مُهتم</strong> في بِناء مشروعِك الخاص أو في بداياتِه وتحتاج وضوحًا في الخُطوات.
               </p>
             </li>
 
             <li className="flex items-start gap-2 sm:gap-4">
               <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
               <p className="text-base sm:text-lg leading-relaxed">
-                كوتش، مدرّب أو مستشار… وتُواجه صعوبة في جذب العُملاء أو تحويل خبرتك إلى بزنس مربح ومستقر.
+                <strong>كوتش، مدرّب أو مستشار…</strong>وتُواجه صعوبة في جذب العُملاء أو تحويل خبرتك إلى بزنس مربح ومستقر.
               </p>
             </li>
 
             <li className="flex items-start gap-2 sm:gap-4">
               <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
               <p className="text-base sm:text-lg leading-relaxed">
-                صاحب مشروع وسط الفوضى، وتتوق للانتقال إلى نظام ذكي وأرباح تتّسع بثقة.
+               <strong> صاحب مشروع</strong> وسط الفوضى، وتتوق للانتقال إلى نظام ذكي وأرباح تتّسع بثقة.
               </p>
             </li>
 
             <li className="flex items-start gap-2 sm:gap-4">
               <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
               <p className="text-base sm:text-lg leading-relaxed">
-                موظف أو طالب، وتشعر أن بداخلك شيء أكبر... وتريد التميّز وتحقيق ذاتك من مكانك الحالي.
+                <strong>موظف أو طالب،</strong> وتشعر أن بداخلك شيء أكبر... وتريد التميّز وتحقيق ذاتك من مكانك الحالي.
               </p>
             </li>
 
             <li className="flex items-start gap-2 sm:gap-4">
               <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
               <p className="text-base sm:text-lg leading-relaxed">
-                سيّدة تَحملين شغفًا حقيقيًا، وتؤمنين أن حلمك يستحق أن يُبنى بخطوات عملية ومُلهمة.
+                <strong>سيّدة</strong> تَحملين شغفًا حقيقيًا، وتؤمنين أن حلمك يستحق أن يُبنى بخطوات عملية ومُلهمة.
               </p>
             </li>
           </ul>

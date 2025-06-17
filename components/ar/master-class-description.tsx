@@ -1,45 +1,40 @@
 export default function MasterclassDescriptionArabic() {
   return (
     <section className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-16 sm:py-20 lg:py-24">
+      <div className="max-w-6xl mx-auto px-6 py-16 sm:py-20 lg:pt-24">
         <div className="max-w-4xl mx-auto">
           {/* Heading */}
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#FC8A0A] leading-tight">
-              ما هو ماستَر كلاس "The Innovation Code"؟
+            <h2 className="text-2xl lg:text-3xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] leading-tight">
+               “The Innovation Code” هو أكثر من ماستر كلاس...
             </h2>
           </div>
 
           {/* Lead statement */}
           <div className="text-center mb-12 sm:mb-16 space-y-6 sm:space-y-8">
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed">
-              هو أكثر من مجرد ماستر كلاس...
-            </p>
-            <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed font-medium">
-              إنّه مساحة ذكيّة لتبنّي منهجية{" "}
-              <span className="text-[#14697A] font-bold">التّفكير التّصميمي (Design Thinking)</span> — طريقة التّفكير التي
-              تعتمدها كُبرى الشّركات العالميّة لبناء مشاريع ناجِحة، مرنِة، وقابلة للنّمو.
+            <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed font-bold">
+                إنّه مساحة ذكيّة لتبنّي منهجية التّفكير التّصميمي (Design Thinking) — طريقة التّفكير التي تعتمدها كُبرى الشّركات العالميّة لبناء مشاريع ناجِحة، مرنِة، وقابلة للنّمو.
             </p>
           </div>
 
           {/* Body paragraphs */}
-          <div className="space-y-8 sm:space-y-10 text-gray-600 text-base sm:text-lg leading-relaxed mb-12 sm:mb-16">
+          <div className="space-y-8 sm:space-y-10 text-gray-600 text-base lg:text-lg text-center sm:text-lg leading-relaxed mb-12 sm:mb-16">
             <p>
-              خلال يومين مع <span className="font-semibold text-[#14697A]">كوتش ألاء أغا كَرس</span>، سنخوض معًا رحلة
+              خلال يومين مع كوتش ألاء أغا كَرس، سنخوض معًا رحلة
               عمليّة لإعادة تَصميم مشروعِك أو فكرتِك من الصّميم، باستخدام أدوات واضحة، وتقنيات حديثة مثل{" "}
-              <span className="font-semibold text-[#FC8A0A]">الذّكاء الاصطناعي</span>، لتبسيط التّفكير، تَسريع القرارات،
+              الذّكاء الاصطناعي، لتبسيط التّفكير، تَسريع القرارات
               وابتكار حلول تُناسبك مهما كانت معلوماتك أو مرحلتك.
             </p>
 
             <p>
-              سأكون معكَ <span className="font-semibold">خطوة بِخطوة</span> لنُحوّل شغفَك إلى خُطة، وأفكارك إلى عُروض بيع،
+              سأكون معكَ خطوة بِخطوة لنُحوّل شغفَك إلى خُطة، وأفكارك إلى عُروض بيع،
               وتردّدك أو خوفِك إلى بوصلة قيادة حقيقيّة، تُنهي الفوضى وتمنحك وضوحًا تتّكئ عليه.
             </p>
 
             <p>
-              مع <span className="font-semibold text-[#14697A]">التّفكير التصميمي</span>، وذكاء الأدوات، وروح الإبداع و
+              مع التّفكير التصميمي، وذكاء الأدوات، وروح الإبداع و
               مشاعِر الانطلاق… ستُصمّم مشروعك بأسلوبك، وتفتَح لكَ كل الفُرص بثقة وثبات و{" "}
-              <span className="font-bold text-[#FC8A0A]">تبدأ رِحلتك بِنجاح من نوعٍ جديد.</span>
+              تبدأ رِحلتك بِنجاح من نوعٍ جديد.
             </p>
           </div>
         </div>
