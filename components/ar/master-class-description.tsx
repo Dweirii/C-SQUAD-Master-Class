@@ -11,7 +11,7 @@ export default function MasterclassDescriptionArabic() {
           </div>
 
           {/* Lead statement */}
-          <div className="text-center mb-12 sm:mb-16 space-y-6 sm:space-y-8">
+          <div className="text-center lg:mb-4 sm:mb-16 space-y-6 sm:space-y-8">
             <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed font-bold">
                 إنّه مساحة ذكيّة لتبنّي منهجية التّفكير التّصميمي (Design Thinking) — طريقة التّفكير التي تعتمدها كُبرى الشّركات العالميّة لبناء مشاريع ناجِحة، مرنِة، وقابلة للنّمو.
             </p>
