@@ -78,7 +78,7 @@ const testimonials = [
     flag: "🇸🇦",
     testimonial: "لمسة حواس عميقة، طورت طريقة تفكيري للمشكلات وطرق تحليلها ومعالجتها.",
   },
-    {
+  {
     id: 4,
     name: "غير مُعلَن",
     country: "Jordan",
@@ -94,7 +94,7 @@ const testimonials = [
     testimonial:
       "أنا ممتنة لحضوري هذه الورشة في هذا الوقت تحديدًا... ممتنة للكوتش آلاء على كرمها وطاقتها وكل المعلومات القيّمة التي شاركتها معنا. شكرًا للجميع.",
   },
-    {
+  {
     id: 7,
     name: "حلا الرموني",
     country: "Jordan",
@@ -129,71 +129,67 @@ export default function TestimonialsArabicCarousel() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
-  const [itemsPerPage, setItemsPerPage] = useState(3)
 
-  // Calculate items per page based on screen size
-  const getItemsPerPage = () => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth >= 1024) return 6 // Desktop: 3 items
-      if (window.innerWidth >= 768) return 2 // Tablet: 2 items
-      return 1 // Mobile: 1 item
-    }
-    return 3 // Default for SSR
-  }
+  // Initial states assume a common default (e.g., desktop or a specific fallback)
+  // These will be updated on mount and resize by useEffect
+  const [itemsPerPage, setItemsPerPage] = useState(6) // Default to desktop items
+  const [columnsInGrid, setColumnsInGrid] = useState(3) // Default to desktop columns
 
   useEffect(() => {
-    const handleResize = () => {
-      const newItemsPerPage = getItemsPerPage()
-      setItemsPerPage(newItemsPerPage)
+    const getScreenConfig = () => {
+      if (typeof window !== "undefined") {
+        if (window.innerWidth >= 1024) return { items: 6, cols: 3 } // Desktop
+        if (window.innerWidth >= 768) return { items: 2, cols: 2 } // Tablet
+        return { items: 1, cols: 1 } // Mobile
+      }
+      // SSR fallback or non-browser environment
+      return { items: 6, cols: 3 } // Consistent with initial state
+    }
 
-      // Reset to first page if current page is out of bounds
-      const newTotalPages = Math.ceil(testimonials.length / newItemsPerPage)
-      if (currentPage >= newTotalPages) {
-        setCurrentPage(0)
+    const handleResize = () => {
+      const config = getScreenConfig()
+      setItemsPerPage(config.items)
+      setColumnsInGrid(config.cols)
+
+      const newTotalPages = config.items > 0 ? Math.ceil(testimonials.length / config.items) : 0
+      if (currentPage >= newTotalPages && newTotalPages > 0) {
+        setCurrentPage(newTotalPages - 1) // Go to last valid page
+      } else if (currentPage >= newTotalPages && newTotalPages === 0) {
+        setCurrentPage(0) // No pages, reset to 0
       }
     }
 
-    // Set initial value
-    handleResize()
-
+    handleResize() // Call on mount to set initial responsive values
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
-  }, [currentPage])
+  }, [currentPage]) // Re-evaluate on currentPage change if needed, though primarily for resize.
 
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage)
+  const totalPages = itemsPerPage > 0 ? Math.ceil(testimonials.length / itemsPerPage) : 0
 
   const nextPage = () => {
-    if (isTransitioning) return
+    if (isTransitioning || totalPages <= 1) return
     setIsTransitioning(true)
-    setCurrentPage((prevPage) => (prevPage + 1) % totalPages)
-    setTimeout(() => setIsTransitioning(false), 600)
+    setCurrentPage((prev) => (prev + 1) % totalPages)
+    setTimeout(() => setIsTransitioning(false), 600) // Animation duration
   }
 
   const prevPage = () => {
-    if (isTransitioning) return
+    if (isTransitioning || totalPages <= 1) return
     setIsTransitioning(true)
-    setCurrentPage((prevPage) => (prevPage - 1 + totalPages) % totalPages)
-    setTimeout(() => setIsTransitioning(false), 600)
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)
+    setTimeout(() => setIsTransitioning(false), 600) // Animation duration
   }
 
-  const goToPage = (page: number) => {
-    if (isTransitioning || page === currentPage) return
-    setIsTransitioning(true)
-    setCurrentPage(page)
-    setTimeout(() => setIsTransitioning(false), 600)
-  }
-
-  // Get current testimonials for the current page
   const getCurrentTestimonials = () => {
-    const startIndex = currentPage * itemsPerPage
-    const endIndex = startIndex + itemsPerPage
-    return testimonials.slice(startIndex, endIndex)
+    if (itemsPerPage <= 0) return []
+    const start = currentPage * itemsPerPage
+    const end = start + itemsPerPage
+    return testimonials.slice(start, end)
   }
 
-  // Enhanced touch handlers with momentum
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
-    setTouchEnd(0)
+    setTouchEnd(0) // Reset touchEnd
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -201,27 +197,28 @@ export default function TestimonialsArabicCarousel() {
   }
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-
+    if (!touchStart || !touchEnd || isTransitioning) return
     const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > 30
-    const isRightSwipe = distance < -30
+    const swipeThreshold = 30 // Min distance for a swipe
 
-    if (isLeftSwipe && !isTransitioning) {
+    if (distance > swipeThreshold) {
       nextPage()
-    } else if (isRightSwipe && !isTransitioning) {
+    } else if (distance < -swipeThreshold) {
       prevPage()
     }
+    // Reset touch coordinates
+    setTouchStart(0)
+    setTouchEnd(0)
   }
 
   const currentTestimonials = getCurrentTestimonials()
+  const numDisplayRows = columnsInGrid > 0 ? Math.ceil(currentTestimonials.length / columnsInGrid) : 0
 
   return (
     <section className="bg-white overflow-hidden lg:py-12 sm:py-16">
-      <div className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
-        {/* Header */}
+      <div className="max-w-6xl mx-auto px-6 py-10 sm:py-16">
         <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] mb-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 leading-tight">
             آراء المشتركين في الماستر كلاس السابق
           </h2>
           <p className="text-[#545454] font-bold text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
@@ -229,96 +226,82 @@ export default function TestimonialsArabicCarousel() {
           </p>
         </div>
 
-        {/* Carousel Container */}
         <div className="relative">
-          {/* Navigation Arrows - RTL adjusted */}
           <button
             onClick={prevPage}
             disabled={totalPages <= 1 || isTransitioning}
-            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
-            aria-label="الصفحة السابقة"
+            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+            aria-label="Previous testimonials"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
-
           <button
             onClick={nextPage}
             disabled={totalPages <= 1 || isTransitioning}
-            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
-            aria-label="الصفحة التالية"
+            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+            aria-label="Next testimonials"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
+
           <div
-            className={`grid grid-rows-2 gap-6 transition-all duration-700 ease-out ${
-              isTransitioning ? "opacity-0 transform translate-y-4" : "opacity-100 transform translate-y-0"
-            }`}
+            className={`grid ${numDisplayRows <= 1 ? "grid-rows-1" : "grid-rows-2"} gap-4 transition-all duration-700 ease-out ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
-            {[0, 1].map((rowIndex) => (
-              <div key={rowIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: numDisplayRows > 0 ? numDisplayRows : 0 }).map((_, rowIndex) => (
+              <div key={rowIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {currentTestimonials
-                  .slice(rowIndex * 3, rowIndex * 3 + 3)
-                  .map((testimonial, index) => (
+                  .slice(rowIndex * columnsInGrid, (rowIndex + 1) * columnsInGrid)
+                  .map((testimonial) => (
                     <div
-                      key={`${testimonial.id}-${currentPage}-${rowIndex}-${index}`}
+                      key={testimonial.id}
                       className="transition-all duration-500 ease-out transform hover:scale-105 hover:-translate-y-2"
-                      style={{
-                        animationDelay: `${(rowIndex * 3 + index) * 150}ms`,
-                        animation: isTransitioning
-                          ? "none"
-                          : `slideInUp 0.6s ease-out ${(rowIndex * 3 + index) * 150}ms both`,
-                      }}
                     >
                       <TestimonialCardArabic testimonial={testimonial} />
                     </div>
                   ))}
               </div>
             ))}
+            {currentTestimonials.length === 0 && (
+              <div className="col-span-full text-center py-10 text-gray-500">لا توجد آراء لعرضها حالياً.</div>
+            )}
           </div>
-          {/* Mobile Navigation Buttons */}
-          <div className="flex lg:hidden justify-center gap-4 mt-8">
-            <button
-              onClick={prevPage}
-              disabled={totalPages <= 1 || isTransitioning}
-              className="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
-              aria-label="الصفحة السابقة"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextPage}
-              disabled={totalPages <= 1 || isTransitioning}
-              className="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
-              aria-label="الصفحة التالية"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-          </div>
+
+          {totalPages > 1 && (
+            <div className="flex lg:hidden justify-center gap-4 mt-6">
+              {" "}
+              {/* Added mt-6 for spacing */}
+              <button
+                onClick={prevPage}
+                disabled={isTransitioning}
+                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+                aria-label="Previous testimonials mobile"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextPage}
+                disabled={isTransitioning}
+                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+                aria-label="Next testimonials mobile"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
+          from { opacity: 0; transform: translateY(30px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        
-        @keyframes fadeInScale {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
+        /* Ensure the component takes up space even if content is transitioning or empty, to prevent layout jumps */
+        .grid {
+          min-height: 100px; /* Adjust as needed based on card height */
         }
       `}</style>
     </section>
@@ -327,23 +310,18 @@ export default function TestimonialsArabicCarousel() {
 
 function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
   return (
-    <div className="bg-white p-6 sm:p-7 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-      {/* Quote Icon */}
-      <div className="text-[#FC8A0A] mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
-        <Quote className="w-6 h-6" />
+    <div className="bg-white p-4 sm:p-6 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden rounded-lg shadow-sm hover:shadow-xl">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+      <div className="text-[#FC8A0A] mb-3 sm:mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
+        <Quote className="w-5 h-5 sm:w-6 sm:h-6" />
       </div>
-
-      {/* Testimonial Text */}
-      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 flex-grow relative z-10 transition-colors duration-300 group-hover:text-gray-800">
+      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10 transition-colors duration-300 group-hover:text-gray-800">
         "{testimonial.testimonial}"
       </blockquote>
-
-      {/* Author Info */}
-      <div className="flex items-center gap-4 pt-4 border-t border-gray-200 relative z-10 transition-all duration-300 group-hover:border-[#FC8A0A]/20">
-        <span className="text-xl transition-transform duration-300 group-hover:scale-110">{testimonial.flag}</span>
+      <div className="flex items-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-200 relative z-10 transition-all duration-300 group-hover:border-[#FC8A0A]/20">
+        <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:scale-110">
+          {testimonial.flag}
+        </span>
         <div>
           <div className="font-semibold text-gray-900 text-sm sm:text-base transition-colors duration-300 group-hover:text-[#FC8A0A]">
             {testimonial.name}

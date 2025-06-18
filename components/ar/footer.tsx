@@ -11,21 +11,20 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer role="contentinfo" dir="rtl" className="w-full bg-[#F7F7FA] sm:py-16">
+    <footer role="contentinfo" dir="rtl" className="w-full bg-[#F7F7FA] lg:pt-20 lg:py-0 sm:py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">     
           {/* القسم الأيسر - الشعار */}
-          <div className="flex justify-center lg:justify-end items-start">
+          <div className="flex justify-center items-center lg:justify-end lg:items-start">
             <Image
               src="/Csquad.png"
               alt="شعار سي سكواد"
-              width={350}
+              width={300}
               height={200}
               priority
+              className="object-cover pl-6 pt-5 lg:pt-0 lg:pl-0"
             />
           </div>
-
           {/* القسم الأوسط - نبذة عن الشركة */}
           <div className="text-center lg:text-right sm:text-left lg:border-r lg:border-gray-300 lg:pr-12">
             <h3 className="text-sm text-left sm:text-left font-semibold text-[#666883] mb-4 tracking-wide">قوة  “C”!</h3>
@@ -77,21 +76,21 @@ export default function Footer() {
               </div>
             </div>
             {/* Social Media Links */}
-            <div className="flex  gap-6">
-              <Link href="#" aria-label="Follow us on Facebook" className='fill text-black'>
-                <FaFacebook className="w-4 h-4 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
+            <div className="flex gap-6 pb-12 mt-4">
+              <Link href="#" aria-label="Follow us on Facebook">
+                <FaFacebook className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
               <Link href="#" aria-label="Follow us on Instagram">
-                <FaInstagram fill='black' className="w-4 h-4 hover:text-[#FC8A0A] transition-colors duration-200" />
+                <FaInstagram className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
               <Link href="#" aria-label="Connect with us on LinkedIn">
-                <FaLinkedin className="w-4 h-4 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
+                <FaLinkedin className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
             </div>
           </div>
         </div>
         {/* الحد الأسفل */}
-        <div className="pt-1">
+        <div className="pt-1 sm:pb-10">
         </div>
       </div>
     </footer>
