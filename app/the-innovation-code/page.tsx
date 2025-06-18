@@ -1,3 +1,32 @@
+export const metadata = {
+  title: "The Innovation Code - C-SQUAD",
+  description:
+    "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
+  openGraph: {
+    title: "The Innovation Code - C-SQUAD",
+    description:
+      "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
+    url: "https://programs.c-squad.org/the-innovation-code",
+    siteName: "C-SQUAD",
+    images: [
+      {
+        url: "https://programs.c-squad.org/meta.png",
+        width: 1200,
+        height: 630,
+        alt: "C-SQUAD Masterclass",
+      },
+    ],
+    locale: "ar_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Innovation Code - C-SQUAD",
+    description:
+      "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
+    images: ["https://programs.c-squad.org/meta.png"],
+  },
+};
 
 import HeroSection from "@/components/ar/HeroSection";
 import ZoomBanner from "@/components/ZoomBanner";

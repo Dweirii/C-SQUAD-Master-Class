@@ -257,7 +257,7 @@ export default function TestimonialsArabicCarousel() {
                   .map((testimonial) => (
                     <div
                       key={testimonial.id}
-                      className="transition-all duration-500 ease-out transform hover:scale-105 hover:-translate-y-2"
+                      className="transition-all transform "
                     >
                       <TestimonialCardArabic testimonial={testimonial} />
                     </div>
@@ -276,7 +276,7 @@ export default function TestimonialsArabicCarousel() {
               <button
                 onClick={prevPage}
                 disabled={isTransitioning}
-                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A]"
                 aria-label="Previous testimonials mobile"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -284,7 +284,7 @@ export default function TestimonialsArabicCarousel() {
               <button
                 onClick={nextPage}
                 disabled={isTransitioning}
-                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#FC8A0A] hover:border-[#FC8A0A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110"
+                className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center text-gray-500"
                 aria-label="Next testimonials mobile"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -293,7 +293,6 @@ export default function TestimonialsArabicCarousel() {
           )}
         </div>
       </div>
-
       <style jsx>{`
         @keyframes slideInUp {
           from { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -310,20 +309,28 @@ export default function TestimonialsArabicCarousel() {
 
 function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
   return (
-    <div className="bg-white p-4 sm:p-6 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden rounded-none shadow-sm hover:shadow-xl">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-none"></div>
-      <div className="text-[#FC8A0A] mb-3 sm:mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
-        <Quote className="w-5 h-5 sm:w-6 sm:h-6" />
+    <div className="bg-[#F9FAFB] p-4 sm:p-6 h-full flex flex-col border border-gray-100">
+      <div className="absolute inset-0 bg-[#F9FAFB] rounded-none"></div>
+
+      {/* ⭐⭐⭐⭐⭐ النجوم الذهبية */}
+      <div className="flex mb-3 sm:mb-4">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.959a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.286 3.96c.3.921-.755 1.688-1.54 1.118l-3.37-2.45a1 1 0 00-1.176 0l-3.37 2.45c-.784.57-1.838-.197-1.539-1.118l1.286-3.96a1 1 0 00-.364-1.118l-3.37-2.45c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.959z" />
+          </svg>
+        ))}
       </div>
-      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10 transition-colors duration-300 group-hover:text-gray-800">
+
+      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10">
         "{testimonial.testimonial}"
       </blockquote>
-      <div className="flex items-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-200 relative z-10 transition-all duration-300 group-hover:border-[#FC8A0A]/20">
+
+      <div className="flex items-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-200 relative z-10 ">
         <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:scale-110">
           {testimonial.flag}
         </span>
         <div>
-          <div className="font-semibold text-gray-900 text-sm sm:text-base transition-colors duration-300 group-hover:text-[#FC8A0A]">
+          <div className="font-semibold text-gray-900 text-sm sm:text-base">
             {testimonial.name}
           </div>
           <div className="text-gray-500 text-xs sm:text-sm transition-colors duration-300">{testimonial.country}</div>
@@ -332,3 +339,4 @@ function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
     </div>
   )
 }
+

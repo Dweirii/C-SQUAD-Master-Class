@@ -163,7 +163,7 @@ export default function ThankYouClientArabic() {
               الدعم عبر البريد
             </a>
             <Link
-              href="/ar"
+              href="/the-innovation-code"
               className="flex items-center gap-2 border border-white text-white px-6 py-3 font-semibold hover:bg-white hover:text-[#14697A] transition-colors"
             >
               العودة للصفحة الرئيسية
