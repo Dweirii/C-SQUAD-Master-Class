@@ -104,7 +104,7 @@ export default function RegistrationFormArabic() {
   }
 
   return (
-    <section className="py-10 sm:py-14 lg:py-2 lg:mb-24 sm:mb-8">
+    <section className="py-10 sm:py-14 lg:py-2 mt-4 lg:mt-0 lg:mb-24 mb-14 sm:mb-14">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-12">
@@ -121,15 +121,15 @@ export default function RegistrationFormArabic() {
         <div className="grid lg:grid-cols-3 gap-8 items-start">
           <div className="space-y-6">
             <div className="bg-[#FC8A0A] text-white rounded-none p-3 text-center">
-              <div className="text-lg sm:text-sm font-bold mb-2 lg:text-lg line-through">
-                السعر الأصلي 200$
+              <div className="text-lg sm:text-sm font-bold mb-2 lg:text-lg">
+                السعر الأصلي <span className="line-through">200$</span>
               </div>
               <div className="text-lg sm:text-xl font-bold">
                 لكنّك اليوم ستحصل عليه بـ 74$ فقط!
               </div>
             </div>
             <div className="text-gray-600 rounded-none p-6 text-center">
-              <h3 className="text-lg sm:text-xl mb-4">مباشر عبر منصة زوم في جلستين</h3>
+              <h3 className="text-base sm:text-lg mb-2">مباشر عبر منصة زوم في جلستين</h3>
               <p className="text-base sm:text-lg mb-2">يومي الجمعة 11 والسبت 12 يوليو 2025</p>
               <p className="text-base sm:text-lg">6:00 - 9:00 مساءً بتوقيت مكة</p>
             </div>

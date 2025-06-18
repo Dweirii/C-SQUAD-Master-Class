@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function MasterclassBenefitsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-12">
+    <section className="bg-white py-16 sm:py-20 my-6 lg:my-1 lg:py-12">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-10 lg:mt-10">
@@ -48,7 +48,7 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مدخل عميق إلى التفكير التصميمي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مدخل إلى التفكير التصميمي</h3>
               <p className="text-gray-600 text-base  text-center">
                 فهم منهجية التفكير التصميمي
                 <br />

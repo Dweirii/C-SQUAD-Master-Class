@@ -11,7 +11,7 @@ export default function CoachIntroArabic() {
   ]
 
   return (
-    <section className="bg-white pb-8 lg:pb-16 sm:pb-20">
+    <section className="bg-white pb-8 lg:pb-16 sm:pb-20 mb-14 lg:mb-2">
       <div className="max-w-6xl mx-auto px-6 sm:py-10 lg:py-4">
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">    
           {/* ✅ Mobile Title Section */}
@@ -63,7 +63,7 @@ export default function CoachIntroArabic() {
             {/* Achievements */}
             <div className="space-y-2">
               {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-start gap-4">
+                <div key={index} className="flex items-start mt-4 gap-4">
                   <div className="flex-shrink-0 w-2 h-2 bg-gray-800 rounded-full mt-3"></div>
                   <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                     {achievement}

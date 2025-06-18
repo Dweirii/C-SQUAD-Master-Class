@@ -215,7 +215,7 @@ export default function TestimonialsArabicCarousel() {
   const numDisplayRows = columnsInGrid > 0 ? Math.ceil(currentTestimonials.length / columnsInGrid) : 0
 
   return (
-    <section className="bg-white overflow-hidden lg:py-6 sm:py-16">
+    <section className="bg-white overflow-hidden lg:py-6 mt-12 lg:mt-1 sm:py-16">
       <div className="max-w-6xl mx-auto px-6 py-10 sm:py-16">
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 leading-tight">

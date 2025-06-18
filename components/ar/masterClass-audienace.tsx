@@ -1,6 +1,6 @@
   export default function MasterclassAudienceArabic() {
     return (
-    <section className="bg-white py-14 sm:py-16 lg:py-8">
+    <section className="bg-white py-14 sm:py-16 mb-8 lg:mb-0 lg:py-8">
       <div className="max-w-6xl mx-auto px-6 sm:my-12">
         <div className="max-w-4xl mx-auto">
           {/* Title */}

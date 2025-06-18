@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       if (found) discount = found.percentage
     }
 
-    const basePrice = 7900
+    const basePrice = 7400
     const finalPrice = Math.round(basePrice * (1 - discount / 100))
 
 

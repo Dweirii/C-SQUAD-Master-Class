@@ -1,7 +1,7 @@
 export default function MasterclassDescriptionArabic() {
   return (
     <section className="bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-14 sm:py-16 lg:py-4 lg:pt-24">
+      <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12 mt-12 lg:mt-0 lg:py-4 lg:pt-24">
         <div className="max-w-4xl mx-auto">
           {/* Heading */}
           <div className="text-center mb-12 sm:mb-16">
