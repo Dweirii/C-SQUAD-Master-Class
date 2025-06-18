@@ -10,11 +10,11 @@ export default function ArabicHeroSection() {
       <header className="bg-[#14697A] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Desktop Header */}
-          <div className="hidden lg:flex items-center h-16">
+          <div className="hidden lg:flex items-center h-28">
             {/* Center/Left section in RTL (Banner Text) */}
             <div className="flex-grow flex justify-start items-start px-6">
-              <p className="text-base font-semibold text-right">
-                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              <p className="text-base font-bold text-right">
+                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يوليو 2025
               </p>
             </div>
             {/* Right section in RTL (EN button & Logo) */}
@@ -61,13 +61,13 @@ export default function ArabicHeroSection() {
 
       {/* Hero Content */}
       <section className="py-16 lg:py-24 sm:py-6 sm:pb-4">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
           {/* Text Content */}
           <div className="text-right space-y-4 mx-auto lg:pl-10 lg:col-span-2">
             <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-semibold">
               The Innovation Code
             </h1>
-            <h2 className="text-xl sm:text-xl font-semibold lg:pb-10 sm:pb-8 md:pb-2 text-center text-gray-800 leading-relaxed">
+            <h2 className="text-xl sm:text-xl font-bold lg:pb-10 sm:pb-8 md:pb-2 text-center text-[#545454] leading-relaxed">
               صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك
             </h2>
             <p className="text-gray-600 text-base  lg:text-xl sm:pb-2 text-center sm:text-lg leading-loose">

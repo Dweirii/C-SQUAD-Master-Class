@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const socialLinks = [
   { href: '#', label: 'تابعنا على فيسبوك', icon: Facebook },
@@ -26,22 +27,23 @@ export default function Footer() {
           </div>
 
           {/* القسم الأوسط - نبذة عن الشركة */}
-          <div className="text-center lg:text-right lg:border-r lg:border-gray-300 lg:pr-12">
-            <h3 className="text-sm font-semibold text-[#666883] mb-4 tracking-wide">قوة الـ “C”!</h3>
-            <p className="text-[#666883] pt-5 text-sm sm:text-base leading-relaxed">
-              ننطلق بشغفٍ لإعادة ابتكار نموذج العمل بما يخدم رؤى عملائنا، مع التركيز على حلول استراتيجية قابلة للتطوير وتحقيق قيمة مستدامة.
+          <div className="text-center lg:text-right sm:text-left lg:border-r lg:border-gray-300 lg:pr-12">
+            <h3 className="text-sm text-left sm:text-left font-semibold text-[#666883] mb-4 tracking-wide">قوة  “C”!</h3>
+            <p className="text-[#666883] text-left sm:text-left pt-0 sm:pt-0 lg:pt-5 text-sm sm:text-base leading-relaxed">
+              
+          من أجل بدء عمليتنا الإبداعية وإنتاج منتج أو خدمة جديدة أو حتى نموذج عمل جديد للجمهور الذي نصمم من أجله ، نبدأ العمل الذي نقوم به بشغف من منطلق الرغبة في فهم ما يهم الناس.
             </p>
           </div>
 
           {/* Right Section - Company Address */}
-          <div className="text-center lg:text-left lg:border-r lg:border-gray-300 lg:pr-12">
-            <h3 className="text-sm lg:text-right font-sm text-[#666883] mb-6 tracking-wide">
+          <div className="text-left lg:text-left sm:text-left lg:border-r lg:border-gray-300 lg:pr-12">
+            <h3 className="text-sm text-left lg:text-right sm:text-left font-sm text-[#666883] mb-6 tracking-wide">
               عنوان الشركة:
             </h3>
 
             <div className="space-y-4 mb-8">
               {/* US */}
-              <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="flex items-center text-left sm:text-left gap-3">
                 <img
                   src="https://flagcdn.com/w40/us.png"
                   alt="United States flag"
@@ -49,10 +51,10 @@ export default function Footer() {
                   height={24}
                   className="object-contain"
                 />
-                <span className="text-[#666883] font-sm">الولايات المتحدة الامريكية</span>
+                <span className="text-[#666883] text-left sm:text-left font-sm">الولايات المتحدة الامريكية</span>
               </div>
               {/* Jordan */}
-              <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="flex items-center text-left gap-3">
                 <img
                   src="https://flagcdn.com/w40/jo.png"
                   alt="Jordan flag"
@@ -63,7 +65,7 @@ export default function Footer() {
                 <span className="text-[#666883] font-sm">عمان، الأردن</span>
               </div>
               {/* Saudi */}
-              <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="flex items-center text-left gap-3 ">
                 <img
                   src="https://flagcdn.com/w40/sa.png"
                   alt="Saudi Arabia flag"
@@ -75,23 +77,21 @@ export default function Footer() {
               </div>
             </div>
             {/* Social Media Links */}
-            <div className="flex justify-center lg:justify-start gap-6">
-              <Link href="#" aria-label="Follow us on Facebook">
-                <Facebook className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
+            <div className="flex  gap-6">
+              <Link href="#" aria-label="Follow us on Facebook" className='fill text-black'>
+                <FaFacebook className="w-4 h-4 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
               <Link href="#" aria-label="Follow us on Instagram">
-                <Instagram className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
+                <FaInstagram fill='black' className="w-4 h-4 hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
               <Link href="#" aria-label="Connect with us on LinkedIn">
-                <Linkedin className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
+                <FaLinkedin className="w-4 h-4 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
             </div>
           </div>
         </div>
-
         {/* الحد الأسفل */}
-        <div className="mt-12 pt-8 border-t border-gray-300">
-          <p className="text-center text-sm text-gray-500">© 2025 سي سكواد. جميع الحقوق محفوظة.</p>
+        <div className="pt-1">
         </div>
       </div>
     </footer>

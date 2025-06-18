@@ -17,14 +17,14 @@ export default function CoachIntroArabic() {
           {/* ✅ Mobile Title Section */}
           <div className="lg:hidden">
             <div className="space-y-2 mb-6 text-center">
-              <p className="text-2xl font-semibold text-gray-600 uppercase tracking-wide">
+              <p className="text-2xl font-bold text-gray-600 uppercase tracking-wide">
                 خبيرة في التَفكير التَصميمي و التحوّل الرَقمي
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg font-bold text-gray-600">
                 (إبداع من السيليكون فالي إلى العالم العربي)
               </p>
             </div>
-            <h2 className="text-xl font-bold text-[#FC8A0A] leading-tight text-center">
+            <h2 className="text-xl  text-[#FC8A0A] leading-tight text-center">
               عن البزنس كوتش "آلاء آغا كَرس"
             </h2>
           </div>
@@ -48,10 +48,10 @@ export default function CoachIntroArabic() {
             {/* Header - desktop only */}
             <div className="hidden lg:block mb-8">
               <div className="space-y-2 mb-6">
-                <p className="text-2xl font-semibold text-gray-600 uppercase tracking-wide">
+                <p className="text-2xl font-bold text-[#545454] uppercase tracking-wide">
                   خبيرة في التَفكير التَصميمي و التحوّل الرَقمي
                 </p>
-                <p className="lg:text-2xl text-gray-600">
+                <p className="lg:text-2xl font-bold text-[#545454]">
                   (إبداع من السيليكون فالي إلى العالم العربي)
                 </p>
               </div>

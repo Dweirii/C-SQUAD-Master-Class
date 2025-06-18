@@ -19,7 +19,7 @@ export default function MasterclassBenefitsSection() {
         {/* Main 3-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 items-start">
           {/* Right Column - 3 Benefits (Order in code for RTL display) */}
-          <div className="space-y-10 text-right lg:order-3 pt-10">
+          <div className="space-y-10 text-right lg:order-1 pt-10">
             {/* Benefit 1 */}
             <div>
               <div className="flex justify-center mb-3">
@@ -92,7 +92,7 @@ export default function MasterclassBenefitsSection() {
           </div>
 
           {/* Left Column - 3 Benefits (Order in code for RTL display) */}
-          <div className="space-y-10 text-right lg:order-1 pt-10">
+          <div className="space-y-10 text-right lg:order-3 pt-10">
             {/* Benefit 1 */}
             <div>
               <div className="flex justify-center mb-3">
