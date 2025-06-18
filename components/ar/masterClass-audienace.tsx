@@ -1,10 +1,10 @@
   export default function MasterclassAudienceArabic() {
     return (
-    <section className="bg-white py-14 sm:py-16 lg:py-6">
+    <section className="bg-white py-14 sm:py-16 lg:py-8">
       <div className="max-w-6xl mx-auto px-6 sm:my-12">
         <div className="max-w-4xl mx-auto">
           {/* Title */}
-          <div className="text-center pb-4 lg:pb-2 sm:mb-8">
+          <div className="text-center pb-4 pt-4 lg:pt-2 lg:pb-2 sm:mb-8">
             <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] leading-tight">
               لِمن هذا المَاستر كلاس؟
             </h2>

@@ -104,7 +104,7 @@ export default function RegistrationFormArabic() {
   }
 
   return (
-    <section className="py-10 sm:py-14 lg:py-4 lg:mb-24 sm:mb-8">
+    <section className="py-10 sm:py-14 lg:py-2 lg:mb-24 sm:mb-8">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-12">

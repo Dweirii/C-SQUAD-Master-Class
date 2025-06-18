@@ -11,7 +11,7 @@ export default function CoachIntroArabic() {
   ]
 
   return (
-    <section className="bg-white pb-10 sm:pb-20">
+    <section className="bg-white pb-8 lg:pb-16 sm:pb-20">
       <div className="max-w-6xl mx-auto px-6 sm:py-10 lg:py-4">
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">    
           {/* ✅ Mobile Title Section */}

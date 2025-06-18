@@ -215,7 +215,7 @@ export default function TestimonialsArabicCarousel() {
   const numDisplayRows = columnsInGrid > 0 ? Math.ceil(currentTestimonials.length / columnsInGrid) : 0
 
   return (
-    <section className="bg-white overflow-hidden lg:py-12 sm:py-16">
+    <section className="bg-white overflow-hidden lg:py-6 sm:py-16">
       <div className="max-w-6xl mx-auto px-6 py-10 sm:py-16">
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 leading-tight">
@@ -310,8 +310,8 @@ export default function TestimonialsArabicCarousel() {
 
 function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
   return (
-    <div className="bg-white p-4 sm:p-6 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden rounded-lg shadow-sm hover:shadow-xl">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+    <div className="bg-white p-4 sm:p-6 h-full flex flex-col transition-all duration-500 ease-out border border-gray-100 hover:border-[#FC8A0A]/30 group relative overflow-hidden rounded-none shadow-sm hover:shadow-xl">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FC8A0A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-none"></div>
       <div className="text-[#FC8A0A] mb-3 sm:mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
         <Quote className="w-5 h-5 sm:w-6 sm:h-6" />
       </div>
