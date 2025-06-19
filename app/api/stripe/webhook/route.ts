@@ -9,12 +9,12 @@ export async function POST(req: Request) {
   const body = await req.text()
   const signature = req.headers.get("stripe-signature")!
 
-  let event
+  let event: Stripe.Event
 
   try {
     event = stripe.webhooks.constructEvent(body, signature, endpointSecret)
   } catch (err) {
-    console.error("Webhook signature verification failed:", err)
+    console.error("❌ Webhook signature verification failed:", err)
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 })
   }
 
@@ -22,37 +22,21 @@ export async function POST(req: Request) {
     const session = event.data.object as Stripe.Checkout.Session
 
     const stripeSessionId = session.id
-    const email = session.customer_email
-    const name = session.metadata?.fullName || ""
-    const phone = session.metadata?.phone || ""
-    const code = session.metadata?.code || ""
-    const amount = session.amount_total || 0
-    const status = session.payment_status
+    const paymentStatus = session.payment_status // should be "paid"
 
-    console.log("Stripe session received:", { email, amount, code })
-
-    const existing = await prisma.paidOrder.findUnique({
-      where: { stripeSessionId },
-    })
-
-    if (!existing && status === "paid") {
-      await prisma.paidOrder.create({
-        data: {
-          name,
-          email: email!,
-          phone,
-          amount,
-          stripeSessionId,
-          paymentStatus: status,
-        },
+    try {
+      // ✅ تحديث حالة الطلب إلى "paid"
+      const updated = await prisma.paidOrder.update({
+        where: { stripeSessionId },
+        data: { paymentStatus },
       })
 
-      console.log(`Payment recorded for: ${email}`)
-    } else {
-      console.log(`Duplicate or unpaid session ignored: ${stripeSessionId}`)
+      console.log(`✅ Payment status updated to '${paymentStatus}' for ${updated.email}`)
+    } catch (err: any) {
+      console.error("⚠️ Failed to update paidOrder:", err.message)
     }
   } else {
-    console.log(`Unhandled event: ${event.type}`)
+    console.log(`ℹ️ Unhandled event type: ${event.type}`)
   }
 
   return NextResponse.json({ received: true })

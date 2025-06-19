@@ -149,17 +149,6 @@ export default function RegistrationsPage() {
           loadingText="Loading paid registrations..."
           emptyText="No paid registrations found."
         />
-        <RegistrationsTableCard
-          title="Unpaid/Failed Registrations"
-          data={unpaidOrders}
-          columns={paidOrderColumns}
-          isLoading={isLoadingUnpaid}
-          error={unpaidError}
-          onExport={(dataToExport) => handleExport(dataToExport, "Unpaid_Registrations")}
-          itemCount={unpaidOrders.length}
-          loadingText="Loading unpaid/failed registrations..."
-          emptyText="No unpaid or failed registrations found."
-        />
       </div>
     </div>
   )

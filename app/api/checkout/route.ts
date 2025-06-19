@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       if (found) discount = found.percentage
     }
 
-    const basePrice = 7400
+    const basePrice = 7400 // $74.00 in cents
     const finalPrice = Math.round(basePrice * (1 - discount / 100))
 
     if (discount === 100) {
@@ -56,11 +56,21 @@ export async function POST(req: Request) {
       mode: "payment",
       success_url: `${origin}/thank-you?paid=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/checkout?cancelled=true`,
-
       metadata: {
         fullName,
         phone,
         code: code || "",
+      },
+    })
+
+    await prisma.paidOrder.create({
+      data: {
+        name: fullName,
+        email,
+        phone,
+        amount: finalPrice,
+        stripeSessionId: session.id,
+        paymentStatus: "pending",
       },
     })
 

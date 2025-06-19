@@ -173,7 +173,12 @@ export async function getPaidRegistrations(): Promise<ActionResult<Awaited<Retur
 export async function getUnpaidRegistrations(): Promise<ActionResult<Awaited<ReturnType<typeof prisma.paidOrder.findMany>>>> {
   try {
     const unpaidOrders = await prisma.paidOrder.findMany({
-      where: { paymentStatus: "unpaid" },
+      where: {
+        paymentStatus: {
+        in: ["unpaid", "failed"],
+      },
+},
+
       orderBy: { createdAt: "desc" },
       take: 100,
     })
