@@ -1,173 +1,91 @@
-"use client";
+"use client"
 
-import { useSearchParams } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import { CheckCircle, Calendar, Clock, Users, Mail } from "lucide-react";
-import { useEffect, useState } from "react";
+import Footer from "@/components/ar/footer"
+import Image from "next/image"
+import { useSearchParams } from "next/navigation"
 
-export default function ThankYouClient() {
-  const params = useSearchParams();
-  const isFree = params.get("free") === "true";
-  const isPaid = params.get("paid") === "true";
-  const isArabic = params.get("lang") === "ar";
-  const stripeSessionId = params.get("session_id") || "";
-  const amount = 900;
+export default function ThankYouPage() {
+  const params = useSearchParams()
+  const isFree = params.get("free") === "true"
+  const isPaid = params.get("paid") === "true"
 
-  const [user, setUser] = useState({ name: "", email: "", phone: "" });
-
-  useEffect(() => {
-    const name = localStorage.getItem("name") || "";
-    const email = localStorage.getItem("email") || "";
-    const phone = localStorage.getItem("phone") || "";
-    setUser({ name, email, phone });
-
-    if (isPaid && email && stripeSessionId) {
-      fetch("/api/track-paid-order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, stripeSessionId, amount }),
-      });
-    }
-    // eslint-disable-next-line
-  }, [isPaid, stripeSessionId]);
-
-
-function ThankYouPageArabic({ isFree, isPaid }: { isFree: boolean; isPaid: boolean }) {
-  const message = isFree ? "تم التسجيل المجاني بنجاح! 🎉" : isPaid ? "تم الدفع بنجاح! ✅" : "شكراً لاهتمامك! 🧡";
+  const message = isFree
+    ? "تم التسجيل المجاني بنجاح!"
+    : isPaid
+    ? "تم الدفع بنجاح!"
+    : "شكراً لاهتمامك! 🧡"
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white" dir="rtl">
-      {/* Header */}
-      <header className="bg-[#14697A] text-white py-4">
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <Image src="/c-squad-logo.png" alt="شعار سي-سكواد" width={120} height={35} className="object-contain" />
-          <Link href="/ar" className="text-white hover:text-orange-200 transition-colors">
-            العودة للرئيسية ←
-          </Link>
+    <main className="min-h-screen flex flex-col bg-white">
+      {/* ✅ Header */}
+      <header className="bg-[#14697A] text-white w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Desktop */}
+          <div className="hidden lg:flex items-center h-28 justify-between">
+            <div className="flex-grow flex justify-start items-center px-6">
+              <p className="text-base font-bold text-right leading-snug">
+                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
+              </p>
+            </div>
+            <Image
+              src="/c-squad-logo.png"
+              alt="C-SQUAD LOGO"
+              width={110}
+              height={30}
+              className="object-contain"
+            />
+          </div>
+
+          {/* Mobile */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-center pt-8 pb-4 h-14">
+              <Image
+                src="/c-squad-logo.png"
+                alt="شعار سي-سكواد"
+                width={100}
+                height={28}
+                className="object-contain"
+              />
+            </div>
+            <div className="border-t border-white/20 mt-1 py-4">
+              <p className="text-center text-xs font-bold sm:text-sm">
+                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        {/* Success Message */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 text-center mb-8">
-          <div className="mb-8">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-12 h-12 text-green-600" />
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#FC8A0A] mb-4">{message}</h1>
-            <p className="text-gray-600 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto">
-              أهلاً بك في ماستر كلاس "The Innovation Code"! نحن متحمسون لانضمامك إلينا في هذه الرحلة التحويلية.
-            </p>
-          </div>
+      {/* ✅ Content */}
+      <section className="flex-grow flex flex-col items-center justify-center px-4 py-40 sm:py-12 lg:py-40 text-center">
+        <Image
+          src="/tick.png"
+          alt="تم التحقق"
+          width={100}
+          height={100}
+          className="mb-6 object-contain"
+        />
 
-          {/* Next Steps */}
-          <div className="bg-gradient-to-r from-[#FC8A0A]/10 to-[#14697A]/10 rounded-2xl p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">ما الذي سيحدث الآن؟</h2>
-            <div className="grid sm:grid-cols-2 gap-4 text-right">
-              <div className="flex items-start gap-3">
-                <div>
-                  <p className="font-semibold text-gray-900">بريد التأكيد</p>
-                  <p className="text-gray-600 text-sm">تحقق من بريدك الإلكتروني لتفاصيل الجلسة ورابط زووم</p>
-                </div>
-                <Mail className="w-5 h-5 text-[#FC8A0A] mt-1 flex-shrink-0" />
-              </div>
-              <div className="flex items-start gap-3">
-                <div>
-                  <p className="font-semibold text-gray-900">مجموعة واتساب</p>
-                  <p className="text-gray-600 text-sm">انضم إلى مجتمع المشاركين الحصري</p>
-                </div>
-                <Users className="w-5 h-5 text-[#14697A] mt-1 flex-shrink-0" />
-              </div>
-            </div>
-          </div>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl text-center lg:text-center sm:text-center font-bold text-[#14697A] mb-6" dir="rtl">
+          {message}
+        </h1>
+
+        <div className="max-w-lg mb-8" dir="rtl">
+          <p className="text-lg md:text-xl text-center text-slate-600 leading-relaxed">
+            نشكرك من القلب على تخصيص وقتك لمشاركة
+          </p>
+          <p className="text-lg md:text-xl text-center text-slate-600 leading-relaxed">
+            رأيك الذي يُلهمنا لتقديم الأفضل دائماً!
+          </p>
         </div>
 
-        {/* Session Details */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Session Info */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-[#14697A] mb-6 flex items-center gap-3">
-              <Calendar className="w-6 h-6" />
-              تفاصيل الجلسات
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-semibold text-gray-900">الجمعة والسبت</p>
-                  <p className="text-gray-600">27-28 يونيو 2025</p>
-                </div>
-                <Clock className="w-5 h-5 text-[#FC8A0A]" />
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-semibold text-gray-900">التوقيت</p>
-                  <p className="text-gray-600">6:00 - 9:00 مساءً (بتوقيت مكة)</p>
-                </div>
-                <Clock className="w-5 h-5 text-[#FC8A0A]" />
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-semibold text-gray-900">المنصة</p>
-                  <p className="text-gray-600">مباشر عبر زووم (سيتم إرسال الرابط عبر البريد)</p>
-                </div>
-                <Users className="w-5 h-5 text-[#FC8A0A]" />
-              </div>
-            </div>
-          </div>
-
-          {/* What You'll Receive */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-[#14697A] mb-6">ما ستحصل عليه</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <p className="text-gray-700">جلسات تفاعلية مباشرة مع كوتش آلاء آغا كَرس</p>
-                <div className="w-2 h-2 bg-[#FC8A0A] rounded-full mt-3 flex-shrink-0"></div>
-              </div>
-              <div className="flex items-start gap-3">
-                <p className="text-gray-700">
-                  <strong>"دليل الانطلاقة بِذكاء"</strong> - كتيب حصري للمشاركين
-                </p>
-                <div className="w-2 h-2 bg-[#FC8A0A] rounded-full mt-3 flex-shrink-0"></div>
-              </div>
-              <div className="flex items-start gap-3">
-                <p className="text-gray-700">تسجيلات عالية الجودة للجلسات (في حال عدم التمكن من الحضور المباشر)</p>
-                <div className="w-2 h-2 bg-[#FC8A0A] rounded-full mt-3 flex-shrink-0"></div>
-              </div>
-              <div className="flex items-start gap-3">
-                <p className="text-gray-700">الوصول إلى مجتمع واتساب الحصري للمشاركين</p>
-                <div className="w-2 h-2 bg-[#FC8A0A] rounded-full mt-3 flex-shrink-0"></div>
-              </div>
-              <div className="flex items-start gap-3">
-                <p className="text-gray-700">قوالب التفكير التصميمي وموارد أدوات الذكاء الاصطناعي</p>
-                <div className="w-2 h-2 bg-[#FC8A0A] rounded-full mt-3 flex-shrink-0"></div>
-              </div>
-            </div>
-          </div>
+        <div className="bg-[#FC8A0A] text-white font-bold py-3 px-8 rounded-none text-lg shadow-lg transition-all duration-200 hover:shadow-xl">
+          The Innovation Code
         </div>
+      </section>
 
-        {/* Contact Info */}
-        <div className="bg-[#14697A] text-white rounded-2xl p-8 mt-8 text-center">
-          <h3 className="text-xl font-bold mb-4">تحتاج مساعدة؟</h3>
-          <p className="mb-6">فريقنا هنا لدعمك في كل خطوة.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:support@c-squad.com"
-              className="flex items-center gap-2 bg-white text-[#14697A] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              الدعم عبر البريد
-            </a>
-            <Link
-              href="/ar"
-              className="flex items-center gap-2 border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#14697A] transition-colors"
-            >
-              العودة للصفحة الرئيسية
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+      {/* ✅ Footer ثابت بأسفل الصفحة */}
+      <Footer />
+    </main>
+  )
 }

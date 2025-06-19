@@ -228,7 +228,7 @@ export default function RegistrationFormArabic() {
               <button
                 type="submit"
                 disabled={isSubmitting || isValidatingPromo}
-                className="w-full sm:w-auto px-6 lg:max-w-sm bg-[#FC8A0A] hover:bg-[#e67c09] justify-center text-center disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto"
+                className="w-full sm:w-auto px-6 lg:max-w-sm bg-[#FC8A0A] hover:bg-[#e67c09] justify-center text-center disabled:cursor-not-allowed text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto"
               >
                 {isSubmitting ? "جاري المعالجة..." : "احجز مكانك في رحلة الابتكار الآن"}
               </button>
