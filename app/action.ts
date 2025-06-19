@@ -140,6 +140,8 @@ export async function deleteDiscountCode(id: string): Promise<ActionResult> {
 }
 
 // --- Registrations Page Actions ---
+
+// ✅ Free Registrations
 export async function getFreeRegistrations(): Promise<ActionResult<Awaited<ReturnType<typeof prisma.freeOrder.findMany>>>> {
   try {
     const freeOrders = await prisma.freeOrder.findMany({
@@ -153,6 +155,7 @@ export async function getFreeRegistrations(): Promise<ActionResult<Awaited<Retur
   }
 }
 
+// ✅ Paid Registrations
 export async function getPaidRegistrations(): Promise<ActionResult<Awaited<ReturnType<typeof prisma.paidOrder.findMany>>>> {
   try {
     const paidOrders = await prisma.paidOrder.findMany({
@@ -163,6 +166,21 @@ export async function getPaidRegistrations(): Promise<ActionResult<Awaited<Retur
   } catch (error) {
     console.error("Failed to fetch paid registrations:", error)
     return { success: false, error: "Failed to fetch paid registrations" }
+  }
+}
+
+// ✅ 🔥 Unpaid Registrations
+export async function getUnpaidRegistrations(): Promise<ActionResult<Awaited<ReturnType<typeof prisma.paidOrder.findMany>>>> {
+  try {
+    const unpaidOrders = await prisma.paidOrder.findMany({
+      where: { paymentStatus: "unpaid" },
+      orderBy: { createdAt: "desc" },
+      take: 100,
+    })
+    return { success: true, data: unpaidOrders }
+  } catch (error) {
+    console.error("Failed to fetch unpaid registrations:", error)
+    return { success: false, error: "Failed to fetch unpaid registrations" }
   }
 }
 

@@ -1,200 +1,166 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { format } from "date-fns"
-import { FileDown, Loader2 } from "lucide-react"
-import type { FreeOrder, PaidOrder } from "@/lib/types"
+import type { FreeOrder, PaidOrder, ColumnDefinition } from "@/lib/types"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-
-import { getFreeRegistrations, getPaidRegistrations } from "@/app/action"
+import { RegistrationsTableCard } from "@/components/registrations/registrations-table-card"
+import {
+  getFreeRegistrations,
+  getPaidRegistrations,
+  getUnpaidRegistrations,
+} from "@/app/action" 
 
 export default function RegistrationsPage() {
   const [freeOrders, setFreeOrders] = useState<FreeOrder[]>([])
   const [paidOrders, setPaidOrders] = useState<PaidOrder[]>([])
+  const [unpaidOrders, setUnpaidOrders] = useState<PaidOrder[]>([])
   const [isLoadingFree, setIsLoadingFree] = useState(true)
   const [isLoadingPaid, setIsLoadingPaid] = useState(true)
+  const [isLoadingUnpaid, setIsLoadingUnpaid] = useState(true)
   const [freeError, setFreeError] = useState<string | null>(null)
   const [paidError, setPaidError] = useState<string | null>(null)
+  const [unpaidError, setUnpaidError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchRegistrations = async () => {
+    const fetchAllRegistrations = async () => {
       setIsLoadingFree(true)
-      setFreeError(null)
-      const freeResult = await getFreeRegistrations()
-      if (freeResult.success && freeResult.data) {
-        setFreeOrders(freeResult.data)
-      } else {
-        setFreeError(freeResult.error || "Failed to fetch free registrations")
-      }
-      setIsLoadingFree(false)
-
       setIsLoadingPaid(true)
+      setIsLoadingUnpaid(true)
+      setFreeError(null)
       setPaidError(null)
-      const paidResult = await getPaidRegistrations()
-      if (paidResult.success && paidResult.data) {
-        setPaidOrders(paidResult.data)
-      } else {
-        setPaidError(paidResult.error || "Failed to fetch paid registrations")
+      setUnpaidError(null)
+
+      try {
+        const [freeResult, paidResult, unpaidResult] = await Promise.all([
+          getFreeRegistrations(),
+          getPaidRegistrations(),
+          getUnpaidRegistrations(),
+        ])
+
+        if (freeResult.success && freeResult.data) setFreeOrders(freeResult.data)
+        else setFreeError(freeResult.error || "Unknown error fetching free registrations.")
+
+        if (paidResult.success && paidResult.data) setPaidOrders(paidResult.data)
+        else setPaidError(paidResult.error || "Unknown error fetching paid registrations.")
+
+        if (unpaidResult.success && unpaidResult.data) setUnpaidOrders(unpaidResult.data)
+        else setUnpaidError(unpaidResult.error || "Unknown error fetching unpaid registrations.")
+      } catch (err) {
+        const errorMessage = "Unexpected error while fetching registrations."
+        setFreeError((prev) => prev || errorMessage)
+        setPaidError((prev) => prev || errorMessage)
+        setUnpaidError((prev) => prev || errorMessage)
+        console.error("Registration fetch error:", err)
+      } finally {
+        setIsLoadingFree(false)
+        setIsLoadingPaid(false)
+        setIsLoadingUnpaid(false)
       }
-      setIsLoadingPaid(false)
     }
 
-    fetchRegistrations()
+    fetchAllRegistrations()
   }, [])
 
-  const handleExport = () => {
-    alert("Export functionality would be implemented here with proper CSV generation!")
+  const handleExport = <T extends Record<string, any>>(data: T[], type: string) => {
+    if (data.length === 0) {
+      // Toast notification for no data is handled in RegistrationsTableCard
+      return;
+    }
+
+    const headers = Object.keys(data[0]).join(",");
+    const csvRows = data.map(row =>
+      Object.values(row).map(value => {
+        const stringValue = String(value);
+        if (stringValue.includes(",") || stringValue.includes("\"") || stringValue.includes("\n")) {
+          return `"${stringValue.replace(/"/g, "\"\"")}"`;
+        }
+        return stringValue;
+      }).join(",")
+    );
+
+    const csvContent = [headers, ...csvRows].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.setAttribute("download", `${type.replace(/\s+/g, "_").toLowerCase()}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url);
   }
 
-  const getPaymentStatusVariant = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "completed":
-        return "default"
-      case "pending":
-        return "secondary"
-      case "failed":
-        return "destructive"
-      case "refunded":
-        return "outline"
-      default:
-        return "secondary"
+  const getPaymentStatusVariant = (status: string): "default" | "secondary" | "destructive" | "outline" => {
+    switch (status?.toLowerCase()) {
+      case "completed": return "default"
+      case "pending": return "secondary"
+      case "failed": return "destructive"
+      case "refunded": return "outline"
+      default: return "secondary"
     }
   }
 
-  return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      {/* Free Registrations Card */}
-      <Card className="shadow-sm">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Free Registrations ({freeOrders.length})</CardTitle>
-          <Button size="sm" className="h-8 gap-1" onClick={handleExport} disabled={freeOrders.length === 0}>
-            <FileDown className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Export</span>
-          </Button>
-        </CardHeader>
-        <CardContent>
-          {freeError ? (
-            <Alert variant="destructive">
-              <AlertDescription>{freeError}</AlertDescription>
-            </Alert>
-          ) : (
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Phone</TableHead>
-                    <TableHead>Code Used</TableHead>
-                    <TableHead>Registered At</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {isLoadingFree ? (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center py-8">
-                        <Loader2 className="h-6 w-6 animate-spin mx-auto" />
-                        <p className="mt-2 text-sm text-muted-foreground">Loading free registrations...</p>
-                      </TableCell>
-                    </TableRow>
-                  ) : freeOrders.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center py-8">
-                        <p className="text-muted-foreground">No free registrations found.</p>
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    freeOrders.map((order) => (
-                      <TableRow key={order.id}>
-                        <TableCell className="font-medium">{order.name}</TableCell>
-                        <TableCell>{order.email}</TableCell>
-                        <TableCell>{order.phone}</TableCell>
-                        <TableCell>
-                          <Badge variant="outline" className="font-mono">
-                            {order.code}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>{format(new Date(order.createdAt), "PPP p")}</TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+  const freeOrderColumns: ColumnDefinition<FreeOrder>[] = useMemo(() => [
+    { key: "name", header: "Name", cell: (o) => <span className="font-medium">{o.name}</span> },
+    { key: "email", header: "Email", cell: (o) => o.email },
+    { key: "phone", header: "Phone", cell: (o) => o.phone || "N/A" },
+    { key: "code", header: "Code Used", cell: (o) => <Badge variant="outline" className="font-mono text-xs">{o.code}</Badge> },
+    { key: "createdAt", header: "Registered At", cell: (o) => format(new Date(o.createdAt), "MMM d, yyyy h:mm a"), headClassName: "text-right", cellClassName: "text-right whitespace-nowrap" },
+  ], [])
 
-      {/* Paid Registrations Card */}
-      <Card className="shadow-sm">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Paid Registrations ({paidOrders.length})</CardTitle>
-          <Button size="sm" className="h-8 gap-1" onClick={handleExport} disabled={paidOrders.length === 0}>
-            <FileDown className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Export</span>
-          </Button>
-        </CardHeader>
-        <CardContent>
-          {paidError ? (
-            <Alert variant="destructive">
-              <AlertDescription>{paidError}</AlertDescription>
-            </Alert>
-          ) : (
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Amount</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Registered At</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {isLoadingPaid ? (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center py-8">
-                        <Loader2 className="h-6 w-6 animate-spin mx-auto" />
-                        <p className="mt-2 text-sm text-muted-foreground">Loading paid registrations...</p>
-                      </TableCell>
-                    </TableRow>
-                  ) : paidOrders.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center py-8">
-                        <p className="text-muted-foreground">No paid registrations found.</p>
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    paidOrders.map((order) => (
-                      <TableRow key={order.id}>
-                        <TableCell className="font-medium">{order.name}</TableCell>
-                        <TableCell>{order.email}</TableCell>
-                        <TableCell className="font-mono">
-                          $
-                          {(order.amount / 100).toLocaleString (undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant={getPaymentStatusVariant(order.paymentStatus)}>{order.paymentStatus}</Badge>
-                        </TableCell>
-                        <TableCell>{format(new Date(order.createdAt), "PPP p")}</TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+  const paidOrderColumns: ColumnDefinition<PaidOrder>[] = useMemo(() => [
+    { key: "name", header: "Name", cell: (o) => <span className="font-medium">{o.name}</span> },
+    { key: "email", header: "Email", cell: (o) => o.email },
+    { key: "amount", header: "Amount", cell: (o) => <span className="font-mono">${(o.amount / 100).toFixed(2)}</span>, headClassName: "text-right", cellClassName: "text-right" },
+    { key: "paymentStatus", header: "Status", cell: (o) => <Badge variant={getPaymentStatusVariant(o.paymentStatus)} className="text-xs capitalize">{o.paymentStatus}</Badge>, cellClassName: "text-center", headClassName: "text-center" },
+    { key: "createdAt", header: "Registered At", cell: (o) => format(new Date(o.createdAt), "MMM d, yyyy h:mm a"), headClassName: "text-right", cellClassName: "text-right whitespace-nowrap" },
+  ], [])
+
+  return (
+    <div className="container mx-auto py-8 px-4 md:px-6 lg:py-12">
+      <header className="mb-8 md:mb-12">
+        <h1 className="text-2xl font-bold tracking-tight text-center sm:text-3xl md:text-4xl">
+          Event Registrations Overview
+        </h1>
+      </header>
+      <div className="flex flex-col gap-8 md:gap-12">
+        <RegistrationsTableCard
+          title="Free Registrations"
+          data={freeOrders}
+          columns={freeOrderColumns}
+          isLoading={isLoadingFree}
+          error={freeError}
+          onExport={(dataToExport) => handleExport(dataToExport, "Free_Registrations")}
+          itemCount={freeOrders.length}
+          loadingText="Loading free registrations..."
+          emptyText="No free registrations found."
+        />
+        <RegistrationsTableCard
+          title="Paid Registrations"
+          data={paidOrders}
+          columns={paidOrderColumns}
+          isLoading={isLoadingPaid}
+          error={paidError}
+          onExport={(dataToExport) => handleExport(dataToExport, "Paid_Registrations")}
+          itemCount={paidOrders.length}
+          loadingText="Loading paid registrations..."
+          emptyText="No paid registrations found."
+        />
+        <RegistrationsTableCard
+          title="Unpaid/Failed Registrations"
+          data={unpaidOrders}
+          columns={paidOrderColumns}
+          isLoading={isLoadingUnpaid}
+          error={unpaidError}
+          onExport={(dataToExport) => handleExport(dataToExport, "Unpaid_Registrations")}
+          itemCount={unpaidOrders.length}
+          loadingText="Loading unpaid/failed registrations..."
+          emptyText="No unpaid or failed registrations found."
+        />
+      </div>
     </div>
   )
 }
