@@ -20,6 +20,8 @@ export async function POST(req: Request) {
     const basePrice = 7400 // $74.00 in cents
     const finalPrice = Math.round(basePrice * (1 - discount / 100))
 
+    const origin = req.headers.get("origin") ?? "http://localhost:3000"
+
     if (discount === 100) {
       await prisma.freeOrder.create({
         data: {
@@ -30,12 +32,20 @@ export async function POST(req: Request) {
         },
       })
 
+      await fetch(`${origin}/api/send-registration-email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name: fullName,
+          isPaid: false,
+        }),
+      })
+
       return NextResponse.json({
         redirectUrl: "/thank-you?free=true",
       })
     }
-
-    const origin = req.headers.get("origin") ?? "http://localhost:3000"
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -74,8 +84,17 @@ export async function POST(req: Request) {
       },
     })
 
-    return NextResponse.json({ url: session.url })
+    await fetch(`${origin}/api/send-registration-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        name: fullName,
+        isPaid: true,
+      }),
+    })
 
+    return NextResponse.json({ url: session.url })
   } catch (error: any) {
     console.error("Error in /api/checkout:", error.message)
     return NextResponse.json(
