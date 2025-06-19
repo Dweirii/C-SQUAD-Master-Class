@@ -20,7 +20,6 @@ export async function POST(req: Request) {
     const basePrice = 7400
     const finalPrice = Math.round(basePrice * (1 - discount / 100))
 
-
     if (discount === 100) {
       await prisma.freeOrder.create({
         data: {
@@ -57,12 +56,21 @@ export async function POST(req: Request) {
       mode: "payment",
       success_url: `${origin}/thank-you?paid=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/checkout?cancelled=true`,
+
+      metadata: {
+        fullName,
+        phone,
+        code: code || "",
+      },
     })
 
-return NextResponse.json({ url: session.url })
+    return NextResponse.json({ url: session.url })
 
   } catch (error: any) {
     console.error("Error in /api/checkout:", error.message)
-    return NextResponse.json({ error: "خطأ أثناء إنشاء جلسة الدفع" }, { status: 500 })
+    return NextResponse.json(
+      { error: "خطأ أثناء إنشاء جلسة الدفع" },
+      { status: 500 }
+    )
   }
 }

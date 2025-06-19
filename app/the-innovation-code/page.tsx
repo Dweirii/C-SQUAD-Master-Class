@@ -42,18 +42,21 @@ export default function Page() {
   return (
     <main>
       <HeroSection />
-      <ZoomBanner text="في يومين فقط، ستبني أساسًا قوّيًا لمشروعِك الحالي أو القادم، بخطوات واضِحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك"/>
+      <ZoomBanner>
+        في يومين فقط، ستبني أساسًا قوّيًا لمشروعِك الحالي أو القادم، بخطوات واضِحة، وسِيستم عمليّ يفتح لكَ <br className="hidden lg:block sm:hidden"/>أبواب السوق بثبات ويُعبّر عنك      </ZoomBanner>
       <MasterclassAudienceArabic/>
-      <ZoomBanner
-        text="هذا المَاستر كلاس مساحة خُلِقت لكل شخص لديه فكرة، أو شغف يُناديه، أو رغبة في بناء بِزنس حقيقي... لكنّه يشعُر بالضّياع أو لا يعرِف من أينَ يبدأ.. "
-      />
+      <ZoomBanner>
+              هذا المَاستر كلاس مساحة خُلِقت لكل شخص لديه فكرة، أو شغف يُناديه، أو رغبة في بناء بِزنس حقيقي... لكنّه يشعُر<br className="hidden lg:block sm:hidden"/> بالضّياع أو لا يعرِف من أينَ يبدأ.. 
+      </ZoomBanner>
       <MasterclassDescriptionArabic/>
       <CoachIntroArabic/>
-      <ZoomBanner text="لأوّل مرّة في العالم العربي… تَجربة تدمُج بين أدوات الذّكاء الاصطناعي، ومَنهجيات الابتكار العالميّة، وطاقتِك الشعوريّة، لِتصميم مشروع ينبض بشغفك ويتحوّل إلى واقع"/>
+      <ZoomBanner>
+         مرّة في العالم العربي… تَجربة تدمُج بين أدوات الذّكاء الاصطناعي، ومَنهجيات الابتكار العالميّة، وطاقتِك <br className="hidden lg:block sm:hidden"/> الشعوريّة، لِتصميم مشروع ينبض بشغفك ويتحوّل إلى واقع
+      </ZoomBanner>
       <WhatYouWillLearnArabic/>
-      <ZoomBanner
-        text="كُل مُشترك سيحصل على 'دليل الانطلاقة بِذكاء' وهو إصدار خاص لحضور The Innovation Code، يَدمج بين تمارين اكتشاف الشّغف وتَحويله إلى بزنس حقيقي باستخدام التّفكير التّصميمي ."
-      />
+      <ZoomBanner>
+        كُل مُشترك سيحصل على 'دليل الانطلاقة بِذكاء' وهو إصدار خاص لحضور The Innovation Code، يَدمج بين تمارين <br className="hidden lg:block sm:hidden"/>اكتشاف الشّغف وتَحويله إلى بزنس حقيقي باستخدام التّفكير التّصميمي
+      </ZoomBanner>
       <TestimonialsArabic/>
       <RegistrationFormArabic/>
       <FooterArabic/>

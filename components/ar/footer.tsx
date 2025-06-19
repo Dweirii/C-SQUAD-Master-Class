@@ -75,16 +75,33 @@ export default function Footer() {
                 <span className="text-[#666883] font-sm">السعودية</span>
               </div>
             </div>
-            {/* Social Media Links */}
-            <div className="flex gap-6 pb-12 mt-4">
-              <Link href="#" aria-label="Follow us on Facebook">
-                <FaFacebook className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
+<div className="flex gap-6 pb-12 mt-4">
+              <Link href="#" aria-label="Facebook">
+                <img
+                  src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469064f8b39a4_facebook-f.svg"
+                  alt="Facebook Icon"
+                  width={15}
+                  height={15}
+                  className="hover:opacity-80 transition-opacity"
+                />
               </Link>
-              <Link href="#" aria-label="Follow us on Instagram">
-                <FaInstagram className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
+              <Link href="#" aria-label="Instagram">
+                <img
+                  src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469cc918b39a3_IG.svg"
+                  alt="Instagram Icon"
+                  width={15}
+                  height={15}
+                  className="hover:opacity-80 transition-opacity"
+                />
               </Link>
-              <Link href="#" aria-label="Connect with us on LinkedIn">
-                <FaLinkedin className="w-5 h-5 text-[#333] hover:text-[#FC8A0A] transition-colors duration-200" />
+              <Link href="#" aria-label="LinkedIn">
+                <img
+                  src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469ca628b39a2_linkedin.svg"
+                  alt="LinkedIn Icon"
+                  width={15}
+                  height={15}
+                  className="hover:opacity-80 transition-opacity"
+                />
               </Link>
             </div>
           </div>

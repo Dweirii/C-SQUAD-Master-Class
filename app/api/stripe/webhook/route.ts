@@ -23,12 +23,13 @@ export async function POST(req: Request) {
 
     const stripeSessionId = session.id
     const email = session.customer_email
-    const name = session.customer_details?.name || ""
-    const phone = session.customer_details?.phone || ""
+    const name = session.metadata?.fullName || ""
+    const phone = session.metadata?.phone || ""
+    const code = session.metadata?.code || ""
     const amount = session.amount_total || 0
-    console.log("Stripe Session amount_total:", amount)
-
     const status = session.payment_status
+
+    console.log("Stripe session received:", { email, amount, code })
 
     const existing = await prisma.paidOrder.findUnique({
       where: { stripeSessionId },
@@ -45,8 +46,13 @@ export async function POST(req: Request) {
           paymentStatus: status,
         },
       })
-      console.log(`Payment recorded: ${email}`)
+
+      console.log(`Payment recorded for: ${email}`)
+    } else {
+      console.log(`Duplicate or unpaid session ignored: ${stripeSessionId}`)
     }
+  } else {
+    console.log(`Unhandled event: ${event.type}`)
   }
 
   return NextResponse.json({ received: true })

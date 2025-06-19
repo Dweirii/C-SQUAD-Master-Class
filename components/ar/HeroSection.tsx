@@ -14,7 +14,7 @@ export default function ArabicHeroSection() {
             {/* Center/Left section in RTL (Banner Text) */}
             <div className="flex-grow flex justify-start items-start px-6">
               <p className="text-base font-bold text-right">
-                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يوليو 2025
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 | 
               </p>
             </div>
             {/* Right section in RTL (EN button & Logo) */}
@@ -52,7 +52,7 @@ export default function ArabicHeroSection() {
             </div>
             <div className="border-t border-white/20 mt-1 py-4">
               <p className="text-center text-xs font-bold sm:text-sm">
-                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
               </p>
             </div>
           </div>

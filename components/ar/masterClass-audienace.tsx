@@ -13,7 +13,7 @@
             {/* Lead paragraphs */}
             <div className="text-center mb-6 sm:mb-16 lg:mb-11 space-y-4 sm:space-y-8">
               <p className="text-[#545454] text-base font-bold sm:text-lg md:text-xl leading-relaxed">
-                إن كنت تبحث عن طريق واضح، بداية ذكية، أو فرصة لتعيد ترتيب أحلامك بخطوات واثقة… فأنت في المكان الصحيح. سَواء كنت:
+               إن كنت تبحَث عن طريق واضح، بِداية ذكية، أو فُرصة لتعيد ترتيب أحلامِك بِخطوات واثقة… فأنت في المكان الصّحيح. سَواء كنت:
               </p>
             </div>
 
@@ -30,14 +30,14 @@
               <li className="flex items-start gap-2 sm:gap-4">
                 <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
                 <p className="text-base sm:text-lg leading-relaxed">
-                  <strong>كوتش، مدرّب أو مستشار…</strong>وتُواجه صعوبة في جذب العُملاء أو تحويل خبرتك إلى بزنس مربح ومستقر.
+                  <strong>كوتش، مدرّب أو مُستشار </strong>وتُواجه صعوبة في جَذب العُملاء أو تحويل خبرتِك إلى بِزنس مربِح ومُستقر. 
                 </p>
               </li>
 
               <li className="flex items-start gap-2 sm:gap-4">
                 <div className="flex-shrink-0 w-2 h-2 bg-[#545454] rounded-full mt-2 sm:mt-2.5"></div>
                 <p className="text-base sm:text-lg leading-relaxed">
-                <strong> صاحب مشروع</strong> وسط الفوضى، وتتوق للانتقال إلى نظام ذكي وأرباح تتّسع بثقة.
+                <strong> صاحِب مشروع</strong> وسط الفوضى، وتتوق للانتقال إلى نظام ذكي وأرباح تتّسع بثقة.
                 </p>
               </li>
 

@@ -11,7 +11,7 @@ export default function MasterclassDescriptionArabic() {
           </div>
 
           {/* Lead statement */}
-          <div className="text-center lg:mb-4 sm:mb-16 space-y-6 sm:space-y-8">
+          <div className="text-center lg:mb-8 sm:mb-16 space-y-6 mb-4 sm:space-y-8">
             <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed font-bold">
                 إنّه مساحة ذكيّة لتبنّي منهجية التّفكير التّصميمي (Design Thinking) — طريقة التّفكير التي تعتمدها كُبرى الشّركات العالميّة لبناء مشاريع ناجِحة، مرنِة، وقابلة للنّمو.
             </p>
@@ -20,15 +20,15 @@ export default function MasterclassDescriptionArabic() {
           {/* Body paragraphs */}
           <div className="space-y-8 sm:space-y-10 text-gray-600 text-base lg:text-lg text-center sm:text-lg leading-relaxed mb-12 sm:mb-16">
             <p>
-              خلال يومين مع كوتش ألاء أغا كَرس، سنخوض معًا رحلة
+              خلال يومين، سنخوض معًا رحلة
               عمليّة لإعادة تَصميم مشروعِك أو فكرتِك من الصّميم، باستخدام أدوات واضحة، وتقنيات حديثة مثل{" "}
               الذّكاء الاصطناعي، لتبسيط التّفكير، تَسريع القرارات
               وابتكار حلول تُناسبك مهما كانت معلوماتك أو مرحلتك.
             </p>
 
             <p>
-              سأكون معكَ خطوة بِخطوة لنُحوّل شغفَك إلى خُطة، وأفكارك إلى عُروض بيع،
-              وتردّدك أو خوفِك إلى بوصلة قيادة حقيقيّة، تُنهي الفوضى وتمنحك وضوحًا تعتمد عليه.
+              سأكون معكَ خطوة بِخطوة لنُحوّل شغفَك إلى خُطة، وأفكارك إلى مشاريع، ومخاوفِك إلى بوصلة قيادة حقيقيّة، تُنهي الفوضى 
+وتمنحك وضوحًا تعتمد عليه..
             </p>
 
             <p>

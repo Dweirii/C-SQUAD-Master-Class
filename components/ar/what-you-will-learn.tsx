@@ -10,7 +10,7 @@ export default function MasterclassBenefitsSection() {
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] leading-tight mb-6">
             على ماذا ستحصل خلال يومين فقط؟
           </h2>
-          <div className="text-gray-700 text-lg sm:text-xl max-w-4xl mx-auto font-medium">
+          <div className="text-gray-700 text-lg sm:text-xl max-w-4xl mx-auto font-bold">
             <p>هذا الماستر كلاس يتكوّن من جلستين تفاعليّتين، كل جلسة مدّتها ٣ ساعات، تُشكّل مدخلًا عمليًا</p>
             <p>لعالم الابتكار والإبداع، وبوّابةً لفهم حقيقيّ لأساسيات البزنس وبناؤه بطريقة ذكيّة.</p>
           </div>
@@ -29,13 +29,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أسس بناء مشروع ناجح</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أُسس بناء مشروع ناجِح</h3>
               <p className="text-gray-600 text-base text-center leading-relaxed">
-                ستكتشف الأسس العملية التي تعتمدها
+                ستكتشف الأسس العمليّة التي تعتمدُها 
                 <br />
-                الشركات الرائدة عالمياً لبناء مشاريع فعّالة
+                الشركات الرياديّة عالميًا لِبناء مشاريع فعّالة
                 <br />
-                ومستقرة، مهما كانت نقطة بدايتك.
+                ومُستقرة، مهما كانت نقطة بدايتك.
               </p>
             </div>
 
@@ -48,13 +48,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مدخل إلى التفكير التصميمي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مَدخل إلى التّفكير التّصميمي</h3>
               <p className="text-gray-600 text-base  text-center">
-                فهم منهجية التفكير التصميمي
+                فَهم منهجيّة التّفكير التصميمي 
                 <br />
-                وأهميتها في تحليل احتياجات العملاء وبناء
+                وأهميتَها في تحليل احتياجات العُملاء وبِناء
                 <br />
-                حلول واقعية تلامسهم وتُشبعهم.
+                حلول واقعية تلامِسهم وتُشبههم.
               </p>
             </div>
 
@@ -67,11 +67,11 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحويل الفكرة إلى عرض بيع فعلي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحويل الفِكرة إلى عرض بيع فِعلي</h3>
               <p className="text-gray-600 text-base  text-center">
-                تعلّم كيف تُحوّل فكرتك أو مهارتك إلى
+                تعلّم كيف تُحوّل فكرتك أو مهارتَك إلى
                 <br />
-                عرض بيع جذّاب يُقنع، حتى لو كنت تبدأ من
+                عرض بيع جذّاب يُقنع، حتى لو كُنت تبدأ من
                 <br />
                 نقطة الصفر.
               </p>
@@ -102,11 +102,11 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أمثلة واقعية ونقاشات حيّة</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أمثلة واقعيّة ونقاشات حيّة</h3>
               <p className="text-gray-600 text-base  text-center">
-                تفاعل مباشر مع دراسات واقعية تساعدك
+                تفاعُل مباشر مع دراسات واقعيّة تساعِدك
                 <br />
-                على فهم تطبيق الأدوات على مشروعك
+                على فَهم تطبيق الأدوات على مشروعِك
                 <br />
                 الحالي أو القادم.
               </p>
@@ -121,13 +121,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">استخدام أدوات الذكاء الاصطناعي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">استخدام أدوات الذّكاء الاصطناعي</h3>
               <p className="text-gray-600 text-base  text-center">
-                استفد من أدوات الـ AI لتسريع قراراتك، وتنظيم
+                استفِد من أدوات AI لِتسريع قراراتِك،
                 <br />
-                خطواتك القادمة بطريقة أكثر وضوحاً
+                وتنظيم خطواتِك القادمة بطريقة أكثر
                 <br />
-                وفعالية.
+                وضوحًا وفعالية.
               </p>
             </div>
 
@@ -140,13 +140,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحوّل في طريقة التفكير الريادي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحوّل في طريقة التّفكير الرّيادي</h3>
               <p className="text-gray-600 text-base  text-center">
-                ستخرج بذهنية جديدة تمنحك وضوحاً داخلياً
+                ستخرُج بذهنية جديدة تَمنحك وضوحًا داخليًا
                 <br />
-                وثقة عالية للبدء من جديد، أو إعادة بناء
+                وثقة عالية للبدء من جديد، أو إعادة بِناء
                 <br />
-                مشروعك برؤية جديدة.
+                مشروعِك برؤية حديثة.
               </p>
             </div>
           </div>

@@ -222,7 +222,7 @@ export default function TestimonialsArabicCarousel() {
             آراء المشتركين في الماستر كلاس السابق
           </h2>
           <p className="text-[#545454] font-bold text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
-            تجارب حقيقية من المشاركين الذين حوّلوا أفكارهم إلى واقع ملموس.
+           لا نُخبرك فقط بما ستحصل عليه… بل نترُك المُشتركين يخبرونك كيف غيّرتهم التجربة.
           </p>
         </div>
 
