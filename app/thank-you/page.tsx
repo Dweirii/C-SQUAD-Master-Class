@@ -15,26 +15,47 @@ export default function ThankYouPage() {
   return (
     <div
       className={`min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 ${cairo.className}`}
-      dir="rtl"
-    >
-      {/* Header  */}
-      <header className="bg-teal-700 text-white p-4">
-        <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-          <h1 className="text-xs sm:text-sm md:text-base font-caryo font-bold">
-            البرنامج العَملي الأول من نوعه لإطلاق و تطوير المشاريع الريادية!
-          </h1>
-          <div className="flex items-center">
-            <Image
-              src="/header.png"
-              alt="Logo for Header"
-              width={80}
-              height={80}
-              className="w-16 h-16 md:w-20 md:h-20 object-contain"
+      dir="rtl">
+      {/* Header Bar */}
+      <header className="bg-[#14697A] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Desktop Header */}
+          <div className="hidden lg:flex items-center h-28">
+            {/* Center/Left section in RTL (Banner Text) */}
+            <div className="flex-grow flex justify-start items-start px-6">
+              <p className="text-base font-bold text-right">
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 | 
+              </p>
+            </div>
+            {/* Right section in RTL (EN button & Logo) */}
+              <Image
+                src="/c-squad-logo.png"
+                alt="C-SQUAD LOGO"
+                width={110}
+                height={30}
+                className="object-contain"
             />
+          </div>
+
+          {/* Mobile Header */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-center pt-8 pb-4  h-14">
+              <Image
+                src="/c-squad-logo.png"
+                alt="شعار سي-سكواد"
+                width={100}
+                height={28}
+                className="object-contain"
+              />
+            </div>
+            <div className="border-t border-white/20 mt-1 py-4">
+              <p className="text-center text-xs font-bold sm:text-sm">
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
+              </p>
+            </div>
           </div>
         </div>
       </header>
-
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6 md:py-12">
         {/* Thank you card */}
         <div className="bg-white shadow-md p-6 md:p-10 mt-10 mb-8 border-t-4 border-teal-700 text-center">
