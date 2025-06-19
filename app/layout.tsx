@@ -1,24 +1,25 @@
-import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
-import "./globals.css";
-import { Toaster } from "sonner";
-import Script from "next/script";
+import type { Metadata } from "next"
+import { Cairo } from "next/font/google"
+import "./globals.css"
+import { Toaster } from "sonner"
+import Script from "next/script"
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-cairo",
   display: "swap",
-});
+})
 
 export const metadata: Metadata = {
   title: "C-SQUAD",
-  description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
-};
+  description:
+    "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
@@ -47,6 +48,31 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "s1appg41wf");
           `}
         </Script>
+
+        {/* ✅ Meta Pixel (Facebook) */}
+        <Script id="facebook-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1956474694748421');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1956474694748421&ev=PageView&noscript=1"
+          />
+        </noscript>
       </head>
       <body className={cairo.className} suppressHydrationWarning={true}>
         {children}
@@ -64,5 +90,5 @@ export default function RootLayout({
         />
       </body>
     </html>
-  );
+  )
 }
