@@ -24,24 +24,12 @@ export default function ArabicHeroSection() {
                 width={110}
                 height={30}
                 className="object-contain"
-              />
-            <div className="flex items-center gap-x-4 shrink-0">
-              <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1.5 mr-10 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
-                  EN
-                </button>
-              </Link>
-            </div>
+            />
           </div>
 
           {/* Mobile Header */}
           <div className="lg:hidden">
-            <div className="flex items-center justify-between pt-8 pb-4  h-14">
-              <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
-                  EN
-                </button>
-              </Link>
+            <div className="flex items-center justify-center pt-8 pb-4  h-14">
               <Image
                 src="/c-squad-logo.png"
                 alt="شعار سي-سكواد"
@@ -79,7 +67,7 @@ export default function ArabicHeroSection() {
             <div className="w-full lg:w-[100%] xl:w-[110%] rounded-none overflow-hidden border mb-6 lg:mb-0 border-gray-200">
               <iframe
                 className="w-full aspect-video"
-                src="https://www.youtube.com/embed/RMCmjTvtTcY"
+                src="https://youtu.be/Ct5Y3cijQ5I"
                 title="ماستر كلاس The Innovation Code"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
