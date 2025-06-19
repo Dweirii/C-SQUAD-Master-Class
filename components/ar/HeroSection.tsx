@@ -67,7 +67,7 @@ export default function ArabicHeroSection() {
             <div className="w-full lg:w-[100%] xl:w-[110%] rounded-none overflow-hidden border mb-6 lg:mb-0 border-gray-200">
               <iframe
                 className="w-full aspect-video"
-                src="https://youtu.be/Ct5Y3cijQ5I"
+                src="https://www.youtube.com/embed/Ct5Y3cijQ5I?si=-Xc37aD7Vf_nIo3W"
                 title="ماستر كلاس The Innovation Code"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
