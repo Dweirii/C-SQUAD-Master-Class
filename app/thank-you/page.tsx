@@ -1,45 +1,44 @@
 "use client"
-import Image from "next/image"
-import Link from "next/link"
-import { Cairo } from "next/font/google"
-import { Calendar, CheckCircle, ChevronLeft, Clock, MapPin } from "lucide-react"
 
-// Initialize Cairo font
-const cairo = Cairo({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-})
+import Footer from "@/components/ar/footer"
+import Image from "next/image"
+import { useSearchParams } from "next/navigation"
 
 export default function ThankYouPage() {
+  const params = useSearchParams()
+  const isFree = params.get("free") === "true"
+  const isPaid = params.get("paid") === "true"
+
+  const message = isFree
+    ? "تم التسجيل المجاني بنجاح!"
+    : isPaid
+    ? "تم الدفع بنجاح!"
+    : "شكراً لاهتمامك! 🧡"
+
   return (
-    <div
-      className={`min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 ${cairo.className}`}
-      dir="rtl">
-      {/* Header Bar */}
-      <header className="bg-[#14697A] text-white">
+    <main className="min-h-screen flex flex-col bg-white">
+      {/* ✅ Header */}
+      <header className="bg-[#14697A] text-white w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Desktop Header */}
-          <div className="hidden lg:flex items-center h-28">
-            {/* Center/Left section in RTL (Banner Text) */}
-            <div className="flex-grow flex justify-start items-start px-6">
-              <p className="text-base font-bold text-right">
-                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 | 
+          {/* Desktop */}
+          <div className="hidden lg:flex items-center h-28 justify-between">
+            <div className="flex-grow flex justify-start items-center px-6">
+              <p className="text-base font-bold text-right leading-snug">
+                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
               </p>
             </div>
-            {/* Right section in RTL (EN button & Logo) */}
-              <Image
-                src="/c-squad-logo.png"
-                alt="C-SQUAD LOGO"
-                width={110}
-                height={30}
-                className="object-contain"
+            <Image
+              src="/c-squad-logo.png"
+              alt="C-SQUAD LOGO"
+              width={110}
+              height={30}
+              className="object-contain"
             />
           </div>
 
-          {/* Mobile Header */}
+          {/* Mobile */}
           <div className="lg:hidden">
-            <div className="flex items-center justify-center pt-8 pb-4  h-14">
+            <div className="flex items-center justify-center pt-8 pb-4 h-14">
               <Image
                 src="/c-squad-logo.png"
                 alt="شعار سي-سكواد"
@@ -50,73 +49,43 @@ export default function ThankYouPage() {
             </div>
             <div className="border-t border-white/20 mt-1 py-4">
               <p className="text-center text-xs font-bold sm:text-sm">
-                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
+                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
               </p>
             </div>
           </div>
         </div>
       </header>
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6 md:py-12">
-        {/* Thank you card */}
-        <div className="bg-white shadow-md p-6 md:p-10 mt-10 mb-8 border-t-4 border-teal-700 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-teal-50 rounded-full flex items-center justify-center">
-              <CheckCircle size={40} className="text-teal-700" />
-            </div>
-          </div>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">تم تأكيد حجزك بنجاح!</h1>
+      {/* ✅ Content */}
+      <section className="flex-grow flex flex-col items-center justify-center px-4 py-40 sm:py-12 lg:py-40 text-center">
+        <Image
+          src="/tick.png"
+          alt="تم التحقق"
+          width={100}
+          height={100}
+          className="mb-6 object-contain"
+        />
 
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            شكراً لحجزك استشارة تطوير المشاريع الريادية. لقد تم إرسال تفاصيل الموعد إلى بريدك الإلكتروني. سيقوم فريقنا
-            بالتواصل معك قبل الموعد للتأكيد.
+        <h1 className="text-3xl md:text-4xl lg:text-5xl text-center lg:text-center sm:text-center font-bold text-[#14697A] mb-6" dir="rtl">
+          {message}
+        </h1>
+
+        <div className="max-w-lg mb-8" dir="rtl">
+          <p className="text-lg md:text-xl text-center text-slate-600 leading-relaxed">
+            نشكرك من القلب على تخصيص وقتك لمشاركة
           </p>
-
-          <div className="bg-gray-50 p-6 mb-8 border max-w-xl mx-auto">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">تفاصيل الحجز</h2>
-
-            <div className="space-y-4">
-              <div className="flex items-center text-gray-700">
-                <Calendar size={20} className="ml-3 text-teal-700 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">استشارة تطوير المشاريع الريادية</p>
-                </div>
-              </div>
-
-              <div className="flex items-center text-gray-700">
-                <Clock size={20} className="ml-3 text-teal-700 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">مدة الجلسة: 30 دقيقة</p>
-                </div>
-              </div>
-
-              <div className="flex text-gray-700">
-                <MapPin size={20} className="ml-3 text-teal-700 flex-shrink-0" />
-                <div>
-                  <p className="font-medium text-gray-700">ستصلك رابط الاجتماع قبل الموعد</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4 md:space-y-0 md:flex md:justify-center md:gap-4">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 bg-[#14697A] text-white  transition-colors"
-            >
-              العودة للصفحة الرئيسية
-            </Link>
-
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 border border-teal-700 text-teal-700 bg-white transition-colors"
-            >
-              <ChevronLeft size={18} className="ml-1" />
-              العودة لصفحة الحجز
-            </Link>
-          </div>
+          <p className="text-lg md:text-xl text-center text-slate-600 leading-relaxed">
+            رأيك الذي يُلهمنا لتقديم الأفضل دائماً!
+          </p>
         </div>
-      </main>
-    </div>
+
+        <div className="bg-[#FC8A0A] text-white font-bold py-3 px-8 rounded-none text-lg shadow-lg transition-all duration-200 hover:shadow-xl">
+          The Innovation Code
+        </div>
+      </section>
+
+      {/* ✅ Footer ثابت بأسفل الصفحة */}
+      <Footer />
+    </main>
   )
 }
