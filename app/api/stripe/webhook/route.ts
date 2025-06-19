@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { stripe } from "@/lib/stripe"
 import { prisma } from "@/lib/prisma"
 import Stripe from "stripe"
+import { sendInnovationEmail } from "@/lib/email"
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!
 
@@ -14,7 +15,7 @@ export async function POST(req: Request) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, endpointSecret)
   } catch (err) {
-    console.error("❌ Webhook signature verification failed:", err)
+    console.error("Webhook signature verification failed:", err)
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 })
   }
 
@@ -22,18 +23,23 @@ export async function POST(req: Request) {
     const session = event.data.object as Stripe.Checkout.Session
 
     const stripeSessionId = session.id
-    const paymentStatus = session.payment_status // should be "paid"
+    const paymentStatus = session.payment_status
+    const email = session.customer_email || ""
+    const name = session.metadata?.fullName || "مشارك"
 
     try {
-      // ✅ تحديث حالة الطلب إلى "paid"
       const updated = await prisma.paidOrder.update({
         where: { stripeSessionId },
         data: { paymentStatus },
       })
 
-      console.log(`✅ Payment status updated to '${paymentStatus}' for ${updated.email}`)
+      if (paymentStatus === "paid") {
+        await sendInnovationEmail({ email, name ,isPaid: true,})
+        console.log(`📩 Confirmation email sent to ${email}`)
+      }
+
     } catch (err: any) {
-      console.error("⚠️ Failed to update paidOrder:", err.message)
+      console.error("⚠️ Failed to process webhook:", err.message)
     }
   } else {
     console.log(`ℹ️ Unhandled event type: ${event.type}`)

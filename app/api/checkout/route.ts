@@ -84,16 +84,6 @@ export async function POST(req: Request) {
       },
     })
 
-    await fetch(`${origin}/api/send-registration-email`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        name: fullName,
-        isPaid: true,
-      }),
-    })
-
     return NextResponse.json({ url: session.url })
   } catch (error: any) {
     console.error("Error in /api/checkout:", error.message)

@@ -21,13 +21,13 @@ export default function ThankYouClientArabic() {
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Header Bar */}
       <header className="bg-[#14697A] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Desktop Header */}
-          <div className="hidden lg:flex items-center h-16">
+          <div className="hidden lg:flex items-center h-28">
             {/* Center/Left section in RTL (Banner Text) */}
             <div className="flex-grow flex justify-start items-start px-6">
-              <p className="text-base font-semibold text-right">
-                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              <p className="text-base font-bold text-right">
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 | 
               </p>
             </div>
             {/* Right section in RTL (EN button & Logo) */}
@@ -37,24 +37,12 @@ export default function ThankYouClientArabic() {
                 width={110}
                 height={30}
                 className="object-contain"
-              />
-            <div className="flex items-center gap-x-4 shrink-0">
-              <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1.5 mr-10 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
-                  EN
-                </button>
-              </Link>
-            </div>
+            />
           </div>
 
           {/* Mobile Header */}
           <div className="lg:hidden">
-            <div className="flex items-center justify-between pt-8 pb-4  h-14">
-              <Link href="/en" aria-label="Switch to English">
-                <button className="px-3 py-1 border border-white/40 rounded hover:bg-white/10 transition text-sm font-medium">
-                  EN
-                </button>
-              </Link>
+            <div className="flex items-center justify-center pt-8 pb-4  h-14">
               <Image
                 src="/c-squad-logo.png"
                 alt="شعار سي-سكواد"
@@ -64,8 +52,8 @@ export default function ThankYouClientArabic() {
               />
             </div>
             <div className="border-t border-white/20 mt-1 py-4">
-              <p className="text-center text-xs sm:text-sm font-medium">
-                الماستر كلاس الأكثر ابتكارا عبر منصة زووم | يومي 11 و 12 يونيو 2025
+              <p className="text-center text-xs font-bold sm:text-sm">
+                 الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
               </p>
             </div>
           </div>
