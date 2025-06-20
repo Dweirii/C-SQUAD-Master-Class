@@ -48,12 +48,12 @@ export default function CoachIntroArabic() {
             {/* Header - desktop only */}
             <div className="hidden lg:block mb-8">
               <div className="space-y-2 mb-6">
-                <p className="text-2xl font-bold text-[#545454] uppercase tracking-wide">
+                <h2 className="text-2xl font-bold text-[#545454]">
                   خبيرة في التَفكير التَصميمي و التحوّل الرَقمي
-                </p>
-                <p className="lg:text-2xl font-bold text-[#545454]">
+                </h2>
+                <h2 className="text-2xl font-bold text-[#545454]">
                   (إبداع من السيليكون فالي إلى العالم العربي)
-                </p>
+                </h2>
               </div>
               <h2 className="text-2xl font-bold text-[#FC8A0A] mb-4 leading-tight">
                 عن البزنس كوتش "آلاء آغا كَرس"
