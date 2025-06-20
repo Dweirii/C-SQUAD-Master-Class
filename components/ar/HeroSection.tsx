@@ -1,11 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import {
-  Player,
-  Video,
-  DefaultUi,
-} from "@vime/react"
 import "@vime/core/themes/default.css"
 import VideoHero from "../video"
 
