@@ -23,7 +23,7 @@
               <li className="flex items-start gap-2 sm:gap-4">
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full mt-2 sm:mt-2.5"></div>
                 <p className="text-base sm:text-lg leading-relaxed">
-                  <strong>مُهتم</strong> في بِناء مشروعِك الخاص أو في بداياتِه وتحتاج وضوحًا في الخُطوات.
+                 مُهتم في<strong> بِناء مشروعِك الخاص</strong> أو في بداياتِه وتحتاج وضوحًا في الخُطوات.
                 </p>
               </li>
 
