@@ -1,6 +1,5 @@
 "use client"
 
-import Footer from "@/components/ar/footer"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 

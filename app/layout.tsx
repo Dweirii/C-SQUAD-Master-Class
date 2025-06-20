@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Cairo } from "next/font/google"
+import { Cairo, Lato } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import Script from "next/script"
@@ -10,6 +10,12 @@ const cairo = Cairo({
   display: "swap",
 })
 
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-lato",
+  display: "swap",
+});
 export const metadata: Metadata = {
   title: "C-SQUAD",
   description:
@@ -22,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <html lang="ar" dir="rtl" className={cairo.variable}>
+      <html lang="ar" dir="rtl" className={`${cairo.variable } ${lato.variable}`}>
         <head>
           {/* ✅ Google Analytics */}
           <Script

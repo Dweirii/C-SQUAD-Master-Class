@@ -52,7 +52,7 @@ export default function ArabicHeroSection() {
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
           {/* Text Content */}
           <div className="text-right space-y-4 mx-auto lg:pl-10 lg:col-span-2">
-            <h1 className="text-[#FC8A0A] text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2 font-semibold">
+            <h1 className="text-[#FC8A0A] font-bold text-center text-3xl lg:pb-8 sm:text-4xl sm:pb-4 md:pb-2" style={{ fontFamily: "var(--font-lato)" }}>
               The Innovation Code
             </h1>
             <h2 className="text-xl sm:text-lg font-bold lg:pb-10 sm:pb-8 md:pb-2  text-center text-[#545454] leading-relaxed">
