@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Package2, Percent, Users } from "lucide-react"
+import { Home, MessageCircle, Package2, Percent, Users } from "lucide-react"
 
 import {
   Sidebar,
@@ -31,6 +31,11 @@ const navItems = [
     title: "Registrations",
     href: "/dashboard/registrations",
     icon: Users,
+  },
+    {
+    title: "Emails",
+    href: "/dashboard/emails",
+    icon: MessageCircle,
   },
 ]
 

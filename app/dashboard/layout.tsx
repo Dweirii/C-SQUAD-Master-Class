@@ -14,6 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { usePathname } from "next/navigation"
 import { capitalize } from "@/lib/utils"
+import clsx from "clsx"
 
 export default function DashboardLayout({
   children,
@@ -25,33 +26,68 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider defaultOpen={true} lang="en">
-      <div className="flex w-full min-h-screen" dir="ltr">
+      <div className="flex min-h-screen w-full bg-white" dir="ltr">
         {/* ✅ Sidebar */}
-        <Sidebar variant="inset">
-          <SidebarHeader>
-            <h2 className="text-lg font-semibold text-sidebar-foreground">C-SQUAD</h2>
+        <Sidebar variant="inset" className="border-r bg-white shadow-sm">
+          <SidebarHeader className="px-6 py-4 border-b">
+            <h2 className="text-xl font-bold tracking-tight text-sidebar-foreground text-right">C-SQUAD</h2>
           </SidebarHeader>
-          <SidebarContent>
-            <SidebarMenu>
+          <SidebarContent className="px-4 py-6">
+            <SidebarMenu className="space-y-2">
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/dashboard/overview"}>
-                  <a href="/dashboard/overview">
-                    <span>Overview</span>
-                  </a>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard/overview"}
+                  className={clsx(
+                    "px-4 py-2 rounded-lg transition-colors",
+                    pathname === "/dashboard/overview"
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  <a href="/dashboard/overview">Overview</a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/dashboard/registrations"}>
-                  <a href="/dashboard/registrations">
-                    <span>Registrations</span>
-                  </a>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard/registrations"}
+                  className={clsx(
+                    "px-4 py-2 rounded-lg transition-colors",
+                    pathname === "/dashboard/registrations"
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  <a href="/dashboard/registrations">Registrations</a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/dashboard/discounts"}>
-                  <a href="/dashboard/discounts">
-                    <span>Discount Codes</span>
-                  </a>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard/discounts"}
+                  className={clsx(
+                    "px-4 py-2 rounded-lg transition-colors",
+                    pathname === "/dashboard/discounts"
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  <a href="/dashboard/discounts">Discount Codes</a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard/emails"}
+                  className={clsx(
+                    "px-4 py-2 rounded-lg transition-colors",
+                    pathname === "/dashboard/emails"
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-accent hover:text-accent-foreground"
+                  )}
+                >
+                  <a href="/dashboard/emails">Emails</a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -59,15 +95,15 @@ export default function DashboardLayout({
         </Sidebar>
 
         {/* ✅ Main Layout */}
-        <SidebarInset>
-          <header className="flex h-16 items-center gap-2 border-b px-4">
+        <SidebarInset className="flex flex-col w-full">
+          <header className="flex h-16 items-center gap-2 border-b bg-white px-6 shadow-sm">
             <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <h1 className="text-lg font-semibold md:text-xl">
+            <Separator orientation="vertical" className="h-6" />
+            <h1 className="text-xl font-semibold tracking-tight">
               {capitalize(pageTitle)}
             </h1>
           </header>
-          <main className="flex-1 p-4 text-right">
+          <main className="flex-1 p-6 bg-white text-right">
             {children}
           </main>
         </SidebarInset>
