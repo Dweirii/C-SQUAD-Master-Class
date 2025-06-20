@@ -69,7 +69,7 @@ export default function ThankYouPage() {
             {message}
           </h1>
 
-          <div className="space-y-5 text-slate-700 text-lg md:text-xl leading-loose px-4 text-center" dir="rtl">
+          <div className="space-y-5 text-slate-700 text-lg md:text-xl leading-loose text-center" dir="rtl">
             <p className="text-center">
               أهلاً بك في ماستر كلاس <strong className="text-[#FC8A0A] font-lato">The Innovation Code</strong> يسعدنا انضمامك إلى هذه التجربة الملهمة التي ستأخذك نحو وضوح أكبر وخطوات عملية لبناء مشروعك بذكاء.
             </p>
@@ -77,9 +77,10 @@ export default function ThankYouPage() {
               سيتم إرسال جميع التفاصيل والمعلومات اللازمة إلى بريدك الإلكتروني خلال دقائق.
             </p>
             <p className="text-center">
-              يُرجى التحقق من صندوق الوارد، وإن لم تصلك الرسالة، يرجى مراجعة بريد <br/><strong>Spam</strong> أو <strong>Junk</strong>.
+              يُرجى التحقق من صندوق الوارد، وإن لم تصلك الرسالة، يرجى مراجعة بريد <br />Spam أو Junk.
             </p>
           </div>
+
 
           <div className="mt-6">
             <div className="bg-[#FC8A0A] text-white font-bold py-3 px-8 rounded-none text-lg shadow-md hover:shadow-lg transition-all duration-200 font-lato">
