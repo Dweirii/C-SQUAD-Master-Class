@@ -19,8 +19,7 @@ export async function sendInnovationEmail({
       <div style="background-color: #ffffff; color: #333; padding: 24px;">
         <h2 style="margin-bottom: 16px; color: #333;">مرحباً ${name}،</h2>
 
-        <p style="color: #333;">تم تأكيد تسجيلك في الماستر كلاس<br/>
-        <strong>The Innovation Code</strong><br/>
+        <p style="color: #333;">تم تأكيد تسجيلك في الماستر كلاس <strong>The Innovation Code</strong><br/>
         والذي يُقام عبر منصة Zoom يومي <strong>الجمعة والسبت، 11 و12 يوليو 2025</strong><br/>
         من الساعة <strong>6:00 مساءً حتى 9:00 مساءً</strong> بتوقيت مكة.</p>
 
@@ -49,7 +48,8 @@ export async function sendInnovationEmail({
 
         <p style="color: #333;"> رابط Zoom للدخول إلى الجلسة:
         <a href="https://us06web.zoom.us/meeting/register/g5rpPJQqQOmvJxiBzqSomw" text-decoration: none;">[رابط الزوم هنا]</a></p>
-
+        <p style="color: #333;" >للتأكد من حصولك على جميع التحديثات والمعلومات، يُرجى الانضمام إلى مجموعة واتساب الخاصة بالمشاركين:
+        <a href="https://chat.whatsapp.com/KdKEhT9Pj37JQOXEJZwQdx" text-decoration: none;"> [رابط مجموعة الواتساب]</a></p>
         <p style="color: #333;"> في حال واجهت أي مشكلة، تواصل معنا عبر :
         <a href="https://wa.me/962790719021" text-decoration: none;">الواتساب</a></p>
 

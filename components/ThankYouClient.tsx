@@ -11,7 +11,7 @@ export default function ThankYouPage() {
   const message =
     isFree || isPaid
       ? "تم التسجيل بنجاح."
-      : "شكراً لاهتمامك! 🧡"
+      : "تم التسجيل بنجاح."
 
   return (
     <main className="min-h-screen flex flex-col bg-white">
