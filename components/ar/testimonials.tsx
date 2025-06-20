@@ -3,20 +3,21 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import Image from "next/image"
 
 const testimonials = [
   {
     id: 1,
     name: "Hiba Naser",
     country: "الولايات المتحدة",
-    flag: "🇺🇸",
+    flag: "https://flagcdn.com/w40/us.png",
     testimonial: "ألهمني هذا لأبدأ رحلتي كامرأة ناجحة تحمل في قلبها قيماً عظيمة.",
   },
   {
     id: 2,
     name: "Nedaa Qarmash",
     country: "الأردن",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial:
       "لم يكن هناك وقت للشعور بالملل، طريقتها في إيصال المعلومات كانت رائعة، ومنذ اللحظة الأولى استطاعت أن تخطف انتباهنا بسهولة. شكرًا للجميع على وقتكم الثمين وعلى هذه الفرصة الجميلة.",
   },
@@ -24,7 +25,7 @@ const testimonials = [
     id: 3,
     name: "Sandra Sleman",
     country: "الدنمارك",
-    flag: "🇩🇰",
+    flag: "https://flagcdn.com/w40/dk.png",
     testimonial:
       "كوتش آلاء أنت سفاحة ومبدعة، الورشة كتير غنية وقيّمة، كاملة متكاملة فيها وعي وتفاصيل بتضوي كل اللمبات اللي براسنا، طاقتك غير، كل شي قدمتيه من القلب للقلب وعطيتيني الخطوة الأولى بالصفر تبعي وعصفتي كتير معتقدات عندي عنجد عنجد شكرا شكرا شكرا شكرا.",
   },
@@ -32,7 +33,7 @@ const testimonials = [
     id: 6,
     name: "Lama alomari",
     country: "Canada",
-    flag: "🇨🇦",
+    flag: "https://flagcdn.com/w40/ca.png",
     testimonial:
       "رائعة جداً وكلها حماس وطاقة ايجابية... بحر المعلومات والتكنيك الصح اللي واثقة منه... انتي انسانة مبدعة ما شاء الله عليكي.",
   },
@@ -40,49 +41,49 @@ const testimonials = [
     id: 11,
     name: "روعة محمد القيسي",
     country: "Saudi Arabia",
-    flag: "🇸🇦",
+    flag: "https://flagcdn.com/w40/sa.png",
     testimonial: "رائعة كوتش آلاء، أعطت من قلبها... حسيت بكل كلمة إلها، دعمها وحماسها رائع.",
   },
   {
     id: 12,
     name: "Lina AlQariab",
     country: "Qatar",
-    flag: "🇶🇦",
+    flag: "https://flagcdn.com/w40/qa.png",
     testimonial: "رغم أني ما تخيلت أنسجم بهيك أبروتش... بس قدرتي تخليني مشدودة طول الوقت وفهمت كل التفاصيل بسهولة.",
   },
   {
     id: 13,
     name: "Hadla AL Nabulsi",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "رائعة وحماسية تغير تفكير الشخص.",
   },
   {
     id: 14,
     name: "Esra'a Jehad",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "ممتعة وحماسية وتفاعلية بطريقة رهيبة... موضوع فتح الكاميرا أثناء الشرح كان جميل.",
   },
   {
     id: 15,
     name: "Maryya Jawarneh",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "لقد كانت ورشة رائعة، مثيرة، ملهمة، مليئة بالأفكار... أبدعتي كوتش، ربنا يزيدك من فضله.",
   },
   {
     id: 16,
     name: "Faisal saleh alshehri",
     country: "Saudi Arabia",
-    flag: "🇸🇦",
+    flag: "https://flagcdn.com/w40/sa.png",
     testimonial: "لمسة حواس عميقة، طورت طريقة تفكيري للمشكلات وطرق تحليلها ومعالجتها.",
   },
   {
     id: 4,
     name: "غير مُعلَن",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial:
       "قبل الورشة: شخص ما بيعرف يحدد التحديات و المشاكل... بعد الورشة: بدأ يحدد مشاكل وتحديات معينة... *التفكير اختلف تماماً* الموضوع فعلاً مفيد بكل مناحي الحياة مش بس بالبزنس. شكراً كثير كوتش آلاء والشكر لفريق العمل.",
   },
@@ -90,7 +91,7 @@ const testimonials = [
     id: 5,
     name: "Leena AbuTaleb",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial:
       "أنا ممتنة لحضوري هذه الورشة في هذا الوقت تحديدًا... ممتنة للكوتش آلاء على كرمها وطاقتها وكل المعلومات القيّمة التي شاركتها معنا. شكرًا للجميع.",
   },
@@ -98,30 +99,31 @@ const testimonials = [
     id: 7,
     name: "حلا الرموني",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "أضافت إلي الكثير، أهمها التفكير الإبداعي... هذه الورشة بالنسبة إلي كبوصلة و نقطة انطلاق للهدف.",
   },
   {
     id: 8,
     name: "Taqwa Fawzi Bani Amer",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "كانت ورشة عمل مفيدة ورائعة جدًا. تعلمت من خلالها بعض التقنيات الجديدة لتوليد أفكار لمشاريعي.",
   },
   {
     id: 9,
     name: "Hashem hussein al Rabiee",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "شي كثير حلو مبادرة حلوه وبتجنن... مجرد وجود ناس متل هيك بنعرف أنو الدنيا لسا بخير.",
   },
   {
     id: 10,
     name: "Amal Taani",
     country: "Jordan",
-    flag: "🇯🇴",
+    flag: "https://flagcdn.com/w40/jo.png",
     testimonial: "قيمّة، تم طرح المعلومات بشكل مبسط مع الأمثلة... وأحببت القدرة على التفاعل وطرح الأسئلة.",
   },
+
 ]
 
 export default function TestimonialsArabicCarousel() {
@@ -307,36 +309,37 @@ export default function TestimonialsArabicCarousel() {
   )
 }
 
-function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
+export function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
+  const countryCode = testimonial.country
+    .toLowerCase()
+    .replace(/ /g, "-")
+
   return (
     <div className="bg-[#F9FAFB] p-4 sm:p-6 h-full flex flex-col border border-gray-100">
-      <div className="absolute inset-0 bg-[#F9FAFB] rounded-none"></div>
-
-      {/* ⭐⭐⭐⭐⭐ النجوم الذهبية */}
-      <div className="flex mb-3 sm:mb-4">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.959a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.286 3.96c.3.921-.755 1.688-1.54 1.118l-3.37-2.45a1 1 0 00-1.176 0l-3.37 2.45c-.784.57-1.838-.197-1.539-1.118l1.286-3.96a1 1 0 00-.364-1.118l-3.37-2.45c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.959z" />
-          </svg>
-        ))}
-      </div>
-
-      <blockquote className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10">
-        "{testimonial.testimonial}"
+      <blockquote className="text-gray-800 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10 font-cairo">
+        {testimonial.testimonial}
       </blockquote>
 
-      <div className="flex items-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-200 relative z-10 ">
-        <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:scale-110">
-          {testimonial.flag}
-        </span>
-        <div>
-          <div className="font-semibold text-gray-900 text-sm sm:text-base">
-            {testimonial.name}
+      {/* ✅ Separator */}
+      <div className="border-t border-gray-200 pt-4 relative z-10 flex items-center gap-4">
+      <div className="text-left">
+        <div className="font-bold text-gray-900 text-sm sm:text-base font-lato">
+          {testimonial.name}
+        </div>
+        <div className="text-gray-600 text-xs sm:text-sm font-cairo flex items-center gap-2">
+        <Image
+          src={testimonial.flag}
+          alt={`علم ${testimonial.country}`}
+          width={24}
+          height={16}
+          className="object-cover rounded-none border w-[24px] h-[16px]"
+          unoptimized
+        />
+
+            <span>{testimonial.country}</span>
           </div>
-          <div className="text-gray-500 text-xs sm:text-sm transition-colors duration-300">{testimonial.country}</div>
         </div>
       </div>
     </div>
   )
 }
-

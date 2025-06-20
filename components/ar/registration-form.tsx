@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-import { toast } from "sonner"
 
 interface ValidationErrors {
   firstName?: string
@@ -37,7 +36,6 @@ export default function RegistrationFormArabic() {
 
     setErrors(newErrors)
     if (Object.keys(newErrors).length) {
-      toast.error("يرجى تصحيح الأخطاء")
       return false
     }
     return true
@@ -55,7 +53,6 @@ export default function RegistrationFormArabic() {
     e.preventDefault()
     if (!validateForm()) return
     setIsSubmitting(true)
-    toast.loading("جاري المعالجة...")
 
     if (formData.code.trim()) {
       setIsValidatingPromo(true)
@@ -69,12 +66,9 @@ export default function RegistrationFormArabic() {
 
       if (!promoRes.ok || !promoData.valid) {
         setErrors((prev) => ({ ...prev, code: "كود الخصم غير صحيح أو منتهي الصلاحية" }))
-        toast.dismiss()
-        toast.error("كود الخصم غير صحيح أو منتهي الصلاحية")
         setIsSubmitting(false)
         return
       }
-      toast.success(promoData.message)
     }
 
     try {
@@ -84,27 +78,21 @@ export default function RegistrationFormArabic() {
         body: JSON.stringify(formData),
       })
       const checkoutData = await checkoutRes.json()
-      toast.dismiss()
 
       if (checkoutData.redirectUrl) {
-        toast.success("تم إنشاء طلبك بنجاح!")
         window.location.href = checkoutData.redirectUrl
       } else if (checkoutData.url) {
-        toast.success("جاري توجيهك لصفحة الدفع...")
         window.location.href = checkoutData.url
-      } else {
-        toast.error(checkoutData.error || "حدث خطأ، يرجى المحاولة مرة أخرى.")
       }
     } catch {
-      toast.dismiss()
-      toast.error("حدث خطأ، يرجى المحاولة مرة أخرى.")
+      console.error("Something went wrong")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <section className="py-10 sm:py-14 lg:py-2 mt-4 lg:mt-0ç lg:mb-24 mb-14 sm:mb-14">
+    <section className="py-10 sm:py-14 lg:py-0 mt-4 lg:mt-0 lg:mb-24 mb-14 sm:mb-14">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-12">
@@ -122,7 +110,7 @@ export default function RegistrationFormArabic() {
           <div className="space-y-6">
             <div className="bg-[#FC8A0A] text-white rounded-none p-3 text-center">
               <div className="text-lg sm:text-sm font-bold mb-2 lg:text-lg">
-                السعر الأصلي <span className="line-through">200$</span>
+                السعر الأصلي <span className="line-through text-xl">200$</span>
               </div>
               <div className="text-lg sm:text-xl font-bold">
                 لكنّك اليوم ستحصل عليه بـ 74$ فقط!
@@ -212,7 +200,7 @@ export default function RegistrationFormArabic() {
                   name="code"
                   value={formData.code}
                   onChange={handleInputChange}
-                  placeholder="كود الخصم"
+                  placeholder="كود الخصم (اختياري)"
                   className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                     errors.code ? "border-red-500" : "border-gray-100"
                   }`}

@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function MasterclassBenefitsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 my-6 lg:my-1 lg:py-12">
+    <section className="bg-white py-16 sm:py-20 my-6 lg:my-1 mb-4 lg:mb-6 lg:py-11">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-10 lg:mt-10">

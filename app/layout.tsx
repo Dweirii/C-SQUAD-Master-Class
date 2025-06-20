@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Cairo, Lato } from "next/font/google"
 import "./globals.css"
-import { Toaster } from "sonner"
 import Script from "next/script"
 
 const cairo = Cairo({
@@ -82,18 +81,6 @@ export default function RootLayout({
         </head>
         <body className={cairo.className} suppressHydrationWarning={true}>
           {children}
-          <Toaster
-            position="top-center"
-            richColors
-            closeButton
-            toastOptions={{
-              style: {
-                fontFamily: "inherit",
-                direction: "rtl",
-                textAlign: "left",
-              },
-            }}
-          />
         </body>
       </html>
   )
