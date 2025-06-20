@@ -21,6 +21,11 @@ export default function RegistrationFormArabic() {
   const [errors, setErrors] = useState<ValidationErrors>({})
   const [isValidatingPromo, setIsValidatingPromo] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [promoValidated, setPromoValidated] = useState(false)
+  const [discountAmount, setDiscountAmount] = useState(0)
+  const [priceAfterDiscount, setPriceAfterDiscount] = useState(74)
+
+
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+$/.test(email)
   const validatePhone = (phone: string) => /^[+]?[0-9\s\-()]{8,}$/.test(phone)
@@ -49,47 +54,68 @@ export default function RegistrationFormArabic() {
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!validateForm()) return
-    setIsSubmitting(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
 
-    if (formData.code.trim()) {
-      setIsValidatingPromo(true)
-      const promoRes = await fetch("/api/validate-promo", {
+  if (!promoValidated) {
+    if (!formData.code.trim()) {
+      setPromoValidated(true)
+      return
+    }
+
+    setIsValidatingPromo(true)
+
+    try {
+      const res = await fetch("/api/validate-promo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ promoCode: formData.code }),
       })
-      const promoData = await promoRes.json()
+
+      const data = await res.json()
       setIsValidatingPromo(false)
 
-      if (!promoRes.ok || !promoData.valid) {
-        setErrors((prev) => ({ ...prev, code: "كود الخصم غير صحيح أو منتهي الصلاحية" }))
-        setIsSubmitting(false)
+      if (!res.ok || !data.valid) {
+        setErrors((prev) => ({ ...prev, code: data.message || "كود الخصم غير صحيح" }))
         return
       }
+      setDiscountAmount(data.discount || 0)
+      const discounted = 74 - (74 * (data.discount || 0) / 100)
+      setPriceAfterDiscount(discounted)
+      setPromoValidated(true)
+
+    } catch (error) {
+      setErrors((prev) => ({ ...prev, code: "حدث خطأ أثناء التحقق من الكود" }))
+      setIsValidatingPromo(false)
     }
 
-    try {
-      const checkoutRes = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
-      const checkoutData = await checkoutRes.json()
-
-      if (checkoutData.redirectUrl) {
-        window.location.href = checkoutData.redirectUrl
-      } else if (checkoutData.url) {
-        window.location.href = checkoutData.url
-      }
-    } catch {
-      console.error("Something went wrong")
-    } finally {
-      setIsSubmitting(false)
-    }
+    return
   }
+
+  if (!validateForm()) return
+
+  setIsSubmitting(true)
+
+  try {
+    const checkoutRes = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...formData, discount: discountAmount }),
+    })
+
+    const checkoutData = await checkoutRes.json()
+
+    if (checkoutData.redirectUrl) {
+      window.location.href = checkoutData.redirectUrl
+    } else if (checkoutData.url) {
+      window.location.href = checkoutData.url
+    }
+  } catch (err) {
+    console.error("Something went wrong", err)
+  } finally {
+    setIsSubmitting(false)
+  }
+}
 
   return (
     <section className="py-10 sm:py-14 lg:py-0 mt-4 lg:mt-0 lg:mb-24 mb-14 sm:mb-14">
@@ -163,7 +189,7 @@ export default function RegistrationFormArabic() {
 
               <div className="w-full">
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -193,35 +219,50 @@ export default function RegistrationFormArabic() {
                   <p className="text-red-500 text-sm mt-1 text-left">{errors.phone}</p>
                 )}
               </div>
-
-              <div className="w-full">
-                <input
-                  type="text"
-                  name="code"
-                  value={formData.code}
-                  onChange={handleInputChange}
-                  placeholder="كود الخصم (اختياري)"
-                  className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
-                    errors.code ? "border-red-500" : "border-gray-100"
-                  }`}
-                />
-                {isValidatingPromo && (
-                  <p className="text-gray-600 text-sm mt-1 text-left">جاري التحقق من كود الخصم...</p>
-                )}
-                {errors.code && (
-                  <p className="text-red-500 text-sm mt-1 text-left">{errors.code}</p>
-                )}
+              <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                <div className="flex flex-col gap-1">
+                  <input
+                    type="text"
+                    name="code"
+                    value={formData.code}
+                    onChange={handleInputChange}
+                    placeholder="كود الخصم (اختياري)"
+                    className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
+                      errors.code ? "border-red-500" : "border-gray-100"
+                    }`}
+                  />
+                  <p
+                    className={`text-sm min-h-[20px] text-left ${
+                      errors.code ? "text-red-500" : "text-transparent"
+                    }`}
+                  >
+                    {errors.code || "."}
+                  </p>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    value={`$${priceAfterDiscount.toFixed(2)}`}
+                    disabled
+                    className="w-full px-4 py-3 border-2 bg-gray-100 rounded-none text-center font-bold"
+                  />
+                </div>
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting || isValidatingPromo}
-                className="w-full sm:w-auto px-6 lg:max-w-sm bg-[#FC8A0A] hover:bg-[#e67c09] justify-center text-center disabled:cursor-not-allowed text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto"
+                className="w-full px-6 max-w-md bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto text-center disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "جاري المعالجة..." : "احجز مكانك في رحلة الابتكار الآن"}
+                {isSubmitting
+                  ? "يرجى الانتظار..."
+                  : isValidatingPromo
+                  ? "جاري التحقق من كود الخصم..."
+                  : promoValidated || !formData.code.trim()
+                  ? "تأكيد التسجيل"
+                  : "تحقق من كود الخصم"}
               </button>
             </form>
-
           </div>
         </div>
       </div>
