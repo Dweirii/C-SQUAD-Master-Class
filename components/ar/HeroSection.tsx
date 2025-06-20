@@ -1,7 +1,13 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import {
+  Player,
+  Video,
+  DefaultUi,
+} from "@vime/react"
+import "@vime/core/themes/default.css"
+import VideoHero from "../video"
 
 export default function ArabicHeroSection() {
   return (
@@ -62,21 +68,11 @@ export default function ArabicHeroSection() {
               ماستر كلاس يدمُج بين منهجيّات وادي السّيليكون، وأدوات الإبداع الحديثة، التي تُساعدك على تطوير مشروعِك، وتصميم بِزنس يتوسّع بثقة    
             </p>
           </div>
-          {/* Video */}
           <div className="w-full flex justify-center lg:col-span-3">
-            <div className="w-full lg:w-[100%] xl:w-[110%] rounded-none overflow-hidden border mb-6 lg:mb-0 border-gray-200">
-              <iframe
-                className="w-full aspect-video"
-                src="https://www.youtube.com/embed/Ct5Y3cijQ5I?si=-Xc37aD7Vf_nIo3W"
-                title="ماستر كلاس The Innovation Code"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
+            <div className="w-full max-w-5xl rounded-none overflow-hidden">
+                <VideoHero/>
             </div>
           </div>
-
         </div>
       </section>
     </div>

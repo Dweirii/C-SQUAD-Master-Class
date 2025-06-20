@@ -152,3 +152,8 @@ html {
 [dir="rtl"] .text-right {
   text-align: left;
 }
+
+video::-webkit-media-controls-panel {
+  background: transparent !important;
+}
+
