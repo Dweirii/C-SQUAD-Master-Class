@@ -75,13 +75,13 @@ export default function Footer() {
 
             {/* Social Media Links */}
             <div className="flex justify-center lg:justify-start gap-6">
-              <Link href="#" aria-label="Follow us on Facebook">
+              <Link href="https://www.facebook.com/C.SQUAD.DESIGN" aria-label="Follow us on Facebook">
                 <Facebook className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
-              <Link href="#" aria-label="Follow us on Instagram">
+              <Link href="https://www.instagram.com/csquad.design/" aria-label="Follow us on Instagram">
                 <Instagram className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
-              <Link href="#" aria-label="Connect with us on LinkedIn">
+              <Link href="https://www.linkedin.com/company/c-squad" aria-label="Connect with us on LinkedIn">
                 <Linkedin className="w-6 h-6 text-[#666883] hover:text-[#FC8A0A] transition-colors duration-200" />
               </Link>
             </div>

@@ -24,7 +24,7 @@ export default function VideoHero() {
           onClick={handlePlay}
         >
           <Image
-            src="https://C-SQUAD.b-cdn.net/Master-Class/%D8%B5%D9%88%D8%B1%D8%A9%20youtube%20%D9%85%D8%B5%D8%BA%D8%B1%D8%A9%20%D8%A8%D8%A7%D9%84%D9%84%D9%88%D9%86%20%D8%A7%D9%84%D8%A7%D9%94%D8%AD%D9%85%D8%B1%20%D9%88%D8%A7%D9%84%D8%A7%D9%94%D8%B2%D8%B1%D9%82%20.png"
+            src="https://c-squad.b-cdn.net/Master-Class/thumb.png"
             alt="The Innovation Code Poster"
             fill
             className="object-cover"
@@ -45,16 +45,19 @@ export default function VideoHero() {
         </button>
       )}
 
-      <video
-        ref={videoRef}
-        className={`w-full h-full object-cover ${playing ? "" : "pointer-events-none"}`}
-        controls={playing}
-        poster="https://C-SQUAD.b-cdn.net/Master-Class/thumbnail-the-innovation-code.jpg"
-        preload="metadata"
-        style={{ display: playing ? "block" : "none" }}
-      >
+        <video
+          ref={videoRef}
+          className={`w-full h-full object-cover ${playing ? "" : "pointer-events-none"}`}
+          controls={playing}
+          poster="https://c-squad.b-cdn.net/Master-Class/thumb.png"
+          preload="metadata"
+          playsInline
+          muted
+          style={{ display: playing ? "block" : "none" }}
+        >
+
         <source
-          src="https://C-SQUAD.b-cdn.net/Master-Class/The%20Innovation%20Code-Master%20Class.mp4"
+          src="https://c-squad.b-cdn.net/Master-Class/The-Innovation-Code-Master-Class.mp4"
           type="video/mp4"
         />
         متصفحك لا يدعم تشغيل الفيديو.

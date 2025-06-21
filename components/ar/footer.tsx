@@ -75,8 +75,8 @@ export default function Footer() {
                 <span className="text-[#666883] font-sm">السعودية</span>
               </div>
             </div>
-<div className="flex gap-6 pb-12 mt-4">
-              <Link href="#" aria-label="Facebook">
+            <div className="flex gap-6 pb-12 mt-4">
+              <Link href="https://www.facebook.com/C.SQUAD.DESIGN" aria-label="Follow us on Facebook">
                 <img
                   src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469064f8b39a4_facebook-f.svg"
                   alt="Facebook Icon"
@@ -85,7 +85,7 @@ export default function Footer() {
                   className="hover:opacity-80 transition-opacity"
                 />
               </Link>
-              <Link href="#" aria-label="Instagram">
+              <Link href="https://www.instagram.com/csquad.design/" aria-label="Instagram">
                 <img
                   src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469cc918b39a3_IG.svg"
                   alt="Instagram Icon"
@@ -94,7 +94,7 @@ export default function Footer() {
                   className="hover:opacity-80 transition-opacity"
                 />
               </Link>
-              <Link href="#" aria-label="LinkedIn">
+              <Link href="https://www.linkedin.com/company/c-squad" aria-label="LinkedIn">
                 <img
                   src="https://cdn.prod.website-files.com/63aeab43493ff766ab5ba72e/63d8d762f34469ca628b39a2_linkedin.svg"
                   alt="LinkedIn Icon"
