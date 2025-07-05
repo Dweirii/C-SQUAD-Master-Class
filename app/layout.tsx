@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/next"
 import { Cairo, Lato } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
@@ -81,6 +82,7 @@ export default function RootLayout({
         </head>
         <body className={cairo.className} suppressHydrationWarning={true}>
           {children}
+          <Analytics/>
         </body>
       </html>
   )

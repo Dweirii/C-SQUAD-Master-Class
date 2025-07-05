@@ -10,7 +10,7 @@ export const metadata = {
     siteName: "C-SQUAD",
     images: [
       {
-        url: "https://programs.c-squad.org/meta.png",
+        url: "https://programs.c-squad.org/banner.jpeg",
         width: 1200,
         height: 630,
         alt: "C-SQUAD Masterclass",

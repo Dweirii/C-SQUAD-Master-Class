@@ -29,13 +29,12 @@ export default function RegistrationFormArabic() {
 
   const validateForm = () => {
     const newErrors: ValidationErrors = {}
-    if (!formData.firstName.trim()) newErrors.firstName = "الاسم الأول مطلوب"
-    if (!formData.lastName.trim()) newErrors.lastName = "الاسم الأخير مطلوب"
-    if (!formData.email.trim()) newErrors.email = "عنوان البريد الإلكتروني مطلوب"
-    else if (!validateEmail(formData.email)) newErrors.email = "يرجى إدخال بريد إلكتروني صحيح"
-    if (!formData.phone.trim()) newErrors.phone = "رقم الهاتف مطلوب"
-    else if (!validatePhone(formData.phone)) newErrors.phone = "يرجى إدخال رقم هاتف صحيح"
-
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required"
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required"
+    if (!formData.email.trim()) newErrors.email = "Email is required"
+    else if (!validateEmail(formData.email)) newErrors.email = "Please enter a valid Email address"
+    if (!formData.phone.trim()) newErrors.phone = "Mobile number is required"
+    else if (!validatePhone(formData.phone)) newErrors.phone = "Please enter a valid mobile numbers"
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -67,7 +66,7 @@ export default function RegistrationFormArabic() {
         setIsValidatingPromo(false)
 
         if (!res.ok || !data.valid) {
-          setErrors((prev) => ({ ...prev, code: data.message || "كود الخصم غير صحيح" }))
+          setErrors((prev) => ({ ...prev, code: "Invalid Promo Code!" }))
           setPromoValidated(false)
           setDiscountAmount(0)
           setPriceAfterDiscount(74)
@@ -81,7 +80,7 @@ export default function RegistrationFormArabic() {
         setPromoValidated(true)
       } catch (error) {
         setIsValidatingPromo(false)
-        setErrors((prev) => ({ ...prev, code: "حدث خطأ أثناء التحقق من الكود" }))
+        setErrors((prev) => ({ ...prev, code: "Something went wrong please try again" }))
       }
     }, 200)
 
@@ -120,32 +119,18 @@ export default function RegistrationFormArabic() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-4 sm:mb-6 lg:mb-12">
-            الاشتراك في هذا الماستر كلاس
+             Register for the Masterclass   
           </h1>
           <p className="text-gray-600 text-base sm:text-lg md:text-xl font-bold leading-relaxed">
-            إن لم تُخصّص بِضع ساعات لحُلمك الآن… فَمتى؟
+            If you can&apos;t give your dream a few hours now… then when?
           </p>
           <p className="text-gray-600 text-base sm:text-lg md:text-xl font-bold lg:mb-12 leading-relaxed">
-            نحن نبحث عن المستعدين فعلاً للالتزام بخطوتهم القادمة نحو مشروع واضح وناجح.
+            We&apos;re here for those truly ready to commit to their next step — toward a clear, grounded, and successful
+            business.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-start">
-          <div className="space-y-6">
-            <div className="bg-[#FC8A0A] text-white rounded-none p-3 text-center">
-              <div className="text-lg sm:text-sm font-bold mb-2 lg:text-lg">
-                السعر الأصلي <span className="line-through text-xl">200$</span>
-              </div>
-              <div className="text-lg sm:text-xl font-bold">
-                لكنّك اليوم ستحصل عليه بـ 74$ فقط!
-              </div>
-            </div>
-            <div className="text-gray-600 rounded-none p-6 text-center">
-              <h3 className="text-base sm:text-lg mb-2">مباشر عبر منصة زوم في جلستين</h3>
-              <p className="text-base sm:text-lg mb-2">يومي الجمعة 11 والسبت 12 يوليو 2025</p>
-              <p className="text-base sm:text-lg">6:00 - 9:00 مساءً بتوقيت مكة</p>
-            </div>
-          </div>
 
           <div className="lg:col-span-2">
             <form
@@ -159,7 +144,7 @@ export default function RegistrationFormArabic() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    placeholder="الاسم الأول"
+                    placeholder="First Name"
                     className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                       errors.firstName ? "border-red-500" : "border-gray-100"
                     }`}
@@ -174,7 +159,7 @@ export default function RegistrationFormArabic() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    placeholder="الاسم الأخير"
+                    placeholder="Last Name"
                     className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                       errors.lastName ? "border-red-500" : "border-gray-100"
                     }`}
@@ -191,7 +176,7 @@ export default function RegistrationFormArabic() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="عنوان البريد الإلكتروني"
+                  placeholder="Email Address"
                   className={`w-full px-4 py-3 border-2 text-left rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                     errors.email ? "border-red-500" : "border-gray-100"
                   }`}
@@ -207,8 +192,8 @@ export default function RegistrationFormArabic() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="رقم الهاتف"
-                  dir="rtl"
+                  placeholder="Mobile Number"
+                  dir="ltl"
                   className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                     errors.phone ? "border-red-500" : "border-gray-100"
                   }`}
@@ -224,7 +209,7 @@ export default function RegistrationFormArabic() {
                     name="code"
                     value={formData.code}
                     onChange={handleInputChange}
-                    placeholder="كود الخصم (اختياري)"
+                    placeholder="Promo Code (Optional)"
                     className={`w-full px-4 py-3 border-2 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FC8A0A] transition-colors ${
                       errors.code ? "border-red-500" : "border-gray-100"
                     }`}
@@ -253,14 +238,30 @@ export default function RegistrationFormArabic() {
                 className="w-full px-6 max-w-md bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto text-center disabled:cursor-not-allowed"
               >
                 {isSubmitting
-                  ? "يرجى الانتظار..."
+                  ? "Please wait..."
                   : isValidatingPromo
-                  ? "جاري التحقق من كود الخصم..."
+                  ? "Validating the promo code"
                   : promoValidated || !formData.code.trim()
-                  ? "تأكيد التسجيل"
-                  : "تحقق من كود الخصم"}
+                  ? "Reserve your ticket for Innovation now"
+                  : "Validate the promo code"}
               </button>
             </form>
+          </div>
+          <div className="space-y-6">
+            
+            <div className="bg-[#FC8A0A] text-white rounded-none p-3 text-center">
+              <div className="text-lg sm:text-sm font-bold mb-2 lg:text-lg">
+                The Original Price: <span className="line-through text-xl">200$</span>
+              </div>
+              <div className="text-lg lg:text-lg sm:text-xl font-bold">
+                 But today, you can join for just $74!
+              </div>
+            </div>
+            <div className="text-gray-600 rounded-none p-6 text-center">
+              <h3 className="text-base sm:text-lg mb-2">Live on Zoom in two sessions</h3>
+              <p className="text-base sm:text-lg mb-2">Friday & Saturday, July 11–12, 2025</p>
+              <p className="text-base sm:text-lg"> 6:00–9:00 PM (Mecca Time)</p>
+            </div>
           </div>
         </div>
       </div>

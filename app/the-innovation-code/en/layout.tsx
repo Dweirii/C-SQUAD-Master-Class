@@ -1,13 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Cairo } from "next/font/google"
-import "../globals.css"
+import "./../../globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
-const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  variable: "--font-cairo",
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
 })
 
@@ -22,8 +20,10 @@ export default function EnglishLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${cairo.variable}`}>{children}</body>
+    <html lang="en" dir="ltr">
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   )
 }

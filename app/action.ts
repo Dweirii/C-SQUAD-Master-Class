@@ -168,8 +168,6 @@ export async function getPaidRegistrations(): Promise<ActionResult<Awaited<Retur
     return { success: false, error: "Failed to fetch paid registrations" }
   }
 }
-
-// ✅ 🔥 Unpaid Registrations
 export async function getUnpaidRegistrations(): Promise<ActionResult<Awaited<ReturnType<typeof prisma.paidOrder.findMany>>>> {
   try {
     const unpaidOrders = await prisma.paidOrder.findMany({
