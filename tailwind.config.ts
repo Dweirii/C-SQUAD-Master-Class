@@ -8,15 +8,18 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-  	extend: {
-  		fontFamily: {
-  			cairo: [
-  				'var(--font-cairo)',
-  				'sans-serif'
-  			]
-  		},
-  		colors: {
+	theme: {
+		extend: {
+	fontFamily: {
+		cairo: ["var(--font-cairo)", "sans-serif"],
+	},
+	wordSpacing: {
+		tight: "-0.05em",
+		normal: "0em",
+		wide: "0.2em",
+		wider: "0.4em",
+	},
+			colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -77,3 +80,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
+
