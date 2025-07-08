@@ -20,7 +20,7 @@ export default function ArabicHeroSection() {
               alt="C-SQUAD LOGO"
               width={110}
               height={30}
-              className="object-contain"
+              className="object-contain lg:ml-7"
             />
           </div>
 
@@ -43,10 +43,10 @@ export default function ArabicHeroSection() {
         </div>
       </header>
 
-      <section className="py-16 lg:py-3 lg:pt-24 sm:py-7 sm:pb-10 flex justify-center">
+      <section className="py-16 lg:py-3 lg:pt-24 sm:py-10 pb-22 lg:pb-24 flex justify-center">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-5 items-center">
           <div className="text-right space-y-4 mx-auto lg:pl-2 lg:col-span-2">
-            <h1 className="text-[#FC8A0A] text-center text-3xl lg:text-3xl font-bold font-cairo whitespace-nowrap pr-5">
+            <h1 className="text-[#FC8A0A] text-center text-3xl lg:text-3xl font-bold font-cairo lg:whitespace-nowrap pr-5">
               <span className="font-cairo">[خيمياء البِزنس]</span>{" "}
               <span className="font-lato">Business Alchemy</span>
             </h1>
@@ -55,9 +55,7 @@ export default function ArabicHeroSection() {
               خيمياء البِزنس = إبداع من القلب + تصميم عَملي بذكاء
             </h2>
 
-            <p
-              className="text-[#545454] text-base pb-0 lg:text-xl sm:pb-8 text-center sm:text-lg font-normal leading-loose pr-5"
-            >
+            <p className="text-[#545454] text-base pb-0 lg:text-xl sm:pb-8 text-center sm:text-lg font-normal leading-loose pr-5">
               البرنامج العَملي الأول من نوعه لتحويل شغفك أو مشروعك الحالي إلى بزنس حقيقي، مُبدع، ومُتكامل&nbsp;بخطة واضحة، وأسس نجاح مدروسة.
             </p>
           </div>
@@ -67,42 +65,38 @@ export default function ArabicHeroSection() {
               <VideoHero />
             </div>
           </div>
-
-          <div className="w-full col-span-full mt-20 bg-[#F9F9FB]">
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4  py-6 px-4 rounded-lg text-center">
-
-              <div className="space-y-2">
-                <Image src="/hero-icons/plan.png" alt="خطة المشروع" width={60} height={60} className="mx-auto" />
-                <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
-                  خطة نجاح المشروع<br />(مع التحقق من السوق)
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <Image src="/hero-icons/session.png" alt="جلسة إرشادية" width={60} height={60} className="mx-auto" />
-                <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
-                  جلسة إرشادية فردية<br />(استشارة في الخطة)
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <Image src="/hero-icons/community.png" alt="جلسات جماعية" width={60} height={60} className="mx-auto" />
-                <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
-                  جلسات تدريب جماعية<br />(مجتمع إبداعي)
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <Image src="/hero-icons/online.png" alt="أونلاين مباشر" width={60} height={60} className="mx-auto" />
-                <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
-                  احضر من أي مكان<br />(أونلاين-مباشر)
-                </p>
-              </div>
-
-            </div>
-          </div>
         </div>
       </section>
+
+      {/* ✅ Full-width Section (OUTSIDE section) */}
+      <div className="w-full bg-[#F9F9FB] mb-2 pb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 py-6 px-2 text-center w-full max-w-none">
+          <div className="space-y-2">
+            <Image src="/myz1.svg" alt="خطة المشروع" width={80} height={80} className="mx-auto" />
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
+              خطة نجاح المشروع<br />(مع التحقق من السوق)
+            </p>
+          </div>
+          <div className="space-y-2">
+            <Image src="/myz2.svg" alt="جلسة إرشادية" width={80} height={80} className="mx-auto" />
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
+              جلسة إرشادية فردية<br />(استشارة في الخطة)
+            </p>
+          </div>
+          <div className="space-y-2">
+            <Image src="/myz3.svg" alt="جلسات جماعية" width={80} height={80} className="mx-auto" />
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
+              جلسات تدريب جماعية<br />(مجتمع إبداعي)
+            </p>
+          </div>
+          <div className="space-y-2">
+            <Image src="/myz4.svg" alt="أونلاين مباشر" width={80} height={80} className="mx-auto" />
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
+              احضر من أي مكان<br />(أونلاين-مباشر)
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
