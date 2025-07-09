@@ -36,7 +36,6 @@ import CoachIntroArabic from "@/components/ar/coach-intro";
 import WhatYouWillLearnArabic from "@/components/ar/what-you-will-learn";
 import TestimonialsArabic from "@/components/business-alchemy/testimonials";
 import FooterArabic from "@/components/ar/footer";
-import RegistrationFormArabic from "@/components/ar/registration-form";
 import Component from "@/components/business-alchemy/blue-section";
 
 export default function Page() {
@@ -51,11 +50,11 @@ export default function Page() {
       <MasterclassDescriptionArabic/>
       <CoachIntroArabic/>
       <ZoomBanner>
-         لأوّل مرّة… خيمياء أعمال تدمج مَنهجية التفكير التصميمي [Design Thinking] و أدوات الذكاء الاصطناعي [ChatGPT] وطاقتك الداخلية، لتصنع بزنس نابض بالهوية، ذكي في خطته، ومنسجم معك
+         صمّم بِزنسك بطريقة جديدة… بروحِك، وذكاءِك، وأدوات تفتَح لكَ أبواب السّوق
       </ZoomBanner>
       <WhatYouWillLearnArabic/>
       <ZoomBanner>
-        كل مشترك سيحصل على "ActionBook خيمياء البزنس" — دفتر عملي يرافقك خلال الجلسات الخمس لاكتشاف شغفك، وتطبيق التفكير التصميمي لبناء بزنس نابض بهويتك.
+        حينَ ينسجِم الشّغف مع التّصميم… تولَد خِيمياء البِزنس الحقيقي
       </ZoomBanner>
       <TestimonialsArabic/>
       <Component/>

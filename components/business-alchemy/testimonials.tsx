@@ -166,7 +166,7 @@ export default function TestimonialsArabicCarousel() {
       <div className="max-w-6xl mx-auto px-6 py-10 sm:py-16">
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-[#FC8A0A] mb-0 leading-tight">
-            آراء المشتركين في الماستر كلاس السابق
+            آراء المُشتركين في البرامِج المشابِهة السّابقة
           </h2>
             <div className="max-w-6xl mx-auto px-6">
               {/* Hero Content */}
@@ -175,11 +175,9 @@ export default function TestimonialsArabicCarousel() {
                   {/* Text Content */}
                   <div className="lg:w-1/2 space-y-4">
                     <h3 className="text-xl sm:text-lg font-bold text-[#545454] leading-relaxed">
-                      خِلال يومين، سنخوض
+                      لا نُخبرك فقط بما ستحصل عليه… <br/>
+                      بل نترُك المُشتركين يخبرونك كيف غيّرتهم التجربة
                     </h3>
-                    <p className="text-[#545454] text-base lg:text-lg leading-loose">
-                      معًا رحلة عمليّة لإعادة تَصميم مشروعِك أو فكرتِك، باستخدام أدوات واضحة، وتقنيّات حديثة مثل الذّكاء الاصطناعي، لِتبسيط التّفكير، تَسريع القرارات، وابتكار حلول تُناسبك مهما كانت معلوماتِك أو مرحلتِك.
-                    </p>
                   </div>
 
                   {/* Video Section */}
@@ -191,9 +189,6 @@ export default function TestimonialsArabicCarousel() {
                 </div>
               </section>
             </div>
-            <p className="text-[#545454] font-bold text-base sm:text-lg leading-relaxed max-w-3xl pt-7 mx-auto">
-              لا نُخبرك فقط بما ستحصل عليه… بل نترُك المُشتركين يخبرونك كيف غيّرتهم التجربة.
-            </p>
         </div>
         <div className="relative">
           <div

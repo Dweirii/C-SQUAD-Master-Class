@@ -33,7 +33,7 @@ export default function CoachIntroArabic() {
           <div className="flex flex-col items-center justify-center md:items-center lg:items-end order-2 lg:order-1">
             <div className="relative  w-full max-w-sm">
               <Image
-                src="/c-squad.png"
+                src="/coach.png"
                 alt="كوتش آلاء آغا كَرس - خبيرة التفكير التصميمي"
                 width={400}
                 height={800}
@@ -56,7 +56,7 @@ export default function CoachIntroArabic() {
                 </h2>
               </div>
               <h2 className="text-2xl font-bold text-[#FC8A0A] mb-4 leading-tight">
-                عن البزنس كوتش "آلاء آغا كَرس"
+                  عن البِزنس كوتش "آلاء آغا كَرس"؟
               </h2>
             </div>
 

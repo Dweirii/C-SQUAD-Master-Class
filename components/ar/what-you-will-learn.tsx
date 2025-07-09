@@ -8,11 +8,10 @@ export default function MasterclassBenefitsSection() {
         {/* Header */}
         <div className="text-center mb-10 lg:mt-10">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold text-[#FC8A0A] leading-tight mb-6">
-            على ماذا ستحصل خلال يومين فقط؟
+            مفاتيح التحوّل الذهني التي ستحملها معك:
           </h2>
           <div className="text-gray-700 text-lg sm:text-xl max-w-4xl mx-auto font-bold">
-            <p>هذا الماستر كلاس يتكوّن من جلستين تفاعليّتين، كل جلسة مدّتها ٣ ساعات، تُشكّل مدخلًا عمليًا</p>
-            <p>لعالم الابتكار والإبداع، وبوّابةً لفهم حقيقيّ لأساسيات البزنس وبناؤه بطريقة ذكيّة.</p>
+            <p>برنامج مُباشر عبر ZOOM مكثّف من خمس جلسات تفاعليّة على مدار 5 أيام، بواقِع 3 ساعات لكل جلسة. </p>
           </div>
         </div>
 
@@ -29,13 +28,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أُسس بناء مشروع ناجِح</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تفكيرك الرّيادي يُعيد التكوّن</h3>
               <p className="text-gray-600 text-base text-center leading-relaxed">
-                ستكتشف الأسس العمليّة التي تعتمدُها 
+                ستخرُج بطريقة جديدة ترى فيها البِزنس 
                 <br />
-                الشركات الرياديّة عالميًا لِبناء مشاريع فعّالة
+                  كمساحة تعبير قيّمة، وتأثير—ليس فقط بيع
                 <br />
-                ومُستقرة، مهما كانت نقطة بدايتك.
+                  وخطط تقليديّة.
               </p>
             </div>
 
@@ -48,13 +47,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">مَدخل إلى التّفكير التّصميمي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تفكيرُك يصبح تصميميًا</h3>
               <p className="text-gray-600 text-base  text-center">
-                فَهم منهجيّة التّفكير التصميمي 
+                ستفكّر مثل المصمّمين: بفضول، تعاطُف، 
                 <br />
-                وأهميتَها في تحليل احتياجات العُملاء وبِناء
+                وتجريب مُستمر حتى تصِل لأفضل حَل يناسب
                 <br />
-                حلول واقعية تلامِسهم وتُشبههم.
+                 جمهورك وينسجِم معك.
               </p>
             </div>
 
@@ -67,13 +66,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحويل الفِكرة إلى عرض بيع فِعلي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">وضوحك الدّاخلي = قَرارات أذكى</h3>
               <p className="text-gray-600 text-base  text-center">
-                تعلّم كيف تُحوّل فكرتك أو مهارتَك إلى
+                ستتعلّم كيف تربُط بين مشاعِرك وقيمِك      
                 <br />
-                عرض بيع جذّاب يُقنع، حتى لو كُنت تبدأ من
+                  وبين قراراتِك الرياديّة، لتُصبح خطواتك مبنيّة
                 <br />
-                نقطة الصفر.
+                على وعي، وليس على ضغط أو تشتّّت.
               </p>
             </div>
           </div>
@@ -102,13 +101,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">أمثلة واقعيّة ونقاشات حيّة</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">الابتكار يُصبح لغتَك الجّديدة</h3>
               <p className="text-gray-600 text-base  text-center">
-                تفاعُل مباشر مع دراسات واقعيّة تساعِدك
+                تُغادِر التّفكير العشوائي وتبدأ في ابتكَار
                 <br />
-                على فَهم تطبيق الأدوات على مشروعِك
+                حُلول فريدة نابِعة من احتياجات حقيقيّة     
                 <br />
-                الحالي أو القادم.
+                وسياق واضِح.
               </p>
             </div>
 
@@ -121,13 +120,13 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">استخدام أدوات الذّكاء الاصطناعي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">الذّكاء الاصطناعي حليفُك وليس تَهديد</h3>
               <p className="text-gray-600 text-base  text-center">
-                استفِد من أدوات AI لِتسريع قراراتِك،
+                تستخدِم أدوات AI لدعمِك في تحليل السّوق،
                 <br />
-                وتنظيم خطواتِك القادمة بطريقة أكثر
+                إنتاج المحتوى، والتّخطيط بسرعة وكفاءة     
                 <br />
-                وضوحًا وفعالية.
+                دون أن تفقد لمستَك الخاصّة.
               </p>
             </div>
 
@@ -140,11 +139,11 @@ export default function MasterclassBenefitsSection() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">تحوّل في طريقة التّفكير الرّيادي</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">لا تَبدأ من الصّفر بَعد اليوم</h3>
               <p className="text-gray-600 text-base  text-center">
-                ستخرُج بذهنية جديدة تَمنحك وضوحًا داخليًا
+                ستُغادر عقليّة “نُقطة البداية” وتنتقِل إلى
                 <br />
-                وثقة عالية للبدء من جديد، أو إعادة بِناء
+                عقليّة “نُقطة الانطلاق” — لأنك تملك الآن    
                 <br />
                 مشروعِك برؤية حديثة.
               </p>
