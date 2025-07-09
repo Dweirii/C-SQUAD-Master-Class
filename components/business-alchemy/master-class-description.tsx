@@ -59,20 +59,21 @@ export default function MasterclassDescriptionArabic() {
 
           {/* Journey List */}
           <div className="space-y-12 px-2">
-            <h2 className="text-right text-gray-600 text-xl lg:text-2xl font-bold">
+            <h2 className="text-left text-gray-600 text-xl lg:text-2xl font-bold">
               خلال الجلسات التفاعليّة للبرنامج، ستخوض رحلة ممنهجة تبدأ من الصفر:
             </h2>
 
-            <ul className="space-y-10">
-              {items.map((item, index) => (
-                <li key={index} className="flex items-start gap-6">
-                  <div>
-                    <h3 className="text-[#FC8A0A] font-bold text-lg mb-2">{item.title}</h3>
-                    <p className="text-gray-700 text-base leading-relaxed">{item.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+           <ul className="space-y-6 list-disc pr-6 marker:text-[#FC8A0A] text-left">
+            {items.map((item, index) => (
+              <li key={index}>
+                <div>
+                  <h3 className="text-[#FC8A0A] font-bold text-lg">{item.title}</h3>
+                  <p className="text-gray-700 text-base leading-relaxed mt-1">{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
           </div>
 
           {/* AI, ActionBook, Coaching Section */}
