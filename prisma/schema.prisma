@@ -46,4 +46,22 @@ model ScheduledEmail {
   updatedAt   DateTime @updatedAt
 }
 
+model businessRegistration {
+  id               String   @id @default(uuid())
+  fullName         String
+  gender           String
+  email            String   @unique
+  phone            String
+  country          String
+  currentStage     String
+  aboutUs          String
+  aboutUsOther     String?
+  aboutYouAndWhy   String
+  checkFirst       Boolean
+  checkSecond      Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+
 

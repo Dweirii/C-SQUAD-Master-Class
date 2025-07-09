@@ -26,7 +26,7 @@ export default function Component() {
         <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
           {/* Pricing Card */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="border-2 border-white/50 rounded-none p-8">
+            <div className="border-[0.2px] border-white/50 rounded-none p-8">
               <Card className="bg-transparent border-none shadow-none">
                 <CardContent className="text-center p-8">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Business Alchemy</h2>

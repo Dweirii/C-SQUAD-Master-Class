@@ -184,7 +184,7 @@ export default function TestimonialsArabicCarousel() {
 
                   {/* Video Section */}
                   <div className="lg:w-1/2 flex justify-center">
-                    <div className="w-full max-w-[400px] rounded-md overflow-hidden">
+                    <div className="w-full max-w-[400px] rounded-none overflow-hidden">
                       <VideoHero />
                     </div>
                   </div>
