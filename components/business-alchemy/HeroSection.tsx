@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import "@vime/core/themes/default.css"
-import VideoHero from "../video"
+import VideoHero from "./video"
 
 export default function ArabicHeroSection() {
   return (
