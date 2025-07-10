@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Footer from "@/components/ar/footer"
 import Script from "next/script"
-import Link from "next/link"
 
 export default function AppointmentPage() {
   return (
@@ -46,28 +45,37 @@ export default function AppointmentPage() {
           </div>
         </div>
       </header>
-      <div className="flex flex-col space-y-4  w-full">
-        <div className="flex items-center justify-center pt-20">
-            <h1 className="font-semibold text-2xl">الرّجاء ادخال معلوماتِك واختيار الوقت المُناسب لكَ ليتم تأكيد حَجز مُكالمتك الاستشاريّة</h1>
-        </div>
-      {/* Calendly inline widget */}
-      <div
-        className="calendly-inline-widget"
-        data-url="https://calendly.com/alaa-karss-c-squad/meet-with-me-1"
-        style={{ minWidth: "320px", height: "700px" }}
-      />
 
-      {/* Calendly widget script */}
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
-      />
-    </div>
-        <div className="flex items-center justify-center pb-20">
-            <Link href="https://wa.me/9647517621752">
-            <h1 className="font-semibold text-2xl">إذا لم تجد الوقت المناسب أو واجهتك مشكلة بإمكانك التواصل معنا عبر الواتساب</h1>
-            </Link>
+      <main className="flex flex-col min-h-[70vh] bg-gray-50 py-10 px-4 sm:px-6">
+        <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-10 mt-8 mb-8 flex flex-col items-center space-y-6">
+          <h1 className="font-semibold text-2xl md:text-3xl text-center text-[#14697A]">
+            الرّجاء إدخال معلوماتك واختيار الوقت المُناسب ليتم تأكيد حجز مكالمتك الاستشاريّة
+          </h1>
+
+          {/* Calendly inline widget */}
+          <div
+            className="calendly-inline-widget w-full"
+            data-url="https://calendly.com/alaa-karss-c-squad/meet-with-me-1"
+            style={{ minWidth: "320px", height: "700px" }}
+          />
+
+          {/* Calendly widget script */}
+          <Script
+            src="https://assets.calendly.com/assets/external/widget.js"
+            strategy="lazyOnload"
+          />
+
+          <a
+            href="https://wa.me/9647517621752"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#FC8A0A] hover:bg-orange-600 text-white rounded-lg py-3 px-6 text-center font-semibold text-lg shadow-md w-full transition-colors"
+          >
+            إذا لم تجد الوقت المناسب أو واجهتك مشكلة بإمكانك التواصل معنا عبر الواتساب
+          </a>
         </div>
+      </main>
+
       <Footer />
     </>
   )

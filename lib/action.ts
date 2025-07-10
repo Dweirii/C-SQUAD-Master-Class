@@ -21,11 +21,7 @@ const registerSchema = z.object({
   aboutUs: z.enum(["السوشيال ميديا", "صديق", "أخرى"], {
     errorMap: () => ({ message: "يرجى اختيار مصدر معرفتك بنا" }),
   }),
-  aboutUsOther: z.string().optional().refine((val) => {
-    return val === undefined || val.trim().length > 2
-  }, {
-    message: "يرجى توضيح الخيار الآخر"
-  }),
+  aboutUsOther: z.string().optional(),
   aboutYouAndWhy: z.string().min(10, "يرجى كتابة نبذة عنك ولماذا ترغب بالإنضمام"),
   checkFirst: z.boolean().refine((v) => v === true, {
     message: "يجب الموافقة على الشروط والأحكام",
@@ -37,7 +33,27 @@ export type RegisterFormData = z.infer<typeof registerSchema>
 
 export async function registerUser(formData: RegisterFormData) {
   try {
+    // اختبار الاتصال بقاعدة البيانات
+    try {
+      await prisma.$connect()
+    } catch (dbError) {
+      return {
+        success: false,
+        message: "خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.",
+      }
+    }
+
     const result = registerSchema.safeParse(formData)
+
+    // تحقق إضافي فقط إذا كانت aboutUs = "أخرى"
+    if (result.success && result.data.aboutUs === "أخرى") {
+      if (!result.data.aboutUsOther || result.data.aboutUsOther.trim().length < 3) {
+        return {
+          success: false,
+          errors: { aboutUsOther: ["يرجى توضيح الخيار الآخر"] },
+        }
+      }
+    }
 
     if (!result.success) {
       return {
@@ -85,7 +101,21 @@ export async function registerUser(formData: RegisterFormData) {
       },
     }
   } catch (error) {
-    console.error("Unexpected error:", error)
+    // تحسين رسائل الخطأ
+    if (error instanceof Error) {
+      if (error.message.includes('Unique constraint')) {
+        return {
+          success: false,
+          message: "البريد الإلكتروني مسجل مسبقاً",
+        }
+      }
+      if (error.message.includes('Connection')) {
+        return {
+          success: false,
+          message: "خطأ في الاتصال بقاعدة البيانات. يرجى المحاولة لاحقاً.",
+        }
+      }
+    }
     return {
       success: false,
       message: "حدث خطأ غير متوقع أثناء المعالجة. يرجى المحاولة لاحقًا.",

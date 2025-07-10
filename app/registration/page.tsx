@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { registerUser } from "@/lib/action"
+import { useRouter } from "next/navigation"
 import { toast, Toaster } from "sonner"
 import { AlertCircle, Check, Loader2, Search, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -360,6 +361,7 @@ function SearchableSelect({ options, value, onChange, placeholder, searchPlaceho
 }
 
 export default function RegistrationForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "",
@@ -401,6 +403,12 @@ export default function RegistrationForm() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!value) return errorMessages.email
       if (!emailRegex.test(value)) return errorMessages.email
+      return ""
+    }
+
+    if (name === "phone" && typeof value === "string") {
+      if (!value.trim()) return errorMessages.phone
+      if (value.length < 5) return errorMessages.phone
       return ""
     }
 
@@ -472,6 +480,7 @@ export default function RegistrationForm() {
 
     setErrors(newErrors)
     setTouched(Object.keys(formData).reduce((acc, key) => ({ ...acc, [key]: true }), {}))
+    
     return isValid
   }
 
@@ -483,6 +492,23 @@ export default function RegistrationForm() {
     setIsSubmitting(true)
 
     try {
+      
+      // التحقق من أن جميع الحقول المطلوبة موجودة
+      const requiredFields = {
+        fullName: formData.fullName,
+        gender: formData.gender,
+        email: formData.email,
+        countryCode: formData.countryCode,
+        phone: formData.phone,
+        country: formData.country,
+        currentStage: formData.currentStage,
+        aboutUs: formData.aboutUs,
+        aboutYouAndWhy: formData.aboutYouAndWhy,
+        checkFirst: formData.checkFirst,
+        checkSecond: formData.checkSecond,
+      }
+      
+      
       const result = await registerUser({
         fullName: formData.fullName,
         gender: formData.gender as "ذكر" | "أنثى",
@@ -501,7 +527,15 @@ export default function RegistrationForm() {
       })
 
       if (result.success) {
-        window.location.href = "/business-alchemy-appointment"
+        toast.success("تم التسجيل بنجاح!", {
+          description: "سيتم توجيهك إلى صفحة الحجز",
+          className: "font-cairo",
+        })
+        
+        // إضافة تأخير قصير قبل إعادة التوجيه
+        setTimeout(() => {
+          router.push("/business-alchemy-appointment")
+        }, 1500)
       } else {
         if (result.errors) {
           const serverErrors: Record<string, string> = {}
@@ -519,7 +553,6 @@ export default function RegistrationForm() {
         }
       }
     } catch (error) {
-      console.error("Error submitting form:", error)
       toast.error("خطأ في النظام", {
         description: "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقاً.",
         className: "font-cairo",
