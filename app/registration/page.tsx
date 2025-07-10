@@ -327,7 +327,7 @@ function SearchableSelect({ options, value, onChange, placeholder, searchPlaceho
           </div>
 
           {/* Options List */}
-          <div className="max-h-60 overflow-y-auto">
+          <div className="max-h-48 md:max-h-60 overflow-y-auto">
             {filteredOptions.length === 0 ? (
               <div className="px-3 py-4 text-sm text-gray-500 text-center">لا توجد نتائج</div>
             ) : (
@@ -493,7 +493,7 @@ export default function RegistrationForm() {
           | "أحاول أبدأ مشروع من شغفي"
           | "أعمل على مشروع حاليًا وأواجه تحديات"
           | "موظف أو طالب وأسعى لتطوير مهاراتي المهنية",
-        aboutUs: formData.aboutUs as "دروب ليست" | "السوشيال ميديا" | "صديق" | "أخرى",
+        aboutUs: formData.aboutUs as "السوشيال ميديا" | "صديق" | "أخرى",
         aboutUsOther: formData.aboutUsOther,
         aboutYouAndWhy: formData.aboutYouAndWhy,
         checkFirst: formData.checkFirst,
@@ -501,7 +501,7 @@ export default function RegistrationForm() {
       })
 
       if (result.success) {
-        window.location.href = "/consultations/master-your-zero/booking"
+        window.location.href = "/business-alchemy-appointment"
       } else {
         if (result.errors) {
           const serverErrors: Record<string, string> = {}
@@ -581,20 +581,20 @@ export default function RegistrationForm() {
         </div>
       </header>
 
-      <main className="flex-1 bg-white p-2   md:p-8  py-15 lg:py-28">
-        <div className="max-w-6xl px-14 py-14 mx-auto bg-gray-50 rounded-none shadow-sm p-4">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-cairo font-semibold text-center mb-6 text-gray-800">
+      <main className="flex-1 bg-white p-4 md:p-8 py-8 lg:py-28">
+        <div className="max-w-6xl px-4 md:px-14 py-8 md:py-14 mx-auto bg-gray-50 rounded-none shadow-sm">
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-cairo font-semibold text-center mb-4 md:mb-6 text-gray-800">
             استَثمِر في نفسك الآن
           </h2>
-          <p className="text-sm font-semibold md:text-base text-gray-700 mb-8 text-center">
+          <p className="text-xs md:text-sm lg:text-base font-semibold text-gray-700 mb-6 md:mb-8 text-center px-2">
             بادر بالإنضمام إلى هذه الرحلة الحافلة بالتطوير واحصل على مهارات ومعرفة وثقة تمكنك من أن تصبح ريادياً ناجحاً
             ومبدعاً
           </p>
-            <form onSubmit={handleSubmit} className="space-y-6 pt-14">
+            <form onSubmit={handleSubmit} className="space-y-6 pt-8 md:pt-14">
               {/* Full Name and Gender */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="fullName" className="block text-sm md:text-base font-semibold text-gray-700">
+                  <label htmlFor="fullName" className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                     الإسم الكامل
                   </label>
                   <Input
@@ -610,14 +610,14 @@ export default function RegistrationForm() {
                   />
                   {errors.fullName && touched.fullName && (
                     <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                      <AlertCircle className="h-4 w-4 ml-1" />
-                      <span>{errors.fullName}</span>
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.fullName}</span>
                     </div>
                   )}
                 </div>
 
                 <div className="space-y-2" dir="rtl">
-                  <label className="block text-sm md:text-base font-semibold text-gray-700">الجنس</label>
+                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">الجنس</label>
                   <Select value={formData.gender} onValueChange={(value) => handleSelectChange("gender", value)}>
                     <SelectTrigger
                       dir="rtl"
@@ -638,8 +638,8 @@ export default function RegistrationForm() {
                   </Select>
                   {errors.gender && touched.gender && (
                     <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                      <AlertCircle className="h-4 w-4 ml-1" />
-                      <span>{errors.gender}</span>
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.gender}</span>
                     </div>
                   )}
                 </div>
@@ -647,7 +647,7 @@ export default function RegistrationForm() {
 
               {/* Email */}
               <div className="space-y-2 mx-auto">
-                <label htmlFor="email" className="block text-sm md:text-base lg:text-base font-semibold text-gray-700">
+                <label htmlFor="email" className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   البريد الإلكتروني
                 </label>
                 <Input
@@ -663,18 +663,18 @@ export default function RegistrationForm() {
                 />
                 {errors.email && touched.email && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.email}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.email}</span>
                   </div>
                 )}
               </div>
 
               {/* Phone with Country Code */}
               <div className="space-y-2 mx-auto">
-                <label className="block text-sm md:text-base lg:text-base font-semibold text-gray-700">
+                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   رقم الهاتف
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
                   <div className="md:col-span-1">
                     <Select
                       value={formData.countryCode}
@@ -698,8 +698,8 @@ export default function RegistrationForm() {
                     </Select>
                     {errors.countryCode && touched.countryCode && (
                       <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                        <AlertCircle className="h-4 w-4 ml-1" />
-                        <span>{errors.countryCode}</span>
+                        <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                        <span className="text-xs">{errors.countryCode}</span>
                       </div>
                     )}
                   </div>
@@ -717,18 +717,18 @@ export default function RegistrationForm() {
                     />
                     {errors.phone && touched.phone && (
                       <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                        <AlertCircle className="h-4 w-4 ml-1" />
-                        <span>{errors.phone}</span>
+                        <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                        <span className="text-xs">{errors.phone}</span>
                       </div>
                     )}
                   </div>
                 </div>
-                <p className="text-xs text-gray-500">ليتم التواصل معك عبر الواتساب</p>
+                <p className="text-xs text-gray-500 text-center md:text-right">ليتم التواصل معك عبر الواتساب</p>
               </div>
 
               {/* Country with Modern Searchable Dropdown */}
               <div className="space-y-2 mx-auto">
-                <label className="block text-sm md:text-base lg:text-base font-semibold text-gray-700">
+                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   بلد الإقامة الحالي
                 </label>
                 <SearchableSelect
@@ -740,15 +740,15 @@ export default function RegistrationForm() {
                 />
                 {errors.country && touched.country && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.country}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.country}</span>
                   </div>
                 )}
               </div>
 
               {/* Current Stage */}
               <div className="space-y-2 mx-auto">
-                <label className="block text-sm md:text-base lg:text-base font-semibold text-gray-700">
+                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   مرحلتك الحالية؟
                 </label>
                 <Select
@@ -777,15 +777,15 @@ export default function RegistrationForm() {
                 </Select>
                 {errors.currentStage && touched.currentStage && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.currentStage}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.currentStage}</span>
                   </div>
                 )}
               </div>
 
               {/* How did you hear about us */}
               <div className="space-y-2 mx-auto">
-                <label className="block text-sm md:text-base lg:text-base font-semibold text-gray-700">
+                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   كيف عرفت عنا؟
                 </label>
                 <Select value={formData.aboutUs} onValueChange={(value) => handleSelectChange("aboutUs", value)}>
@@ -811,8 +811,8 @@ export default function RegistrationForm() {
                 </Select>
                 {errors.aboutUs && touched.aboutUs && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.aboutUs}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.aboutUs}</span>
                   </div>
                 )}
 
@@ -831,8 +831,8 @@ export default function RegistrationForm() {
                     />
                     {errors.aboutUsOther && touched.aboutUsOther && (
                       <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                        <AlertCircle className="h-4 w-4 ml-1" />
-                        <span>{errors.aboutUsOther}</span>
+                        <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                        <span className="text-xs">{errors.aboutUsOther}</span>
                       </div>
                     )}
                   </div>
@@ -843,7 +843,7 @@ export default function RegistrationForm() {
               <div className="space-y-2 mx-auto">
                 <label
                   htmlFor="aboutYouAndWhy"
-                  className="block text-sm md:text-base lg:text-base font-semibold text-gray-700"
+                  className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700"
                 >
                   نبذة عنك ولماذا ترغب بالانضمام؟
                 </label>
@@ -860,14 +860,14 @@ export default function RegistrationForm() {
                 />
                 {errors.aboutYouAndWhy && touched.aboutYouAndWhy && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.aboutYouAndWhy}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.aboutYouAndWhy}</span>
                   </div>
                 )}
               </div>
 
               {/* Checkboxes */}
-              <div className="space-y-4 pt-4 mx-auto">
+              <div className="space-y-4 pt-2 md:pt-4 mx-auto">
                 <div className="flex items-start">
                   <Checkbox
                     id="checkFirst"
@@ -878,15 +878,15 @@ export default function RegistrationForm() {
                     }`}
                   />
                   <div className="mr-2">
-                    <label htmlFor="checkFirst" className="text-sm text-gray-700">
+                    <label htmlFor="checkFirst" className="text-xs md:text-sm text-gray-700 leading-relaxed">
                       أوافق على التواصل معي عبر البريد الإلكتروني او الواتس اب
                     </label>
                   </div>
                 </div>
                 {errors.checkFirst && touched.checkFirst && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo mr-6">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.checkFirst}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.checkFirst}</span>
                   </div>
                 )}
 
@@ -896,17 +896,17 @@ export default function RegistrationForm() {
                     checked={formData.checkSecond}
                     onCheckedChange={(checked) => handleCheckboxChange("checkSecond", checked as boolean)}
                     className={`mt-1 ${
-                      errors.checkFirst && touched.checkFirst ? "border-red-500 data-[state=checked]:bg-red-500" : ""
+                      errors.checkSecond && touched.checkSecond ? "border-red-500 data-[state=checked]:bg-red-500" : ""
                     }`}
                   />
-                  <label htmlFor="checkSecond" className="mr-2 text-sm text-gray-700">
+                  <label htmlFor="checkSecond" className="mr-2 text-xs md:text-sm text-gray-700 leading-relaxed">
                     أنا أعلم عن السعر و مستعد للإستثمار في نفسي (1500) دولار أمريكي
                   </label>
                 </div>
                 {errors.checkSecond && touched.checkSecond && (
                   <div className="flex items-center mt-1 text-red-600 text-xs font-cairo mr-6">
-                    <AlertCircle className="h-4 w-4 ml-1" />
-                    <span>{errors.checkSecond}</span>
+                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                    <span className="text-xs">{errors.checkSecond}</span>
                   </div>
                 )}
               </div>
@@ -921,7 +921,8 @@ export default function RegistrationForm() {
                   sm:max-w-sm
                   md:max-w-md
                   lg:max-w-lg
-                  h-14
+                  h-12
+                  md:h-14
                   bg-[#FC8A0A] hover:bg-orange-600
                   text-white
                   transition-colors
@@ -929,6 +930,8 @@ export default function RegistrationForm() {
                   flex
                   items-center
                   justify-center
+                  text-sm
+                  md:text-base
                 "
               >
                 {isSubmitting ? (

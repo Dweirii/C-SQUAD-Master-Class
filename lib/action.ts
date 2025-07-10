@@ -18,7 +18,7 @@ const registerSchema = z.object({
   ], {
     errorMap: () => ({ message: "يرجى اختيار المرحلة الحالية" }),
   }),
-  aboutUs: z.enum(["دروب ليست", "السوشيال ميديا", "صديق", "أخرى"], {
+  aboutUs: z.enum(["السوشيال ميديا", "صديق", "أخرى"], {
     errorMap: () => ({ message: "يرجى اختيار مصدر معرفتك بنا" }),
   }),
   aboutUsOther: z.string().optional().refine((val) => {
