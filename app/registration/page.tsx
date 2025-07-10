@@ -370,6 +370,7 @@ export default function RegistrationForm() {
     phone: "",
     country: "",
     currentStage: "",
+    ageGroup: "",
     aboutUs: "",
     aboutUsOther: "",
     aboutYouAndWhy: "",
@@ -391,6 +392,7 @@ export default function RegistrationForm() {
     phone: "يرجى إدخال رقم هاتف صحيح",
     country: "يرجى اختيار بلد الإقامة",
     currentStage: "يرجى اختيار مرحلتك الحالية",
+    ageGroup: "يرجى اختيار الفئة العمرية",
     aboutUs: "هذا الحقل إجباري",
     aboutUsOther: "يرجى تحديد كيف عرفت عنا",
     aboutYouAndWhy: "هذا الحقل إجباري",
@@ -511,32 +513,28 @@ export default function RegistrationForm() {
       
       const result = await registerUser({
         fullName: formData.fullName,
-        gender: formData.gender as "ذكر" | "أنثى",
+        gender: formData.gender as "ذكر" | "أنثى" | "أفضل عدم الإجابة",
         email: formData.email,
         phone: `${formData.countryCode}${formData.phone}`,
         country: formData.country,
-        currentStage: formData.currentStage as
-  | "أحاول أبدأ مشروع من شغفي"
-  | "أعمل على مشروع حاليًا وأواجه تحديات"
-  | "موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي"
-  | "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
-
+        currentStage: formData.currentStage as "أحاول أبدأ مشروع من شغفي" |
+          "أعمل على مشروع حاليًا وأواجه تحديات" |
+          "موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي" |
+          "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
+        ageGroup: formData.ageGroup as "بين 21–27 سنة (فئة جيل Z)" |
+          "بين 28–42 سنة (فئة جيل Y)" |
+          "بين 43–59 سنة (فئة جيل X)",
         aboutUsOther: formData.aboutUsOther,
         aboutYouAndWhy: formData.aboutYouAndWhy,
         checkFirst: formData.checkFirst,
         checkSecond: formData.checkSecond,
+        aboutUs: formData.aboutUs as "صديق" | "مجتمع" | "السوشيال ميديا" | "أخرى"
       })
 
       if (result.success) {
-        toast.success("تم التسجيل بنجاح!", {
-          description: "سيتم توجيهك إلى صفحة الحجز",
-          className: "font-cairo",
-        })
-        
-        // إضافة تأخير قصير قبل إعادة التوجيه
-        setTimeout(() => {
-          router.push("/business-alchemy-appointment")
-        }, 1500)
+        // إعادة التوجيه الفوري
+        router.push("/business-alchemy-appointment")
+        console.log("Registration successful, redirecting immediately...")
       } else {
         if (result.errors) {
           const serverErrors: Record<string, string> = {}
@@ -574,6 +572,7 @@ export default function RegistrationForm() {
       phone: "",
       country: "",
       currentStage: "",
+      ageGroup: "",
       aboutUs: "",
       aboutUsOther: "",
       aboutYouAndWhy: "",
@@ -687,28 +686,50 @@ export default function RegistrationForm() {
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="space-y-2 mx-auto">
-                <label htmlFor="email" className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
-                  البريد الإلكتروني
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="يُفضل إضافة البريد الإلكتروني الشخصي"
-                  className={`w-full bg-white rounded-none h-10 md:h-14 lg:h-16 text-xs md:text-base lg:text-base ${
-                    errors.email && touched.email ? "border-red-500 focus-visible:ring-red-500" : ""
-                  }`}
-                />
-                {errors.email && touched.email && (
-                  <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
-                    <span className="text-xs">{errors.email}</span>
-                  </div>
-                )}
+              {/* Email and Country */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
+                    البريد الإلكتروني
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="يُفضل إضافة البريد الإلكتروني الشخصي"
+                    className={`w-full bg-white rounded-none h-10 md:h-14 lg:h-16 text-xs md:text-base lg:text-base ${
+                      errors.email && touched.email ? "border-red-500 focus-visible:ring-red-500" : ""
+                    }`}
+                  />
+                  {errors.email && touched.email && (
+                    <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.email}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
+                    بلد الإقامة الحالي
+                  </label>
+                  <SearchableSelect
+                    options={countries}
+                    value={formData.country}
+                    onChange={(value) => handleSelectChange("country", value)}
+                    placeholder="اختر بلد الإقامة"
+                    searchPlaceholder="ابحث عن البلد..."
+                    error={errors.country && touched.country ? true : false}
+                  />
+                  {errors.country && touched.country && (
+                    <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.country}</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Phone with Country Code */}
@@ -716,8 +737,8 @@ export default function RegistrationForm() {
                 <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                   رقم الهاتف
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-                  <div className="md:col-span-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+                  <div className="space-y-2">
                     <Select
                       value={formData.countryCode}
                       onValueChange={(value) => handleSelectChange("countryCode", value)}
@@ -745,7 +766,7 @@ export default function RegistrationForm() {
                       </div>
                     )}
                   </div>
-                  <div className="md:col-span-2">
+                  <div className="space-y-2">
                     <Input
                       id="phone"
                       name="phone"
@@ -765,31 +786,11 @@ export default function RegistrationForm() {
                     )}
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 text-center md:text-right">ليتم التواصل معك عبر الواتساب</p>
               </div>
 
-              {/* Country with Modern Searchable Dropdown */}
-              <div className="space-y-2 mx-auto">
-                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
-                  بلد الإقامة الحالي
-                </label>
-                <SearchableSelect
-                  options={countries}
-                  value={formData.country}
-                  onChange={(value) => handleSelectChange("country", value)}
-                  placeholder="اختر بلد الإقامة"
-                  searchPlaceholder="ابحث عن البلد..."
-                />
-                {errors.country && touched.country && (
-                  <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
-                    <span className="text-xs">{errors.country}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Current Stage */}
-                <div className="space-y-2 mx-auto">
+              {/* Current Stage and Age Group */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
                   <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
                     أين أنت في عالم البِزنس الآن؟
                   </label>
@@ -805,39 +806,25 @@ export default function RegistrationForm() {
                       }`}
                       dir="rtl"
                     >
-                      <SelectValue placeholder="أين أنت في عالم البِزنس الآن؟ " />
+                      <SelectValue placeholder="أين أنت في عالم البِزنس الآن؟" />
                     </SelectTrigger>
+                    <SelectContent dir="rtl" className="text-right pr-4 pl-0">
+                  {[
+                    "أحاول أبدأ مشروع من شغفي",
+                    "أعمل على مشروع حاليًا وأواجه تحديات",
+                    "موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي",
+                    "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
+                  ].map((value) => (
+                    <SelectItem
+                      key={value}
+                      value={value}
+                      className="text-right pr-4 pl-0"
+                    >
+                      {value}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
 
-                    <SelectContent dir="rtl" className="text-right">
-                      <SelectItem
-                        value="أحاول أبدأ مشروع من شغفي"
-                        className="text-right justify-end"
-                        dir="rtl"
-                      >
-                        أحاول أبدأ مشروع من شغفي
-                      </SelectItem>
-                      <SelectItem
-                        value="أعمل على مشروع حاليًا وأواجه تحديات"
-                        className="text-right justify-end"
-                        dir="rtl"
-                      >
-                        أعمل على مشروع حاليًا وأواجه تحديات
-                      </SelectItem>
-                      <SelectItem
-                        value="موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي"
-                        className="text-right justify-end"
-                        dir="rtl"
-                      >
-                        موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي
-                      </SelectItem>
-                      <SelectItem
-                        value="طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل"
-                        className="text-right justify-end"
-                        dir="rtl"
-                      >
-                        طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل
-                      </SelectItem>
-                    </SelectContent>
                   </Select>
 
                   {errors.currentStage && touched.currentStage && (
@@ -848,6 +835,45 @@ export default function RegistrationForm() {
                   )}
                 </div>
 
+                <div className="space-y-2">
+                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
+                    الفئة العمرية:
+                  </label>
+                  <Select
+                    value={formData.ageGroup || ""}
+                    onValueChange={(value) => handleSelectChange("ageGroup", value)}
+                  >
+                    <SelectTrigger
+                      className={`w-full bg-white rounded-none h-10 md:h-14 lg:h-16 text-xs md:text-base lg:text-base ${
+                        errors.ageGroup && touched.ageGroup
+                          ? "border-red-500 focus-visible:ring-red-500"
+                          : ""
+                      }`}
+                      dir="rtl"
+                    >
+                      <SelectValue placeholder="اختر الفئة العمرية" />
+                    </SelectTrigger>
+                    <SelectContent dir="rtl" className="text-right pr-4 pl-0">
+                      <SelectItem value="بين 21–27 سنة (فئة جيل Z)" className="text-right pr-4 pl-0">
+                        بين 21–27 سنة (فئة جيل Z)
+                      </SelectItem>
+                      <SelectItem value="بين 28–42 سنة (فئة جيل Y)" className="text-right pr-4 pl-0">
+                        بين 28–42 سنة (فئة جيل Y)
+                      </SelectItem>
+                      <SelectItem value="بين 43–59 سنة (فئة جيل X)" className="text-right pr-4 pl-0">
+                        بين 43–59 سنة (فئة جيل X)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {errors.ageGroup && touched.ageGroup && (
+                    <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.ageGroup}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               {/* How did you hear about us */}
               <div className="space-y-2 mx-auto">
@@ -864,13 +890,13 @@ export default function RegistrationForm() {
                     <SelectValue placeholder="نرجوا التحديد حتى نتمكن من تحسين آليه التسويق لدينا" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem className="text-right" dir="rtl" value="السوشيال ميديا">
+                    <SelectItem className="text-right" dir="rtl" value="صديق">
                       من خلال صديق 
                     </SelectItem>
-                    <SelectItem className="text-right" dir="rtl" value="صديق">
+                    <SelectItem className="text-right" dir="rtl" value="مجتمع">
                       من خلال مُجتمع أنتمي له
                     </SelectItem>
-                    <SelectItem className="text-right" dir="rtl" value="صديق">
+                    <SelectItem className="text-right" dir="rtl" value="السوشيال ميديا">
                       من خلال مواقِع التّواصل الاجتماعي 
                     </SelectItem>
                     <SelectItem className="text-right" dir="rtl" value="أخرى">

@@ -45,9 +45,9 @@ export default function AppointmentPage() {
             </header>
 
       <main className="flex flex-col min-h-[70vh] bg-gray-50 py-10 px-4 sm:px-6">
-        <div className="max-w-2xl mx-auto bg-white rounded-none shadow-lg p-6 md:p-10 mt-8 mb-8 flex flex-col items-center space-y-6">
-          <h1 className="font-semibold text-2xl md:text-3xl text-center text-[#14697A]">
-            الرّجاء إدخال معلوماتك واختيار الوقت المُناسب ليتم تأكيد حجز مكالمتك الاستشاريّة
+        <div className="max-w-7xl mx-auto w-full">
+          <h1 className="text-lg text-gray-700 text-center mb-4">
+            الرجاء إدخال معلوماتك واختيار الوقت المُناسب لك ليتم تأكيد حجز مكالمتك الاستشارية
           </h1>
 
           {/* Calendly inline widget */}
@@ -63,14 +63,17 @@ export default function AppointmentPage() {
             strategy="lazyOnload"
           />
 
-          <a
-            href="https://wa.me/9647517621752"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#FC8A0A] hover:bg-orange-600 text-white rounded-none py-3 px-6 text-center font-semibold text-lg shadow-md w-full transition-colors"
-          >
-            إذا لم تجد الوقت المناسب أو واجهتك مشكلة بإمكانك التواصل معنا عبر الواتساب
-          </a>
+          <p className="text-lg text-gray-700 text-center mt-4">
+            إذا لم تجد الوقت المناسب، أو واجهتك مشكلة، بإمكانك التواصل معنا عبر{" "}
+            <a
+              href="https://wa.me/962790719021"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black font-semibold underline"
+            >
+              الواتساب
+            </a>
+          </p>
         </div>
       </main>
 

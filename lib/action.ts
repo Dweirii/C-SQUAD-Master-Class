@@ -5,21 +5,28 @@ import { prisma } from "@/lib/prisma"
 
 const registerSchema = z.object({
   fullName: z.string().min(3, "يرجى إدخال الاسم الكامل"),
-  gender: z.enum(["ذكر", "أنثى"], {
+  gender: z.enum(["ذكر", "أنثى", "أفضل عدم الإجابة"], {
     errorMap: () => ({ message: "يرجى اختيار الجنس" }),
   }),
   email: z.string().email("يرجى إدخال بريد إلكتروني صحيح"),
   phone: z.string().min(5, "يرجى إدخال رقم الهاتف"),
   country: z.string().min(2, "يرجى إدخال اسم الدولة"),
   currentStage: z.enum([
- "أحاول أبدأ مشروع من شغفي",
-  "أعمل على مشروع حاليًا وأواجه تحديات",
-  "مُوظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي",
-  "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
-], {
+    "أحاول أبدأ مشروع من شغفي",
+    "أعمل على مشروع حاليًا وأواجه تحديات",
+    "موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي",
+    "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
+  ], {
     errorMap: () => ({ message: "يرجى اختيار المرحلة الحالية" }),
   }),
-  aboutUs: z.enum(["السوشيال ميديا", "صديق", "أخرى"], {
+  ageGroup: z.enum([
+    "بين 21–27 سنة (فئة جيل Z)",
+    "بين 28–42 سنة (فئة جيل Y)",
+    "بين 43–59 سنة (فئة جيل X)",
+  ], {
+    errorMap: () => ({ message: "يرجى اختيار الفئة العمرية" }),
+  }),
+  aboutUs: z.enum(["صديق", "مجتمع", "السوشيال ميديا", "أخرى"], {
     errorMap: () => ({ message: "يرجى اختيار مصدر معرفتك بنا" }),
   }),
   aboutUsOther: z.string().optional(),
@@ -27,7 +34,7 @@ const registerSchema = z.object({
   checkFirst: z.boolean().refine((v) => v === true, {
     message: "يجب الموافقة على الشروط والأحكام",
   }),
-  checkSecond: z.boolean().optional(),
+  checkSecond: z.boolean().default(false),
 })
 
 export type RegisterFormData = z.infer<typeof registerSchema>
@@ -70,12 +77,29 @@ export async function registerUser(formData: RegisterFormData) {
       phone,
       country,
       currentStage,
+      ageGroup,
       aboutUs,
       aboutUsOther,
       aboutYouAndWhy,
       checkFirst,
       checkSecond,
     } = result.data
+
+    // إضافة تسجيل للتأكد من استلام البيانات
+    console.log("Received form data:", {
+      fullName,
+      gender,
+      email,
+      phone,
+      country,
+      currentStage,
+      ageGroup,
+      aboutUs,
+      aboutUsOther,
+      aboutYouAndWhy,
+      checkFirst,
+      checkSecond,
+    })
 
     const registration = await prisma.businessRegistration.create({
       data: {
@@ -85,12 +109,21 @@ export async function registerUser(formData: RegisterFormData) {
         phone,
         country,
         currentStage,
+        ageGroup,
         aboutUs,
         aboutUsOther: aboutUs === "أخرى" ? aboutUsOther : null,
         aboutYouAndWhy,
         checkFirst,
         checkSecond: checkSecond ?? false,
       },
+    })
+
+    // إضافة تسجيل للتأكد من حفظ البيانات
+    console.log("Successfully saved registration:", {
+      id: registration.id,
+      currentStage: registration.currentStage,
+      ageGroup: registration.ageGroup,
+      createdAt: registration.createdAt,
     })
 
     return {

@@ -54,6 +54,7 @@ model businessRegistration {
   phone            String
   country          String
   currentStage     String
+  ageGroup         String
   aboutUs          String
   aboutUsOther     String?
   aboutYouAndWhy   String
