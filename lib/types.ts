@@ -59,3 +59,13 @@ export interface ServerActionResult<T> {
 // Only import DiscountCode from Prisma (no conflict)
 import type { DiscountCode } from "@prisma/client"
 export type { DiscountCode }
+
+export const STAGES = [
+  "أحاول أبدأ مشروع من شغفي",
+  "أعمل على مشروع حاليًا وأواجه تحديات",
+  "مُوظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي",
+  "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
+] as const
+
+export type Stage = typeof STAGES[number]
+

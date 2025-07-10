@@ -18,7 +18,7 @@ const testimonials = [
   {
     id: 2,
     name: "Samah Awad",
-    country: "الإمارات",
+    country: "UAE",
     flag: "https://flagcdn.com/w40/ae.png",
     testimonial:
       "تعجز كلماتي عن وصف البرنامج بتفاصيله... شعرت بنداء روحي لتواجدي مع كوتش آلاء، وكان هذا البرنامج هو الداعم والمرشد لي في وقت التحديات. كنت أنتظر الجلسات بفارغ الصبر لما فيها من رسائل وفتوحات، وممتنة لعائلة روحية أنارت دربي.",
@@ -177,22 +177,23 @@ export default function TestimonialsArabicCarousel() {
           </h2>
             <div className="max-w-6xl mx-auto px-6">
               {/* Hero Content */}
-              <section className="py-10 lg:py-16">
+              <section className="py-10 lg:py-10">
                 <div className="flex flex-col lg:flex-row items-center justify-center text-center lg:text-right gap-10 max-w-6xl mx-auto px-4">
                   {/* Text Content */}
-                  <div className="lg:w-1/2 space-y-4">
-                    <h3 className="text-xl sm:text-lg font-bold text-[#545454] leading-relaxed">
-                      لا نُخبرك فقط بما ستحصل عليه… <br/>
+                  <div className="space-y-2">
+                    <h3 className="text-xl sm:text-lg font-bold text-[#545454]">
+                      لا نُخبرك فقط بما ستحصل عليه…
                       بل نترُك المُشتركين يخبرونك كيف غيّرتهم التجربة
                     </h3>
                   </div>
 
-                  {/* Video Section */}
+                  {/* Video Section 
                   <div className="lg:w-1/2 flex justify-center">
                     <div className="w-full max-w-[400px] rounded-none overflow-hidden">
                       <VideoHero />
                     </div>
                   </div>
+                  */}
                 </div>
               </section>
             </div>

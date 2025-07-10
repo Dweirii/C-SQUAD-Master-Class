@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "../globals.css";
-import { Toaster } from "sonner";
 import Script from "next/script";
 
 const cairo = Cairo({

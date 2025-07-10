@@ -375,7 +375,7 @@ export default function RegistrationForm() {
     aboutYouAndWhy: "",
     checkFirst: false,
     checkSecond: false,
-  })
+  });
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [touched, setTouched] = useState<Record<string, boolean>>({})
@@ -516,10 +516,11 @@ export default function RegistrationForm() {
         phone: `${formData.countryCode}${formData.phone}`,
         country: formData.country,
         currentStage: formData.currentStage as
-          | "أحاول أبدأ مشروع من شغفي"
-          | "أعمل على مشروع حاليًا وأواجه تحديات"
-          | "موظف أو طالب وأسعى لتطوير مهاراتي المهنية",
-        aboutUs: formData.aboutUs as "السوشيال ميديا" | "صديق" | "أخرى",
+  | "أحاول أبدأ مشروع من شغفي"
+  | "أعمل على مشروع حاليًا وأواجه تحديات"
+  | "موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي"
+  | "طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل",
+
         aboutUsOther: formData.aboutUsOther,
         aboutYouAndWhy: formData.aboutYouAndWhy,
         checkFirst: formData.checkFirst,
@@ -585,43 +586,48 @@ export default function RegistrationForm() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white" dir="rtl">
-      {/* Header Bar */}
       <header className="bg-[#14697A] text-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-6">
-          {/* Desktop Header */}
-          <div className="hidden lg:flex items-center h-28">
-            {/* Center/Left section in RTL (Banner Text) */}
-            <div className="flex-grow flex justify-start items-start px-6">
-              <p className="text-base font-bold text-right">
-                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
-              </p>
-            </div>
-            {/* Right section in RTL (EN button & Logo) */}
-            <Image src="/c-squad-logo.png" alt="C-SQUAD LOGO" width={110} height={30} className="object-contain" />
-          </div>
-
-          {/* Mobile Header */}
-          <div className="lg:hidden">
-            <div className="flex items-center justify-center pt-8 pb-4 h-14">
-              <Image src="/c-squad-logo.png" alt="شعار سي-سكواد" width={100} height={28} className="object-contain" />
-            </div>
-            <div className="border-t border-white/20 mt-1 py-4">
-              <p className="text-center text-xs font-bold sm:text-sm">
-                الماستر كلاس الأكثر ابتكارًا عبر منصة زووم | يومي 11 و 12 يوليو 2025 |
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
+              <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="hidden lg:flex items-center">
+                  <div className="flex-grow flex justify-start items-start px-6">
+                    <p className="text-base font-bold text-right pb-1">
+                      البرنامج العَملي الأول من نوعه لإطلاق و تطوير المشاريع الإبتكارية
+                    </p>
+                  </div>
+                  <Image
+                    src="/c-squad-logo.png"
+                    alt="C-SQUAD LOGO"
+                    width={110}
+                    height={30}
+                    className="object-contain lg:ml-7"
+                  />
+                </div>
+      
+                <div className="lg:hidden">
+                  <div className="flex items-center justify-center pt-8 pb-4 h-14">
+                    <Image
+                      src="/c-squad-logo.png"
+                      alt="شعار سي-سكواد"
+                      width={100}
+                      height={28}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="border-t border-white/20 mt-1 py-4">
+                    <p className="text-center text-xs font-bold sm:text-sm">
+                      البرنامج العَملي الأول من نوعه لإطلاق و تطوير المشاريع الإبتكارية
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </header>
       <main className="flex-1 bg-white p-4 md:p-8 py-8 lg:py-28">
         <div className="max-w-6xl px-4 md:px-14 py-8 md:py-14 mx-auto bg-gray-50 rounded-none shadow-sm">
-          <h2 className="text-lg md:text-2xl lg:text-3xl font-cairo font-semibold text-center mb-4 md:mb-6 text-gray-800">
-            استَثمِر في نفسك الآن
+          <h2 className="text-lg md:text-2xl lg:text-2xl font-cairo font-semibold text-center mb-4 md:mb-6 text-gray-800">
+             شكرًا على اهتمامك بالانضمام إلى برنامج "خِيمياء البزنس - Business Alchemy"
           </h2>
           <p className="text-xs md:text-sm lg:text-base font-semibold text-gray-700 mb-6 md:mb-8 text-center px-2">
-            بادر بالإنضمام إلى هذه الرحلة الحافلة بالتطوير واحصل على مهارات ومعرفة وثقة تمكنك من أن تصبح ريادياً ناجحاً
-            ومبدعاً
+            هذه المكالمة مُخصّصة لمساعدتك على فهم تَحدياتك، واكتشاف كيف يمكن للبرنامج دعمك في تصميم بزنس يُشبهك ويتقدّم بثقة
           </p>
             <form onSubmit={handleSubmit} className="space-y-6 pt-8 md:pt-14">
               {/* Full Name and Gender */}
@@ -650,7 +656,7 @@ export default function RegistrationForm() {
                 </div>
 
                 <div className="space-y-2" dir="rtl">
-                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">الجنس</label>
+                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">الجِندر</label>
                   <Select value={formData.gender} onValueChange={(value) => handleSelectChange("gender", value)}>
                     <SelectTrigger
                       dir="rtl"
@@ -658,7 +664,7 @@ export default function RegistrationForm() {
                         errors.gender && touched.gender ? "border-red-500 focus-visible:ring-red-500" : ""
                       }`}
                     >
-                      <SelectValue placeholder="اختر الجنس" />
+                      <SelectValue placeholder="اختر الجِندر" />
                     </SelectTrigger>
                     <SelectContent dir="rtl" className="text-right">
                       <SelectItem value="ذكر" className="text-right">
@@ -666,6 +672,9 @@ export default function RegistrationForm() {
                       </SelectItem>
                       <SelectItem value="أنثى" className="text-right">
                         أنثى
+                      </SelectItem>
+                      <SelectItem value="أفضل عدم الإجابة" className="text-right">
+                        لا خيار
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -780,41 +789,65 @@ export default function RegistrationForm() {
               </div>
 
               {/* Current Stage */}
-              <div className="space-y-2 mx-auto">
-                <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
-                  مرحلتك الحالية؟
-                </label>
-                <Select
-                  value={formData.currentStage}
-                  onValueChange={(value) => handleSelectChange("currentStage", value)}
-                >
-                  <SelectTrigger
-                    className={`w-full bg-white rounded-none h-10 md:h-14 lg:h-16 text-xs md:text-base lg:text-base ${
-                      errors.currentStage && touched.currentStage ? "border-red-500 focus-visible:ring-red-500" : ""
-                    }`}
-                    dir="rtl"
+                <div className="space-y-2 mx-auto">
+                  <label className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700">
+                    أين أنت في عالم البِزنس الآن؟
+                  </label>
+                  <Select
+                    value={formData.currentStage}
+                    onValueChange={(value) => handleSelectChange("currentStage", value)}
                   >
-                    <SelectValue placeholder="اختر مرحلتك الحالية" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem dir="rtl" className="text-right" value="أحاول أبدأ مشروع من شغفي">
-                      أحاول أبدأ مشروع من شغفي
-                    </SelectItem>
-                    <SelectItem dir="rtl" className="text-right" value="أعمل على مشروع حاليًا وأواجه تحديات">
-                      أعمل على مشروع حاليًا وأواجه تحديات
-                    </SelectItem>
-                    <SelectItem dir="rtl" className="text-right" value="موظف أو طالب وأسعى لتطوير مهاراتي المهنية">
-                      موظف أو طالب وأسعى لتطوير مهاراتي المهنية
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.currentStage && touched.currentStage && (
-                  <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
-                    <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
-                    <span className="text-xs">{errors.currentStage}</span>
-                  </div>
-                )}
-              </div>
+                    <SelectTrigger
+                      className={`w-full bg-white rounded-none h-10 md:h-14 lg:h-16 text-xs md:text-base lg:text-base ${
+                        errors.currentStage && touched.currentStage
+                          ? "border-red-500 focus-visible:ring-red-500"
+                          : ""
+                      }`}
+                      dir="rtl"
+                    >
+                      <SelectValue placeholder="أين أنت في عالم البِزنس الآن؟ " />
+                    </SelectTrigger>
+
+                    <SelectContent dir="rtl" className="text-right">
+                      <SelectItem
+                        value="أحاول أبدأ مشروع من شغفي"
+                        className="text-right justify-end"
+                        dir="rtl"
+                      >
+                        أحاول أبدأ مشروع من شغفي
+                      </SelectItem>
+                      <SelectItem
+                        value="أعمل على مشروع حاليًا وأواجه تحديات"
+                        className="text-right justify-end"
+                        dir="rtl"
+                      >
+                        أعمل على مشروع حاليًا وأواجه تحديات
+                      </SelectItem>
+                      <SelectItem
+                        value="موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي"
+                        className="text-right justify-end"
+                        dir="rtl"
+                      >
+                        موظف وأسعى لتطوير مهاراتي العملية أو خلق مصدر دخل إضافي
+                      </SelectItem>
+                      <SelectItem
+                        value="طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل"
+                        className="text-right justify-end"
+                        dir="rtl"
+                      >
+                        طالب وأسعى لزيادة تميزي ومهاراتي لمواكبة سوق العمل
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {errors.currentStage && touched.currentStage && (
+                    <div className="flex items-center mt-1 text-red-600 text-xs font-cairo">
+                      <AlertCircle className="h-3 w-3 md:h-4 md:w-4 ml-1" />
+                      <span className="text-xs">{errors.currentStage}</span>
+                    </div>
+                  )}
+                </div>
+
 
               {/* How did you hear about us */}
               <div className="space-y-2 mx-auto">
@@ -832,10 +865,13 @@ export default function RegistrationForm() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem className="text-right" dir="rtl" value="السوشيال ميديا">
-                      السوشيال ميديا
+                      من خلال صديق 
                     </SelectItem>
                     <SelectItem className="text-right" dir="rtl" value="صديق">
-                      صديق
+                      من خلال مُجتمع أنتمي له
+                    </SelectItem>
+                    <SelectItem className="text-right" dir="rtl" value="صديق">
+                      من خلال مواقِع التّواصل الاجتماعي 
                     </SelectItem>
                     <SelectItem className="text-right" dir="rtl" value="أخرى">
                       أخرى
@@ -878,7 +914,7 @@ export default function RegistrationForm() {
                   htmlFor="aboutYouAndWhy"
                   className="block text-xs md:text-sm lg:text-base font-semibold text-gray-700"
                 >
-                  نبذة عنك ولماذا ترغب بالانضمام؟
+                  ما الذي تبحث عنه حاليًا في رحلتك في عالم البِزنس؟    
                 </label>
                 <Textarea
                   id="aboutYouAndWhy"
@@ -886,7 +922,7 @@ export default function RegistrationForm() {
                   value={formData.aboutYouAndWhy}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="حدثنا عنك ولماذا ترغب بالمشاركة في البرنامج؟"
+                  placeholder="ما الذي تبحث عنه حاليًا في رحلتك في عالم البِزنس؟"
                   className={`w-full bg-white rounded-none min-h-[120px] text-xs md:text-base lg:text-base resize-none ${
                     errors.aboutYouAndWhy && touched.aboutYouAndWhy ? "border-red-500 focus-visible:ring-red-500" : ""
                   }`}

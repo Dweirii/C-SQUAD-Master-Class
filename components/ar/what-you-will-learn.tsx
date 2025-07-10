@@ -32,7 +32,7 @@ export default function MasterclassBenefitsSection() {
               <p className="text-gray-600 text-base text-center leading-relaxed">
                 ستخرُج بطريقة جديدة ترى فيها البِزنس 
                 <br />
-                  كمساحة تعبير قيّمة، وتأثير—ليس فقط بيع
+                  كمساحة تعبير قيّمة، وتأثير ليس فقط بيع
                 <br />
                   وخطط تقليديّة.
               </p>
@@ -143,7 +143,7 @@ export default function MasterclassBenefitsSection() {
               <p className="text-gray-600 text-base  text-center">
                 ستُغادر عقليّة “نُقطة البداية” وتنتقِل إلى
                 <br />
-                عقليّة “نُقطة الانطلاق” — لأنك تملك الآن    
+                عقليّة “نُقطة الانطلاق” لأنك تملك الآن    
                 <br />
                 مشروعِك برؤية حديثة.
               </p>

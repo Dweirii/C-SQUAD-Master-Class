@@ -11,8 +11,8 @@ export default function ArabicHeroSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="hidden lg:flex items-center">
             <div className="flex-grow flex justify-start items-start px-6">
-              <p className="text-base font-bold text-right">
-                البرنامج التَطبيقي الأول من نوعه لإطلاق و تطوير المشاريع الإبتكارية
+              <p className="text-base font-bold text-right pb-1">
+                البرنامج العَملي الأول من نوعه لإطلاق و تطوير المشاريع الإبتكارية
               </p>
             </div>
             <Image
@@ -56,7 +56,7 @@ export default function ArabicHeroSection() {
             </h2>
 
             <p className="text-[#545454] text-base pb-0 lg:text-xl sm:pb-8 text-center sm:text-lg font-normal leading-loose pr-5">
-              البرنامج العَملي الأول من نوعه لتحويل شغفك أو مشروعك الحالي إلى بزنس حقيقي، مُبدع، ومُتكامل&nbsp;بخطة واضحة، وأسس نجاح مدروسة.
+              البرنامِج العَملي الأول من نوعِه لتحويل شَغفك أو مشروعِك الحالي إلى بِزنس حقيقي، مُبدع، ومُتكامل  بخطّة واضِحة، وأسُس نجاح مدروسَة
             </p>
           </div>
 
@@ -79,13 +79,13 @@ export default function ArabicHeroSection() {
           </div>
           <div className="space-y-2">
             <Image src="/myz33.svg" alt="جلسات جماعية" width={80} height={80} className="mx-auto" />
-            <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-1">
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-0">
               جلسات تدريب جماعية<br />(مجتمع إبداعي)
             </p>
           </div>
           <div className="space-y-2">
             <Image src="/myz2.svg" alt="جلسة إرشادية" width={80} height={80} className="mx-auto" />
-            <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-1">
+            <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-0">
               جلسة إرشادية فردية<br />(استشارة في الخطة)
             </p>
           </div>

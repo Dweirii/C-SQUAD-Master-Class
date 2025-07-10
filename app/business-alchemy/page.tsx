@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "The Innovation Code - C-SQUAD",
+  title: "Business AlChemy - C-SQUAD",
   description:
     "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
   openGraph: {
-    title: "The Innovation Code - C-SQUAD",
+    title: "Business AlChemy - C-SQUAD",
     description:
       "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
-    url: "https://programs.c-squad.org/the-innovation-code",
+    url: "https://programs.c-squad.org/business-alchemy",
     siteName: "C-SQUAD",
     images: [
       {
@@ -21,7 +21,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Innovation Code - C-SQUAD",
+    title: "Business Alchemy - C-SQUAD",
     description:
       "في يومين فقط، ستبني أساسًا قويًا لمشروعك بخطوات واضحة، وسِيستم عمليّ يفتح لكَ أبواب السوق بثبات ويُعبّر عنك.",
     images: ["https://programs.c-squad.org/meta.png"],
@@ -44,8 +44,8 @@ export default function Page() {
       <ArabicHeroSection />
       <MasterclassAudienceArabic/>
       <ZoomBanner>
-        قد تملك الشغف والرؤية، لكن بين الخوف، الغموض، وثِقل النمط التقليدي… تجد نفسك عالقًا.<br/>
-        وهنا تبدأ خيمياء الأعمال: مزيج من الحكمة والتفكير التصميمي، لتصمّم مشروعًا يُشبهك ويفتح لك طريق النجاح.
+        قد تملُك الشّغف والرؤية، لكن بين الخوف، الغُموض، وثِقل النمط التقليدي… تَجد نفسك عالقًا. <br/>
+        وهنا تبدأ خيمياء الأعمال: مزيج من الحِكمة والتّفكير التّصميمي، لتصمّم مشروعًا يُشبهك ويفتح لك طريق النّجاح.
       </ZoomBanner>
       <MasterclassDescriptionArabic/>
       <CoachIntroArabic/>

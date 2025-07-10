@@ -48,10 +48,10 @@ export default function CoachIntroArabic() {
             {/* Header - desktop only */}
             <div className="hidden lg:block mb-8">
               <div className="space-y-2 mb-6">
-                <h2 className="text-2xl font-bold text-[#545454]">
+                <h2 className="text-lg font-bold text-[#545454]">
                   خبيرة في التَفكير التَصميمي و التحوّل الرَقمي
                 </h2>
-                <h2 className="text-2xl font-bold text-[#545454]">
+                <h2 className="text-lg font-bold text-[#545454]">
                   (إبداع من السيليكون فالي إلى العالم العربي)
                 </h2>
               </div>

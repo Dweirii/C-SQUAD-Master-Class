@@ -1,6 +1,5 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { CalendarDays } from "lucide-react"
 
@@ -15,7 +14,7 @@ export default function Component() {
           </h1>
           <p className="text-white text-lg md:text-xl leading-relaxed max-w-5xl mx-auto">
             في هذا البرنامِج المكثّف والمصمَّم بأسلوب يجمَع بين العُمق والوضوح، ستخوض تجربة تدريبيّة تُعيد تعريف علاقتك مع البِزنس.
-            سواء كنت تَبدأ من الصّفر، أو تُريد إعادة هيكلة مشروعِك القائِم، <span className="font-bold">Business Alchemy</span> 
+            سواء كنت تَبدأ من الصّفر، أو تُريد إعادة هيكلة مشروعِك القائِم، <span className="font-bold"> Business Alchemy </span> 
             سيمنحُك الأدوات، الرّؤية، والوضوح الذي تحتاجُه للانطلاق بثقة.
           </p>
         </div>
@@ -44,7 +43,7 @@ export default function Component() {
 
             <div className="flex items-center gap-2 text-white font-bold text-lg">
               <CalendarDays className="w-6 h-6" />
-              <span>٩-٣ من شهر آب من عام ٢٠٢٥.</span>
+              <span>7-3 من شهر آب من عام ٢٠٢٥.</span>
             </div>
 
             <div>
@@ -57,7 +56,7 @@ export default function Component() {
             <div>
               <p className="text-lg font-bold">الخطوة الأولى؟ جلسة استشاريّة مجانيّة!</p>
               <p className="text-base mt-1 text-white/90">
-                قبل التّسجيل، احجز مكالمة مجانيّة مع كوتش آلاء لتكتشِف إذا كان هذا البرنامِج مناسبًا لك،
+                قبل التّسجيل، احجز مكالمة مجانيّة مع كوتش آلاء لتكتشِف إذا كان هذا <br/>البرنامِج مناسبًا لك،
                 ولمساعدتك في تقييم المرحلة التي تمرّ بها في مشروعِك.
               </p>
             </div>

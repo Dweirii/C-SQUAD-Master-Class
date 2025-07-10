@@ -6,7 +6,7 @@ const items = [
   {
     title: "مَن أنت ولماذا تُريد هذا البزنس؟",
     description:
-      "نبدأ من الجذر: تَكشِف خلال هذه المرحلة شَغفك الحقيقي، قِيَمك الشَّخصية، والدوافع العَميقة خلف مشروعك، لتبني بزنس نابع من داخلك وليس فقط من فَرضيات السوق.",
+      "نبدأ من الجذر: تَكتشِف خلال هذه المرحلة شَغفك الحقيقي، قِيَمك الشَّخصية، والدوافع العَميقة خلف مشروعك، لتبني بزنس نابع من داخلك وليس فقط من فَرضيات السوق.",
   },
   {
     title: "مَن هو عَميلك الحقيقي؟",
@@ -34,7 +34,7 @@ export default function MasterclassDescriptionArabic() {
   return (
     <section className="bg-white font-cairo pb-10 lg:pb-14" dir="rtl">
       <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12 mt-12 lg:mt-0 lg:py-2 lg:pt-24">
-        <div className="max-w-4xl mx-auto space-y-16">
+        <div className="max-w-5xl mx-auto space-y-16">
 
           {/* Title */}
           <div className="text-center">
@@ -60,7 +60,7 @@ export default function MasterclassDescriptionArabic() {
           {/* Journey List */}
           <div className="space-y-12 px-2">
             <h2 className="text-left text-gray-600 text-xl lg:text-2xl font-bold">
-              خلال الجلسات التفاعليّة للبرنامج، ستخوض رحلة ممنهجة تبدأ من الصفر:
+              خِلال الجّلسات التفاعليّة للبرنامِج، ستخوض رحلة مٌمنهجة تبدأ من الصّفر:
             </h2>
 
            <ul className="space-y-6 list-disc pr-6 marker:text-[#FC8A0A] text-left">
