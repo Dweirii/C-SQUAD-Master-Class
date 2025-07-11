@@ -36,7 +36,7 @@ export default function MasterclassDescriptionArabic() {
       <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12 mt-12 lg:mt-0 lg:py-2 lg:pt-24">
         <div className="max-w-5xl mx-auto space-y-16">
 
-          {/* Title */}
+          <div className="space-y-8">
           <div className="text-center">
             <h2 className="text-2xl lg:text-3xl font-bold text-[#FC8A0A] leading-tight">
               ماهو برنامِج “خِيمياء البزنس - Business Alchemy”؟
@@ -49,7 +49,7 @@ export default function MasterclassDescriptionArabic() {
               هو البرنامِج التّدريبي الأوّل مِن نوعِه الذي يُعيد تشكِيل علاقتِك مع البِزنس، ويقودُك لاكتشاف الصّيغة الأنسب لمَشروع يُشبهك، ويستجيب لِنداء شَغفك العميق.
             </p>
           </div>
-
+          </div>
           {/* Description */}
           <div className="text-gray-600 text-base lg:text-lg text-center leading-relaxed space-y-6">
             <p>

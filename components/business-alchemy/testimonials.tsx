@@ -4,12 +4,13 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import Image from "next/image"
-import VideoHero from "../video"
+// import VideoHero from "../video"
 
 const testimonials = [
   {
     id: 7,
     name: "Lama Alomari",
+    image: "/omari.jpg",
     country: "Canada",
     flag: "https://flagcdn.com/w40/ca.png",
     testimonial:
@@ -18,6 +19,7 @@ const testimonials = [
   {
     id: 8,
     name: "Galia Habiba",
+    image: "/ghalia.jpg",
     country: "Australia",
     flag: "https://flagcdn.com/w40/au.png",
     testimonial:
@@ -26,6 +28,7 @@ const testimonials = [
   {
     id: 9,
     name: "Gufran Al-Mehdi",
+    image: "/ghufran.jpg",
     country: "USA",
     flag: "https://flagcdn.com/w40/us.png",
     testimonial:
@@ -61,6 +64,7 @@ const testimonials = [
   {
     id: 6,
     name: "Rawa’a AlQasi",
+    image: "/roaa1.jpg",
     country: "Saudi Arabia",
     flag: "https://flagcdn.com/w40/sa.png",
     testimonial:
@@ -69,6 +73,7 @@ const testimonials = [
   {
     id: 4,
     name: "Areen Shehab",
+    image: "/aren.jpg",
     country: "Jordan",
     flag: "https://flagcdn.com/w40/jo.png",
     testimonial:
@@ -77,6 +82,7 @@ const testimonials = [
   {
     id: 5,
     name: "Lara Masad",
+    image: "/ai.jpg",
     country: "Jordan",
     flag: "https://flagcdn.com/w40/jo.png",
     testimonial:

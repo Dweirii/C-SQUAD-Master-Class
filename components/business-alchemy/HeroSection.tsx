@@ -70,26 +70,26 @@ export default function ArabicHeroSection() {
 
       {/* ✅ Full-width Section (OUTSIDE section) */}
       <div className="w-full bg-[#F9F9FB] mb-2 pb-4">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 py-6 px-2 text-center w-full max-w-none">
-          <div className="space-y-2">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-1 py-2 px-2 text-center w-full max-w-none">
+          <div className="space-y-1">
             <Image src="/myz5.svg" alt="أونلاين مباشر" width={80} height={80} className="mx-auto" />
             <p className="text-[#FC8A0A] font-bold text-sm">
              احضَر من أي مكان<br />(أونلاين-مباشر)
             </p>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <Image src="/myz33.svg" alt="جلسات جماعية" width={80} height={80} className="mx-auto" />
             <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-0">
               جلسات تدريب جماعية<br />(مجتمع إبداعي)
             </p>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <Image src="/myz2.svg" alt="جلسة إرشادية" width={80} height={80} className="mx-auto" />
             <p className="text-[#FC8A0A] font-bold text-sm leading-snug pt-0">
               جلسة إرشادية فردية<br />(استشارة في الخطة)
             </p>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1">
             <Image src="/lamp.svg" alt="خطة المشروع" width={80} height={80} className="mx-auto" />
             <p className="text-[#FC8A0A] font-bold text-sm leading-snug">
               خطة نجاح المشروع<br />(مع التحقق من السوق)
