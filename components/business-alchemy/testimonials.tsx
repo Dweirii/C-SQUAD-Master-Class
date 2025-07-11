@@ -8,54 +8,6 @@ import VideoHero from "../video"
 
 const testimonials = [
   {
-    id: 1,
-    name: "Lina Zalloum",
-    country: "Canada",
-    flag: "https://flagcdn.com/w40/ca.png",
-    testimonial:
-      "برنامج من الطراز الرفيع. المدربة مؤهلة تأهيلاً عالياً وتقدم بطريقة جذابة وبسيطة، لكنها في غاية الاحترافية. شاملة للغاية، مدروسة ولديها جانب إنساني جميل فيما تفعله. الفريق فعال للغاية وسريع الاستجابة! المهام لم تتوافق معي لكن المدربة آلاء كانت سريعة في ملاحظة ذلك وإيجاد حل له!",
-  },
-  {
-    id: 2,
-    name: "Samah Awad",
-    country: "UAE",
-    flag: "https://flagcdn.com/w40/ae.png",
-    testimonial:
-      "تعجز كلماتي عن وصف البرنامج بتفاصيله... شعرت بنداء روحي لتواجدي مع كوتش آلاء، وكان هذا البرنامج هو الداعم والمرشد لي في وقت التحديات. كنت أنتظر الجلسات بفارغ الصبر لما فيها من رسائل وفتوحات، وممتنة لعائلة روحية أنارت دربي.",
-  },
-  {
-    id: 3,
-    name: "Ro’aa Khreis",
-    country: "Saudi Arabia",
-    flag: "https://flagcdn.com/w40/sa.png",
-    testimonial:
-      "برنامج رائع، يفتح الأعين ويغير الحياة... يمنحك نظرة مختلفة وإدراكًا جديدًا، والأهم من ذلك يزرع الأمل والطاقة الإيجابية.",
-  },
-  {
-    id: 4,
-    name: "Areen Shehab",
-    country: "Jordan",
-    flag: "https://flagcdn.com/w40/jo.png",
-    testimonial:
-      "من فترة أخدت قرار حاسم بحياتي وكوتش آلاء آمنت فيّ وبلشنا نشتغل خطوة بخطوة. الكورس يلي بتعطيه عظيم وفادني كتير.",
-  },
-  {
-    id: 5,
-    name: "Lara Masad",
-    country: "Jordan",
-    flag: "https://flagcdn.com/w40/jo.png",
-    testimonial:
-      "شعور رائع من التمكن مع هذا البرنامج، التعلم المستمر والتطور دافع لإنجازاتنا. إذا كنت جاد بريادة الأعمال فـ هذا البرنامج لك!",
-  },
-  {
-    id: 6,
-    name: "Rawa’a AlQasi",
-    country: "Saudi Arabia",
-    flag: "https://flagcdn.com/w40/sa.png",
-    testimonial:
-      "برنامج MYZ من أفضل البرامج التي اشتركت فيها. كوتش آلاء بتاخذك من الصفر إلى هدفك مع دعم لا يتوقف. شعرت لأول مرة أن البزنس ممتع وسهل. أنصح به بشدة!",
-  },
-  {
     id: 7,
     name: "Lama Alomari",
     country: "Canada",
@@ -78,6 +30,57 @@ const testimonials = [
     flag: "https://flagcdn.com/w40/us.png",
     testimonial:
       "كوتش آلاء أحدثت فرقًا كبيرًا في رحلتي. زودتني بثقة، توجيه، وحكمة لا تقدر بثمن. ساعدتني أكون النسخة الأفضل من نفسي، وأنا ممتنة للغاية لهذه التجربة.",
+  },
+  {
+    id: 1,
+    name: "Lina Zalloum",
+    image: "/lina.png",
+    country: "Canada",
+    flag: "https://flagcdn.com/w40/ca.png",
+    testimonial:
+      "برنامج من الطراز الرفيع. المدربة مؤهلة تأهيلاً عالياً وتقدم بطريقة جذابة وبسيطة، لكنها في غاية الاحترافية. شاملة للغاية، مدروسة ولديها جانب إنساني جميل فيما تفعله. الفريق فعال للغاية وسريع الاستجابة! المهام لم تتوافق معي لكن المدربة آلاء كانت سريعة في ملاحظة ذلك وإيجاد حل له!",
+  },
+  {
+    id: 2,
+    name: "Samah Awad",
+    image: "/samah.jpeg",
+    country: "UAE",
+    flag: "https://flagcdn.com/w40/ae.png",
+    testimonial:
+      "تعجز كلماتي عن وصف البرنامج بتفاصيله... شعرت بنداء روحي لتواجدي مع كوتش آلاء، وكان هذا البرنامج هو الداعم والمرشد لي في وقت التحديات. كنت أنتظر الجلسات بفارغ الصبر لما فيها من رسائل وفتوحات، وممتنة لعائلة روحية أنارت دربي.",
+  },
+  {
+    id: 3,
+    name: "Ro’aa Khreis",
+    image: "/roa'a.jpeg",
+    country: "Saudi Arabia",
+    flag: "https://flagcdn.com/w40/sa.png",
+    testimonial:
+      "برنامج رائع، يفتح الأعين ويغير الحياة... يمنحك نظرة مختلفة وإدراكًا جديدًا، والأهم من ذلك يزرع الأمل والطاقة الإيجابية.",
+  },
+  {
+    id: 6,
+    name: "Rawa’a AlQasi",
+    country: "Saudi Arabia",
+    flag: "https://flagcdn.com/w40/sa.png",
+    testimonial:
+      "برنامج MYZ من أفضل البرامج التي اشتركت فيها. كوتش آلاء بتاخذك من الصفر إلى هدفك مع دعم لا يتوقف. شعرت لأول مرة أن البزنس ممتع وسهل. أنصح به بشدة!",
+  },
+  {
+    id: 4,
+    name: "Areen Shehab",
+    country: "Jordan",
+    flag: "https://flagcdn.com/w40/jo.png",
+    testimonial:
+      "من فترة أخدت قرار حاسم بحياتي وكوتش آلاء آمنت فيّ وبلشنا نشتغل خطوة بخطوة. الكورس يلي بتعطيه عظيم وفادني كتير.",
+  },
+  {
+    id: 5,
+    name: "Lara Masad",
+    country: "Jordan",
+    flag: "https://flagcdn.com/w40/jo.png",
+    testimonial:
+      "شعور رائع من التمكن مع هذا البرنامج، التعلم المستمر والتطور دافع لإنجازاتنا. إذا كنت جاد بريادة الأعمال فـ هذا البرنامج لك!",
   },
 ]
 
@@ -263,33 +266,38 @@ export default function TestimonialsArabicCarousel() {
 }
 
 export function TestimonialCardArabic({ testimonial }: { testimonial: any }) {
-  const countryCode = testimonial.country
-    .toLowerCase()
-    .replace(/ /g, "-")
+  const countryCode = testimonial.country.toLowerCase().replace(/ /g, "-")
 
   return (
-    <div className="bg-[#F9FAFB] p-4 sm:p-6 h-full flex flex-col border border-gray-100">
+    <div className="bg-[#F9FAFB] p-4 sm:p-6 h-full flex flex-col border border-gray-100 rounded-md">
       <blockquote className="text-gray-800 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow relative z-10 font-cairo">
         {testimonial.testimonial}
       </blockquote>
 
-      {/* ✅ Separator */}
-      <div className="border-t border-gray-200 pt-4 relative z-10 flex items-center gap-4">
-      <div className="text-left">
-        <div className="font-bold text-gray-900 text-sm sm:text-base font-lato">
-          {testimonial.name}
-        </div>
-        <div className="text-gray-600 text-xs sm:text-sm font-cairo flex items-center gap-2">
-        <Image
-          src={testimonial.flag}
-          alt={`علم ${testimonial.country}`}
-          width={24}
-          height={16}
-          className="object-cover rounded-none border w-[24px] h-[16px]"
-          unoptimized
-        />
-
-            <span>{testimonial.country}</span>
+      <div className="text-left rtl:text-right">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Image
+            src={testimonial.image}
+            alt={testimonial.name}
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div className="flex flex-col">
+            <div className="font-bold text-gray-900 text-sm sm:text-base font-lato">
+              {testimonial.name}
+            </div>
+            <div className="text-gray-600 text-xs sm:text-sm font-cairo flex items-center gap-2">
+              <Image
+                src={testimonial.flag}
+                alt={`علم ${testimonial.country}`}
+                width={24}
+                height={16}
+                className="object-cover rounded-none border w-[24px] h-[16px]"
+                unoptimized
+              />
+              <span>{testimonial.country}</span>
+            </div>
           </div>
         </div>
       </div>
