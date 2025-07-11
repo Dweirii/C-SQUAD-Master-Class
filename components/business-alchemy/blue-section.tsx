@@ -62,18 +62,26 @@ export default function Component() {
             </div>
           </div>
         </div>
+{/* CTA Button */}
+<div className="text-center mt-20 flex flex-col md:flex-row gap-4 items-center justify-center">
+  <Link href="/registration" className="w-[350px]">
+    <button
+      type="button"
+      className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 px-10 text-lg sm:text-xl transition-all duration-200"
+    >
+      احجز مكالمتك الاستشارية
+    </button>
+  </Link>
+  <Link href="https://buy.stripe.com/28E7sK0L33zcegTcuNew801" className="w-[350px]">
+    <button
+      type="button"
+      className="w-full bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 px-10 text-lg sm:text-xl transition-all duration-200"
+    >
+      ادفع الآن
+    </button>
+  </Link>
+</div>
 
-        {/* CTA Button */}
-        <div className="text-center mt-20">
-          <Link href="/registration">
-            <button
-              type="button"
-              className="bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 px-10 text-lg sm:text-xl transition-all duration-200"
-            >
-              احجز مكالمتك الاستشارية
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   )
