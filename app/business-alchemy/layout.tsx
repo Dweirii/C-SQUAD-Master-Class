@@ -12,6 +12,7 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   title: "C-SQUAD",
   description: "صمّم مشروعك بذكاء, انطلق في السّوق بإبداع, واخلُق أثر بِرسالة تُشبهك",
+  icons: "/c-squad-logo.png"
 };
 
 export default function RootLayout({

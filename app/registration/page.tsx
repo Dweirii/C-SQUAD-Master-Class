@@ -386,7 +386,7 @@ export default function RegistrationForm() {
 
   const errorMessages: Record<string, string> = {
     fullName: "يرجى إدخال الاسم الكامل",
-    gender: "يرجى اختيار الجنس",
+    gender: "يرجى اختيار الجِندر",
     email: "يرجى إدخال بريد إلكتروني صحيح",
     countryCode: "يرجى اختيار رمز الدولة",
     phone: "يرجى إدخال رقم هاتف صحيح",

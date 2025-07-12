@@ -249,7 +249,7 @@ export default function RegistrationFormArabic() {
 
               <button
                 type="submit"
-                disabled={isSubmitting || isValidatingPromo}
+                disabled={true}
                 className="w-full px-6 max-w-md bg-[#FC8A0A] hover:bg-[#e67c09] text-white font-bold py-3 rounded-none text-lg sm:text-xl transition-all duration-200 mx-auto text-center disabled:cursor-not-allowed"
               >
                 {isSubmitting
